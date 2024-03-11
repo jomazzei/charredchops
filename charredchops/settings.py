@@ -52,11 +52,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'booking',
 ]
+
+# Project variables
+
+# Numeric handler ID for our ESQL database
+SITE_ID = 1
+# Redirects to home page on log-in/-out
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,6 +142,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# disables email verification
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -158,14 +170,3 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Project variables
-
-# Numeric handler ID for our ESQL database
-SITE_ID = 1
-# Redirects to home page on log-in/-out
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-
-ROOT_URLCONF = 'charredchops.urls'
