@@ -11,21 +11,36 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import sys
+import dj_database_url
+
+
+# Checks for my environment variables
+if os.path.isfile("env.py"):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Templates directory
+TEMPLATES_DIR = BASE_DIR / 'templates'
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t2v*^52u-8dg0o_j-i2@p+$uwk6au=%&%#uiz_@(cec^g-&p1j'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Takes value from the env.py file
+# Automatically sets Debug to True for development,
+# when pushed to GitHub it will set itself to False
+DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1' ,'.herokuapp.com',]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/','https://*.herokuapp.com',]
 
 
 # Application definition
@@ -37,6 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'booking',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'charredchops.urls'
@@ -54,7 +74,7 @@ ROOT_URLCONF = 'charredchops.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,12 +93,24 @@ WSGI_APPLICATION = 'charredchops.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Development DB if "DEBUG" is found in environment
+if "DEBUG" in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
+# Testing database for test module
+elif 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+
+# If Debug = False, it will instead connect to the live hosted ESQL database for production deployment
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DB_URL'))
+    }
 
 
 # Password validation
@@ -121,3 +153,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Project variables
+
+# Numeric handler ID for our ESQL database
+SITE_ID = 1
+# Redirects to home page on log-in/-out
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+ROOT_URLCONF = 'charredchops.urls'
