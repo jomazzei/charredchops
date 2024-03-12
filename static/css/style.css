@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-/* General Styles */
+/* -------------------------------------------------------------- General Styles */
 body {
     min-height: 100vh;
     display: flex;
@@ -29,7 +29,8 @@ h3 {
     color: #252525;
 }
 
-/* -------------------------------------------------------------- Header */
+/* -------------------------------------------------------------- Base HTML */
+/* ------------------------------- Header */
 header {
     background-color: #10222e;
     position: fixed;
@@ -45,7 +46,7 @@ header a {
     color: #f6eddc;
 }
 
-/* -------------------------------------------------------------- Navbar */
+/* ------------------------------- Navbar */
 nav {
     position: absolute;
     background-color: #10222e;
@@ -73,49 +74,8 @@ nav {
     color: #f6eddc;
 }
 
-/* -------------------------------------------------------------- Main */
-main {
-    margin-top: 100px;
-}
 
-/* Hero section */
-#hero {
-    height: 600px;
-    width: 100%;
-    background: url("../../static/media/steak-img1.png") no-repeat center center/cover;
-    position: relative;
-}
-
-#cover-text {
-    background-color: rgba(237, 56, 31, .7);
-    font-size: 130%;
-    position: absolute;
-    bottom: 30px;
-    width: 80%;
-    min-height: 200px;
-    padding-top: 40px;
-    padding-left: 10px;
-}
-
-#cover-text>h2,
-#cover-text>h3 {
-    color: #ffffff;
-}
-
-/* -------------------------------------------------------------- Who we are */
-#circle-cover-bg {
-    background: url("../../static/media/chef-grilling.png") no-repeat top center/cover;
-    width: 90vw;
-    height: 90vw;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    max-width: 300px;
-    max-height: 300px;
-}
-
-/* -------------------------------------------------------------- Call to action */
-
-/* -------------------------------------------------------------- Footer */
+/* ------------------------------- Footer */
 footer {
     background-color: #3a3a3a;
     margin-top: auto;
@@ -156,3 +116,47 @@ footer a {
     font-size: 200%;
     padding-bottom: 20px;
 }
+
+
+/* -------------------------------------------------------------- Home HTML */
+/* ------------------------------- General */
+main {
+    margin-top: 100px;
+}
+
+/* ------------------------------- Hero section */
+#hero {
+    height: 600px;
+    width: 100%;
+    background: url("../../static/media/steak-img1.png") no-repeat center center/cover;
+    position: relative;
+}
+
+#cover-text {
+    background-color: rgba(237, 56, 31, .7);
+    font-size: 130%;
+    position: absolute;
+    bottom: 30px;
+    width: 80%;
+    min-height: 200px;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+#cover-text>h2,
+#cover-text>h3 {
+    color: #ffffff;
+}
+
+/* ------------------------------- Who we are */
+#circle-cover-bg {
+    background: url("../../static/media/chef-grilling.png") no-repeat top center/cover;
+    width: 90vw;
+    height: 90vw;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+/* ------------------------------- Call to action */
