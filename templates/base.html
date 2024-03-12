@@ -4,6 +4,7 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
+<!-- Start of Base -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,133 +24,120 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav>
-        <a href="index.html">
-            <h1 id="logo">Love Running</h1>
-        </a>
-        <input type="checkbox" id="nav-toggle" name="nav-toggle">
-        <label for="nav-toggle" class="nav-toggle-label"><i class="fa-solid fa-bars"></i></label>
-        <nav>
-            <ul id="menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="navbar-brand">
+                <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="250px">
+            </a>
+            <ul id="navUL">
+                <li><a href="#">Home</a></li>
+                <li class="separator">|</li>
+                <li><a href="#">Menu</a></li>
+                <li class="separator">|</li>
+
+                {% if user.is_authenticated %}
+                <li><a href="#">My bookings</a></li>
+                <li class="separator">|</li>
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+
+                {% else %}
+                <li><a href="{% url 'account_signup' %}">Register</a></li>
+                <li class="separator">|</li>
+                <li><a href="{% url 'account_login' %}">Log in</a></li>
+                {% endif %}
             </ul>
+            <a href="#"><button class="btn btn-success">Book a table!</button></a>
         </nav>
-    </nav>
+    </header>
 
-    <main>
-        <section id="hero">
-            <div id="cover-text">
-                <h2>Love Running</h2>
-                <h3>Dublin Docklands & Phoenix Park</h3>
-            </div>
-        </section>
 
-        <section id="reasons">
-            <h2>Why Love Running With Us?</h2>
-            <div id="benefits">
-                <div id="benefits-physical">
-                    <div>
-                        <h3>Feel Healthy <i class="fa-solid fa-heart-pulse"></i></h3>
-                        <hr>
-                        <p>Since it improves aerobic fitness, running is a great way to help improve your cardiovascular
-                            health. Plus, it burns calories and can build strength.</p>
-                    </div>
-                    <div>
-                        <h3>Feel Strong <i class="fa-solid fa-dumbbell"></i></h3>
-                        <hr>
-                        <p>Physical exercise, running included, is known to release endorphins in the brain. Endorphins
-                            make you more energetic, more awake and, yes, happier</p>
-                    </div>
-                </div>
-                <div id="benefits-mental">
-                    <div>
-                        <h3>Feel Free <i class="fa-brands fa-fly"></i></h3>
-                        <hr>
-                        <p>Physical exercise, running included, is known to release endorphins in the brain. Endorphins
-                            make you more energetic, more awake and, yes, happier.</p>
-                    </div>
-                    <div>
-                        <h3>Get Social <i class="fa-solid fa-globe"></i></h3>
-                        <hr>
-                        <p>When we run with others, we can run farther and faster more easily. Social running can pull
-                            you out of a running funk or low mood, and inspire you to try new events.</p>
-                    </div>
-                </div>
-                <div id="benefits-image">
-                    <div id="circle-cover-bg"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="meetups">
-            <h2 class="hidden-heading">Meet-up Times</h2>
-            <div id="times">
-                <div>
-                    <h3>Urban <i class="fa-solid fa-city"></i></h3>
-                    <p>Monday</p>
-                    <p>5K</p>
-                    <p>The Marker Hotel</p>
-                    <p>18:30</p>
-                </div>
-                <div>
-                    <h3>Trail <i class="fa-solid fa-tree"></i></h3>
-                    <p>Wednesday</p>
-                    <p>10K</p>
-                    <p>The Phoenix Park</p>
-                    <p>18:30</p>
-                </div>
-                <div>
-                    <h3>Urban <i class="fa-solid fa-city"></i></h3>
-                    <p>Friday</p>
-                    <p>5K</p>
-                    <p>The Marker Hotel</p>
-                    <p>18:30</p>
-                </div>
-                <div>
-                    <h3>Trail <i class="fa-solid fa-tree"></i></h3>
-                    <p>Saturday</p>
-                    <p>10K</p>
-                    <p>The Phoenix Park</p>
-                    <p>09:30</p>
-                </div>
-                <div>
-                    <h3>Coffee <i class="fa-solid fa-mug-hot"></i></h3>
-                    <p>Sunday</p>
-                    <p>0K</p>
-                    <p>The Marker Hotel</p>
-                    <p>11:30</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <ul id="social-networks">
-            <li><a href="https://www.facebook.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Facebook page (opens in a new tab)">
-                    <i class="fa-brands fa-facebook"></i></a>
-            </li>
-            <li><a href="https://www.twitter.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Twitter page (opens in a new tab)">
-                    <i class="fa-brands fa-square-twitter"></i></a>
-            </li>
-            <li><a href="https://www.youtube.com" target="_blank" rel="noopener"
-                    aria-label="Visit our YouTube (opens in a new tab)">
-                    <i class="fa-brands fa-square-youtube"></i></a>
-            </li>
-            <li><a href="https://www.instagram.com" target="_blank" rel="noopener"
-                    aria-label="Visit our instagram (opens in a new tab)">
-                    <i class="fa-brands fa-square-instagram"></i></a>
-            </li>
-        </ul>
-    </footer>
-
-    <h1>base.html</h1>
     {% block content %}
     <!-- Page content goes here -->
     {% endblock %}
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div id="logo-bar">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-3 text-center">
+                        <div>
+                            <a href="#">
+                                <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="250px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-around">
+
+                <div class="col-4 text-center footer-link-group">
+
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Home
+                            </a>
+                        </li>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                About
+                            </a>
+                        </li>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Menu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4 text-center footer-link-group">
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Book table
+                            </a>
+                        </li>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Contact us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4 text-center footer-link-group">
+                    <ul>
+                        {% if user.is_authenticated %}
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Logout
+                            </a>
+                        </li>
+                        {% else %}
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Register
+                            </a>
+                        </li>
+                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                                Login
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col text-center" id="sub-text">
+                    <a href="https://github.com/jomazzei" target="_blank" rel="noopener"
+                        aria-label="Opens GitHub in new tab">
+                        <p>&copy; Joseph Mazzei - 2024</p>
+                        <i class="fa-brands fa-square-github" id="github-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
 
     <!-- Bootstrap 5.3 script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -162,3 +150,4 @@
 </body>
 
 </html>
+<!-- End of Base -->
