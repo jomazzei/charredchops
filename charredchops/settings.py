@@ -126,10 +126,6 @@ else:
         'default': dj_database_url.parse(os.environ.get('DB_URL'))
     }
 
-CSRF_TRUSTED_ORIGINS = [
-    "127.0.0.1",
-    "https://*.herokuapp.com"
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,7 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # disables email verification
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Internationalization
