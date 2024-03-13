@@ -2,7 +2,8 @@ import random
 import string
 from django.db import models
 from django.contrib.auth.models import User
-# from django.utils.text import slugify
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -12,24 +13,31 @@ class Reservation(models.Model):
     """
     entry_id = models.AutoField(primary_key=True, unique=True)
     cust_ref = models.CharField(blank=True, unique=True, max_length=8)
+    
+    slug = models.SlugField(max_length=250, blank=True, null=False, unique=True)
 
     customer = models.ForeignKey(User, on_delete=models.CASCADE,
-                                 related_name="booking")
-    cust_fname = models.CharField(max_length=20, blank=False)
-    cust_lname = models.CharField(max_length=20, blank=False)
+                                 related_name="booking", null=False)
+    cust_fname = models.CharField(max_length=20, blank=False, null=False)
+    cust_lname = models.CharField(max_length=20, blank=False, null=False)
     email = models.EmailField(blank=False, null=False)
-    guest_count = models.IntegerField(blank=False, null=False)
-    booking_date = models.DateField()
-    booking_time = models.TimeField()
-    comments = models.TextField()
-    allergies = models.TextField
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField()
-    cancelled = models.BooleanField(default=False)
+    guest_count = models.IntegerField(blank=False, null=False,
+                                      default=1,
+                                      validators=[
+                                          MaxValueValidator(8),
+                                          MinValueValidator(1)
+                                      ])
+    booking_date = models.DateField(null=False, blank=False)
+    booking_time = models.TimeField(null=False, blank=False)
+    comments = models.TextField(blank=True, null=True)
+    allergies = models.TextField(blank=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_on = models.DateTimeField(auto_now=True, blank=True)
+    cancelled = models.BooleanField(default=False, blank=True)
 
 
     class Meta:
-        ordering = ["entry_id", "booking_date", "booking_time", "guest_count"]
+        ordering = ["entry_id", "booking_date", "booking_time", "guest_count", "cancelled"]
 
 
     def __str__(self):
@@ -80,6 +88,9 @@ class Reservation(models.Model):
 
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.cust_ref)
+            
         # Call the format_entry_id method to generate and set the booking ID
         self.format_booking_id()
 
