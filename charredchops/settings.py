@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     "crispy_bootstrap5",
+    'phonenumber_field',
     'generalpages',
     'booking',
 ]
@@ -120,7 +121,8 @@ if "DEBUG" in os.environ:
 elif 'test' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
-# If Debug = False, it will instead connect to the live hosted ESQL database for production deployment
+# If Debug = False, it will instead connect to
+# the live hosted ESQL database for production deployment
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DB_URL'))
