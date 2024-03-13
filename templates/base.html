@@ -32,7 +32,7 @@
             <ul id="navUL">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="separator">|</li>
-                <li><a href="#">Menu</a></li>
+                <li><a href="{% url 'menu' %}">Menu</a></li>
                 <li class="separator">|</li>
 
                 {% if user.is_authenticated %}
@@ -74,18 +74,17 @@
         </div>
 
         <div class="container">
+
+            <hr>
+
             <div class="row justify-content-evenly">
                 <div class="col-2 text-start footer-link-group">
                     <ul>
-                        <li><a href="{% url 'home' %}" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="{% url 'home' %}" aria-label="Opens Home page">
                                 Home
                             </a>
                         </li>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
-                                About
-                            </a>
-                        </li>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="{% url 'menu' %}" aria-label="Opens Menu page">
                                 Menu
                             </a>
                         </li>
@@ -99,21 +98,21 @@
                             </a>
                         </li>
                         {% if user.is_authenticated %}
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="#" aria-label="">
                                 Manage bookings
                             </a>
                         </li>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
-                                Logout
+                        <li><a href="{% url 'account_logout' %}" aria-label="Opens Log out page">
+                                Log out
                             </a>
                         </li>
                         {% else %}
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="{% url 'account_signup' %}" aria-label="Opens Sign up page">
                                 Register
                             </a>
                         </li>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
-                                Login
+                        <li><a href="{% url 'account_login' %}" aria-label="Opens Log in page">
+                                Log in
                             </a>
                         </li>
                         {% endif %}
@@ -128,7 +127,7 @@
                         <li>charredchops.customer@gmail.com</li>
                     </ul>
                 </div>
-                <div class="col-2 text-start footer-link-group">
+                <div class="col-2 text-end footer-link-group">
                     <ul>
                         <li><strong>Our Address :</strong></li>
                         <li>Some, Address Street, City, BO0 0OK</li>
