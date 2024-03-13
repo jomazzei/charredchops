@@ -37,7 +37,7 @@ class Reservation(models.Model):
 
 
     class Meta:
-        ordering = ["entry_id", "booking_date", "booking_time", "guest_count", "cancelled"]
+        ordering = ["cancelled", "entry_id", "booking_date", "booking_time", "guest_count"]
 
 
     def __str__(self):
