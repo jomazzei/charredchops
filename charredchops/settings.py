@@ -58,19 +58,18 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     "crispy_bootstrap5",
-    "generalpages",
+    'generalpages',
     'booking',
 ]
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Numeric handler ID for our ESQL database
 SITE_ID = 1
 # Redirects to home page on log-in/-out
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,6 +126,10 @@ else:
         'default': dj_database_url.parse(os.environ.get('DB_URL'))
     }
 
+CSRF_TRUSTED_ORIGINS = [
+    "127.0.0.1",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
