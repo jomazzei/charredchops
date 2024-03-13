@@ -14,5 +14,3 @@ def menu_page(request):
     Renders the menu page
     """
     return render(request, "generalpages/menu.html")
-
-
