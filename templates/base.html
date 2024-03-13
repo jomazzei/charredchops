@@ -26,11 +26,11 @@
     <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
-            <a href="#" class="navbar-brand">
+            <a href="{% url 'home' %}" class="navbar-brand">
                 <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="250px">
             </a>
             <ul id="navUL">
-                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="separator">|</li>
                 <li><a href="#">Menu</a></li>
                 <li class="separator">|</li>
@@ -46,7 +46,7 @@
                 <li><a href="{% url 'account_login' %}">Log in</a></li>
                 {% endif %}
             </ul>
-            <a href="#"><button class="btn btn-success">Book a table!</button></a>
+            <a href="{% url 'bookingpage' %}"><button class="btn btn-success">Book a table!</button></a>
         </nav>
     </header>
 
@@ -64,8 +64,8 @@
                 <div class="row justify-content-center">
                     <div class="col-3 text-center">
                         <div>
-                            <a href="#">
-                                <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="250px">
+                            <a href="{% url 'home' %}">
+                                <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="150px">
                             </a>
                         </div>
                     </div>
@@ -74,12 +74,10 @@
         </div>
 
         <div class="container">
-            <div class="row justify-content-around">
-
-                <div class="col-4 text-center footer-link-group">
-
+            <div class="row justify-content-evenly">
+                <div class="col-2 text-start footer-link-group">
                     <ul>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="{% url 'home' %}" target="_blank" rel="noopener" aria-label="">
                                 Home
                             </a>
                         </li>
@@ -93,21 +91,18 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-4 text-center footer-link-group">
+
+                <div class="col-2 text-start footer-link-group">
                     <ul>
-                        <li><a href="#" target="_blank" rel="noopener" aria-label="">
+                        <li><a href="{% url 'bookingpage' %}" aria-label="Opens Booking page">
                                 Book table
                             </a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li><a href="#" target="_blank" rel="noopener" aria-label="">
-                                Contact us
+                                Manage bookings
                             </a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col-4 text-center footer-link-group">
-                    <ul>
-                        {% if user.is_authenticated %}
                         <li><a href="#" target="_blank" rel="noopener" aria-label="">
                                 Logout
                             </a>
@@ -124,8 +119,25 @@
                         {% endif %}
                     </ul>
                 </div>
+
+                <div class="col-2 text-start footer-link-group">
+                    <ul>
+                        <li><strong>Phone Number :</strong></li>
+                        <li>012345678</li>
+                        <li><strong>E-mail Address :</strong></li>
+                        <li>charredchops.customer@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-2 text-start footer-link-group">
+                    <ul>
+                        <li><strong>Our Address :</strong></li>
+                        <li>Some, Address Street, City, BO0 0OK</li>
+                    </ul>
+                </div>
             </div>
+
             <hr>
+
             <div class="row justify-content-center">
                 <div class="col text-center" id="sub-text">
                     <a href="https://github.com/jomazzei" target="_blank" rel="noopener"

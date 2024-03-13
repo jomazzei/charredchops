@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
+
 # Create your views here.
-def home(request):
-    return render(request, "booking/home.html")
+def booking(request):
+    """
+    Renders the booking page
+    """
+    return render(request, "booking/booking.html")

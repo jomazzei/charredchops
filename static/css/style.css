@@ -39,6 +39,7 @@ header {
     box-shadow: 0 2px 2px #ed381f;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 200px;
 }
 
 header a {
@@ -87,10 +88,6 @@ footer a {
     color: #f6eddc;
 }
 
-.footer-link-group a:hover {
-    border-bottom: 1px solid #ed381f;
-}
-
 #logo-bar {
     background-color: #10222e;
     padding-top: 20px;
@@ -105,7 +102,11 @@ footer a {
 
 .footer-link-group li {
     list-style-type: none;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+}
+
+.footer-link-group a:hover {
+    border-bottom: 1px solid #ed381f;
 }
 
 #sub-text {
