@@ -35,19 +35,26 @@ class Reservation(models.Model):
     
     
     def __str__(self):
-        return f"{self.entry_id}"
+        return f"Reservation ID: {self.entry_id} | Customer reference: {self.booking_id_ux}"
     
-    
+    # Queried ChatGPT for solutions on how to generate
+    # a more human readable reference inside of specific parameters
     def format_booking_id(self):
         """
         Formats the database entry ID to a more human
         readable way for customer reference
+        
+        entry_id_str fills up to 6 numbers in this string
+        initials then sets the initials from the entered information,
+        taken from the model-form. 
+        booking_reference is the formatted string containing initials and
+        6 numbers
         """
         entry_id_str = str(self.entry_id).zfill(6)
         
         intials = f"{self.cust_fname[0]}{self.cust_lname[0]}"
         
-        booking_reference = f"{entry_id_str}{intials}"
+        booking_reference = f"{intials}{entry_id_str}"
         
         self.booking_id_ux = booking_reference
         
