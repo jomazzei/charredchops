@@ -30,7 +30,6 @@ class Reservation(models.Model):
     booking_date = models.DateField(null=False, blank=False)
     booking_time = models.TimeField(null=False, blank=False)
     comments = models.TextField(blank=True, null=True)
-    allergies = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True)
     cancelled = models.BooleanField(default=False, blank=True)
