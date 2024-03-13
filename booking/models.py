@@ -88,11 +88,11 @@ class Reservation(models.Model):
 
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.cust_ref)
-            
         # Call the format_entry_id method to generate and set the booking ID
         self.format_booking_id()
+        
+        if not self.slug:
+            self.slug = slugify(self.cust_ref)
 
         # Call the parent class's save method to save the instance
         super().save(*args, **kwargs)
