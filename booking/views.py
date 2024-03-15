@@ -15,7 +15,8 @@ def booking(request):
     and controls the validation, saving, and posting.
     """    
     if request.method == "POST":
-        booking_form = BookTableForm()
+        print("Received request")
+        booking_form = BookTableForm(request.POST)
         
         if booking_form.is_valid():
             booking = booking_form.save(commit=False)
@@ -28,14 +29,14 @@ def booking(request):
             return redirect("success/")
         # If form is NOT valid
         else:
-            print(booking_form.errors)
+            print("Invalid")
             messages.add_message(
                 request, messages.ERROR,
                 "Please check your form answers"
             )
-            for error in booking_form.errors:
-                messages.error(request, booking_form.errors[error])
-                return redirect(request.path)
+            # for error in booking_form.errors:
+            #     messages.error(request, booking_form.errors[error])
+            #     return redirect(request.path)
     
     else:
         booking_form = BookTableForm()

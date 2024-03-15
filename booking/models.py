@@ -32,11 +32,10 @@ class Reservation(models.Model):
     comments = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    cancelled = models.BooleanField(default=False, blank=True)
 
 
     class Meta:
-        ordering = ["cancelled", "entry_id", "booking_date", "booking_time", "guest_count"]
+        ordering = ["entry_id", "booking_date", "booking_time", "guest_count"]
 
 
     def __str__(self):
