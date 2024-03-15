@@ -1,12 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Charred Chops | Book now{% endblock %}
 
 {% block content %}
 
-<main>
-    <h1>Booking HTML</h1>
-</main>
+    <article id="contact-article">
+        <div class="container">
+            <div class="row">
+                <div class="col justify-content-center text-center">
+                    <h2>Want to make a reservation?</h2>
+                    <p>
+                        <strong>Our phone number:</strong><br>
+                        012345678
+                    </p>
+                    <p>
+                        <strong>Our email address:</strong><br>
+                        charredchops.customer@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article id="location-article">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Come by to our restaurant</h3>
+                    <p>Bond St S, Broadmead, Bristol BS1 3BD</p>
+                </div>
+                <div class="col-6 justify-content-end">
+                    <div id="map-embed-container">
+                        <iframe id="map-embed"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14063.392524062394!2d-2.581204312713522!3d51.45668659286227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e708ced15cd%3A0x11d99c49c31a1395!2sCabot%20Circus!5e0!3m2!1sen!2suk!4v1710507473186!5m2!1sen!2suk"
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article id="form-article">
+
+        <!-- Form container if logged in -->
+        <div class="container">
+            <div class="row">
+                <div class="col justify-content-center text-center">
+                    {% if user.is_authenticated %}
+
+                    <form method="post">
+                        {{ booking_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn btn-success" type="submit">Book now!</button>
+                    </form>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </article>
 
 {% endblock %}

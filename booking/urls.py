@@ -2,8 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # Booking contact/form page
     path("booknow/", views.booking, name="bookingpage"),
-    path("mybookings/", views.manage_booking_cust, name="custlist"),
+    # Form success redirect page
+    path("booknow/success/", views.booking_success, name="bookingsuccess"),
     
+    # Bookings list
+    path("mybookings/", views.manage_booking_cust, name="custlist"),
+    # Single reservation/booking
     path("mybookings/<slug:slug>/", views.booking_details, name="bookingdetails"),
 ]
