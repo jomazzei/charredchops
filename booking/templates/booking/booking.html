@@ -44,37 +44,84 @@
 </article>
 
 <article id="form-article">
-    
+
     <div class="container">
         <div class="row">
             <div class="col justify-content-center text-center">
                 <h2>Prefer a hassle free booking?</h2>
             </div>
         </div>
+    </div>
 
 
-        <!-- Form container if logged in -->
-        {% if user.is_authenticated %}
-
+    <!-- Form container if logged in -->
+    <div class="container">
         <div class="row">
             <div class="col-8 justify-content-center" id="booking-form">
+
+                {% if event_form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> Please correct the following errors:
+                    <ul>
+                        {% for field, errors in event_form.errors.items %}
+                        {% for error in errors %}
+                        <li>{{ field }}: {{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if user.is_authenticated %}
                 <form method="post">
-                    {{ booking_form | crispy }}
                     {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col">
+                            {{ booking_form.cust_fname|as_crispy_field}}
+                        </div>
+                        <div class="col">
+                            {{ booking_form.cust_lname|as_crispy_field}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ booking_form.email|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ booking_form.guest_count|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ booking_form.booking_date|as_crispy_field }}
+                        </div>
+                        <div class="col">
+                            {{ booking_form.booking_time|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ booking_form.comments|as_crispy_field }}
+                        </div>
+                    </div>
+
                     <button class="btn btn-success" type="submit">Book now!</button>
                 </form>
+                
+                {% else %}
+                <h3>please log in</h3>
+                {% endif %}
             </div>
         </div>
-    </div> <!-- end of container if logged in-->
 
-
-        <!-- If user not logged in, show login prompt -->
-        {% else %}
-        <div class="row">
-            <div class="col-6 justify-content-center">
-            </div>
-        </div> <!-- end of container if not logged in-->
-    {% endif %}
+    </div>
 
 </article>
 

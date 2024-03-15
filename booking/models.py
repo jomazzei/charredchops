@@ -20,7 +20,7 @@ class Reservation(models.Model):
                                  related_name="booking", null=False)
     cust_fname = models.CharField(max_length=20, blank=False, null=False)
     cust_lname = models.CharField(max_length=20, blank=False, null=False)
-    email = models.EmailField(blank=False, null=False)
+    email = models.EmailField()
     guest_count = models.IntegerField(blank=False, null=False,
                                       default=1,
                                       validators=[
@@ -30,8 +30,8 @@ class Reservation(models.Model):
     booking_date = models.DateField(null=False, blank=False)
     booking_time = models.TimeField(null=False, blank=False)
     comments = models.TextField(blank=True, null=True)
-    created_on = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_on = models.DateTimeField(auto_now=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     cancelled = models.BooleanField(default=False, blank=True)
 
 

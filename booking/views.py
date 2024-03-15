@@ -13,11 +13,10 @@ def booking(request):
     
     Also renders the booking form
     and controls the validation, saving, and posting.
-    """
-    booking_form = BookTableForm()
-    
+    """    
     if request.method == "POST":
         booking_form = BookTableForm()
+        
         if booking_form.is_valid():
             booking = booking_form.save(commit=False)
             booking.customer = request.user
@@ -29,10 +28,17 @@ def booking(request):
             return redirect("success/")
         # If form is NOT valid
         else:
+            print(booking_form.errors)
             messages.add_message(
                 request, messages.ERROR,
                 "Please check your form answers"
             )
+            for error in booking_form.errors:
+                messages.error(request, booking_form.errors[error])
+                return redirect(request.path)
+    
+    else:
+        booking_form = BookTableForm()
     
     return render(
         request,

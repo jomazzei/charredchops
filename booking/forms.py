@@ -1,4 +1,3 @@
-import datetime
 from django import forms
 from .models import Reservation
 
@@ -18,6 +17,7 @@ class BookTableForm(forms.ModelForm):
             "cust_fname": "First name",
             "cust_lname": "Last name",
             "email": "Your email address",
+            "guest_count": "How many guests?",
             "booking_date": "What day would you like to book?",
             "booking_time": "What time would you like your reservation to be?",
             "comments": "Special comments, requests, or allergies",

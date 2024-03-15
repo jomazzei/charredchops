@@ -13,7 +13,7 @@ class TestBookingForm(TestCase):
             "cust_lname": "Mazzei",
             "email": "j.mazzei.pv@gmail.com",
             "booking_date": "04/12/2024",
-            "booking_time": '10:00:00',
+            "booking_time": '10:00',
             "guest_count": 2,
         })
         if not booking_form.is_valid():
