@@ -36,7 +36,7 @@
                 <li class="separator">|</li>
 
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'custlist' %}">My bookings</a></li>
+                <li><a href="{% url 'bookinglist' %}">My bookings</a></li>
                 <li class="separator">|</li>
                 <li><a href="{% url 'account_logout' %}">Logout</a></li>
 
@@ -120,7 +120,7 @@
                             </a>
                         </li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'custlist' %}" aria-label="Opens My bookings page">
+                        <li><a href="{% url 'bookinglist' %}" aria-label="Opens My bookings page">
                                 Manage bookings
                             </a>
                         </li>

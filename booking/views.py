@@ -1,4 +1,7 @@
+from django.http import HttpResponseRedirect
 from django.http import HttpResponseForbidden
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from allauth.account.decorators import login_required
@@ -15,9 +18,8 @@ def booking(request):
     and controls the validation, saving, and posting.
     """    
     if request.method == "POST":
-        print("Received request")
         booking_form = BookTableForm(request.POST)
-        
+
         if booking_form.is_valid():
             booking = booking_form.save(commit=False)
             booking.customer = request.user
@@ -27,20 +29,20 @@ def booking(request):
                 "You have successfully booked a reservation!"
             )
             return redirect("success/")
+
         # If form is NOT valid
         else:
-            print("Invalid")
             messages.add_message(
                 request, messages.ERROR,
                 "Please check your form answers"
             )
-            # for error in booking_form.errors:
-            #     messages.error(request, booking_form.errors[error])
-            #     return redirect(request.path)
-    
+
+        # Handles refresh to cancel form resubmission
+        return HttpResponseRedirect(request.path_info)
+
     else:
         booking_form = BookTableForm()
-    
+
     return render(
         request,
         "booking/booking.html",
@@ -59,13 +61,23 @@ def booking_success(request):
 
 # Refer to previous projects for list view.
 # This is a base url hook to get the link to work
-@login_required
-def manage_booking_cust(request):
+class BookingList(generic.ListView):
     """
     Renders the list view.
     Customer can manage their bookings here
     """
-    return render(request, "booking/cust_list.html")
+    model = Reservation
+    # Found online, won't iterate without this definition,
+    # unlike in the previous projects
+    context_object_name = 'booking_list'
+    queryset = Reservation.objects.all()
+    template_name = "booking/booking_list.html"
+    paginate_by = 6
+    
+    # def get_queryset(self):
+        # return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
+    
+    # return render(request, "booking/booking_list.html")
 
 
 @login_required
