@@ -5,57 +5,63 @@
 
 {% block content %}
 
-<h1>Customer's Reservation List HTML</h1>
 
-<div class="container">
+<div class="container" id="list-container">
     <div class="row">
+        <h1 class="text-center">Manage current bookings</h1>
+    </div>
 
+    <div class="row justify-content-center booking-row-split">
         {% for booking in booking_list %}
 
         <div class="col-4">
-            <div class="card">
-                <div class="card-header">
-                    {{ booking.booking_date }}
+            <a href="#">
+                <div class="card bookingCardItem">
+                    <div class="card-header">
+                        <h5>{{ booking.booking_date }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ booking.booking_time }}</h5>
+                        <p class="card-text">
+                            {% if booking.guest_count >= 2 %}
+                            {{ booking.guest_count }} People
+                            {% else %}
+                            {{ booking.guest_count }} Person
+                            {% endif %}
+                        </p>
+                        <button class="btn detail-button">Click for Details</button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ booking.booking_date }}</h5>
-                    <p class="card-text">
-                        {{ booking.booking_time }} for
-                        {% if booking.guest_count >= 2 %}
-                        {{ booking.guest_count }} people
-                        {% else %}
-                        {{ booking.guest_count }} person
-                        {% endif %}</p>
-                    <a href="#" class="btn btn-primary">Details -></a>
-                </div>
-            </div>
+            </a>
         </div>
 
+
         <!-- Sets a new row of iterations when loop hits 3 items -->
-        {% if forloop.counter|divisibleby:3 %}
+        {% if forloop.counter|divisibleby:2 %}
     </div> <!-- End row -->
 
-    <div class="row">
+    <div class="row justify-content-center booking-row-split">
         {% endif %}
         <!-- Iterates through more on this row -->
         {% endfor %}
     </div>
-
-    {% if is_paginated %}
-    <div>
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">>&laquo; PREV</a>
-            </li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-        </nav>
-    </div>
-    {% endif %}
-
 </div> <!-- End container -->
+
+<script>
+    // Booking list cards
+    const bookingCards = document.getElementsByClassName("card");
+
+    // Loop through each card and add event listeners
+    for (let i = 0; i < bookingCards.length; i++) {
+        // Add event listener for mouseover
+        bookingCards[i].addEventListener("mouseover", function () {
+            this.classList.add("drop-shadow");
+        });
+
+        // Add event listener for mouseout
+        bookingCards[i].addEventListener("mouseout", function () {
+            this.classList.remove("drop-shadow");
+        });
+    }
+</script>
 {% endblock %}

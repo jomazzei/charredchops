@@ -18,6 +18,7 @@ body {
     /* Generic project styles */
     color: #10222e;
     font-family: 'Lato', sans-serif;
+    font-size: 18px;
     background-color: #f6eddc;
 }
 
@@ -84,6 +85,12 @@ nav {
     z-index: 10;
 }
 
+/* ---------------------- General */
+main {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
 /* ---------------------- Footer */
 footer {
     background-color: #3a3a3a;
@@ -129,12 +136,6 @@ footer a {
 
 
 /* -------------------------------------------------------------- HOME */
-
-/* ---------------------- General */
-main {
-    margin-top: 100px;
-}
-
 
 /* ---------------------- Hero section */
 #hero {
@@ -234,4 +235,46 @@ main {
 
 #booking-form {
     margin: auto;
+}
+
+
+/* -------------------------------------------------------------- MY BOOKINGS */
+.booking-row-split {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#list-container a {
+    text-decoration: none;
+}
+
+.card {
+    height: 220px;
+}
+
+.card-header {
+    background-color: #10222e;
+    color: #fffee1;
+    font-weight: 500;
+    border-bottom: 2px solid #ed381f;
+}
+
+.card-header > h5 {
+    margin: 0;
+    padding: .5rem;
+}
+
+.card-body {
+    background-color: #ffffffd0;
+}
+
+.detail-button {
+    position: absolute;
+    right: 30px;
+    background-color: #10222e;
+    color: #fffee1;
+}
+
+.drop-shadow {
+    box-shadow: 5px 6px rgb(112, 112, 112);
 }

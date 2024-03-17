@@ -72,7 +72,6 @@ class BookingList(generic.ListView):
     context_object_name = 'booking_list'
     queryset = Reservation.objects.all()
     template_name = "booking/booking_list.html"
-    paginate_by = 6
     
     # def get_queryset(self):
         # return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
