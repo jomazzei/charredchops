@@ -7,6 +7,7 @@
 
 
 <div class="container" id="list-container">
+
     <div class="row">
         <h1 class="text-center">Manage current bookings</h1>
     </div>
@@ -15,7 +16,7 @@
         {% for booking in booking_list %}
 
         <div class="col-4">
-            <a href="#">
+            <a href="{% url 'bookingdetails' booking.slug %}">
                 <div class="card bookingCardItem">
                     <div class="card-header">
                         <h5>{{ booking.booking_date }}</h5>
@@ -35,7 +36,6 @@
             </a>
         </div>
 
-
         <!-- Sets a new row of iterations when loop hits 3 items -->
         {% if forloop.counter|divisibleby:2 %}
     </div> <!-- End row -->
@@ -45,23 +45,7 @@
         <!-- Iterates through more on this row -->
         {% endfor %}
     </div>
+
 </div> <!-- End container -->
 
-<script>
-    // Booking list cards
-    const bookingCards = document.getElementsByClassName("card");
-
-    // Loop through each card and add event listeners
-    for (let i = 0; i < bookingCards.length; i++) {
-        // Add event listener for mouseover
-        bookingCards[i].addEventListener("mouseover", function () {
-            this.classList.add("drop-shadow");
-        });
-
-        // Add event listener for mouseout
-        bookingCards[i].addEventListener("mouseout", function () {
-            this.classList.remove("drop-shadow");
-        });
-    }
-</script>
 {% endblock %}

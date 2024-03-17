@@ -59,24 +59,23 @@ def booking_success(request):
     return render(request, "booking/form_success.html")
 
 
-# Refer to previous projects for list view.
-# This is a base url hook to get the link to work
 class BookingList(generic.ListView):
     """
     Renders the list view.
     Customer can manage their bookings here
     """
     model = Reservation
+
     # Found online, won't iterate without this definition,
     # unlike in the previous projects
     context_object_name = 'booking_list'
+
     queryset = Reservation.objects.all()
     template_name = "booking/booking_list.html"
-    
+
+    # Filter to only owned bookings
     # def get_queryset(self):
         # return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
-    
-    # return render(request, "booking/booking_list.html")
 
 
 @login_required
