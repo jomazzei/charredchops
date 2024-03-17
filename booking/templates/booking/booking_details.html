@@ -5,6 +5,68 @@
 
 {% block content %}
 
-    <h1>A Single Reservation</h1>
+<div class="container" id="detail-container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-6">
+
+            <div class="card" id="detailed-booking-card">
+                <div class="card-header text-center">
+                    <h1 id="reservation-details-header">Reservation details</h1>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Your reservation is on:
+                        <strong>
+                            {{ reservation.booking_date }} | 
+                            {{ reservation.booking_time }}
+                        </strong>
+                    </h5>
+                    
+                    <hr>
+
+                    <div>
+                        <p class="card-text">
+                            Guest count:
+                            <strong>
+                                {% if reservation.guest_count >= 2 %}
+                                {{ reservation.guest_count }} People
+                                {% else %}
+                                {{ reservation.guest_count }} Person
+                                {% endif %}
+                            </strong>
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                            Given e-mail address:
+                            <strong>
+                                {{ reservation.email }}
+                            </strong>
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                            Given name:
+                            <strong>
+                                {{ reservation.cust_fname }} {{ reservation.cust_lname }}
+                            </strong>
+                        </p>
+                        <hr>
+                    </div>
+                    <div id="detail-buttons" class="text-center">
+                        <button class="btn btn-primary">Edit Reservation</button>
+                        <button class="btn btn-danger delete-button">Cancel Reservation</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}

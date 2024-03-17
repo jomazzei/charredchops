@@ -1,5 +1,5 @@
 // Booking list cards
-const bookingCards = document.getElementsByClassName("card");
+const bookingCards = document.getElementsByClassName("bookingCardItem");
 
 for (let i = 0; i < bookingCards.length; i++) {
     // Add event listener for mouseover

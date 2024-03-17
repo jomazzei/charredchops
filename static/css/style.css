@@ -88,7 +88,7 @@ nav {
 /* ---------------------- General */
 main {
     margin-top: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* ---------------------- Footer */
@@ -239,6 +239,8 @@ footer a {
 
 
 /* -------------------------------------------------------------- MY BOOKINGS */
+
+/* ---------------------- List items */
 .booking-row-split {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -277,4 +279,27 @@ footer a {
 
 .drop-shadow {
     box-shadow: 5px 6px rgb(112, 112, 112);
+}
+
+/* ---------------------- Detailed view */
+#detail-container {
+    margin-top: 50px;
+}
+
+#detailed-booking-card {
+    height: 600px;
+    border: 5px solid #3a3a3a;
+    border-radius: 0.825rem;
+}
+
+#detailed-booking-card .card-header {
+    border-bottom: 3px solid #ed381f;
+}
+
+#reservation-details-header {
+    color: #f6eddc;
+}
+
+#detail-buttons {
+    
 }

@@ -87,6 +87,7 @@ def booking_details(request, slug):
     queryset = Reservation.objects.all()
     reservation = get_object_or_404(queryset, slug=slug)
 
+    # Checks for owner of reservation item vs. the user visiting url
     if request.user == reservation.customer:
         return render(request, "booking/booking_details.html",
                   {
