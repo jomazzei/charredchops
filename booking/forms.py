@@ -1,4 +1,6 @@
+from datetime import timedelta
 from django import forms
+from django.utils.timezone import now
 from .models import Reservation
 
 
@@ -17,13 +19,16 @@ class BookTableForm(forms.ModelForm):
             "cust_fname": "First name",
             "cust_lname": "Last name",
             "email": "Your email address",
-            "guest_count": "How many guests?",
+            "guest_count": "How many guests? Up to 8 people",
             "booking_date": "What day would you like to book?",
             "booking_time": "What time would you like your reservation to be?",
             "comments": "Special comments, requests, or allergies",
         }
       widgets = {
-          'booking_date': forms.DateInput(attrs={'type': 'date',}),
+          'booking_date': forms.DateInput(attrs={'type': 'date',
+                                                 'min': now().isoformat(),
+                                                 'max': (now() + timedelta(weeks=52)).isoformat(),
+                                                 }),
           'booking_time': forms.TimeInput(attrs={'type': 'time',}),
       }
 
@@ -51,7 +56,7 @@ class UpdateBookingForm(forms.ModelForm):
             "cust_fname": "First name",
             "cust_lname": "Last name",
             "email": "Email",
-            "guest_count": "Updated guest count",
+            "guest_count": "Updated guests, max 8",
             "booking_date": "Updated date",
             "booking_time": "Updated time",
             "comments": "Special comments, requests, or allergies",

@@ -2,7 +2,6 @@
 const bookingCards = document.getElementsByClassName("bookingCardItem");
 // Delete confirm modal
 const deleteButton = document.getElementById("delete-button");
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 
 
 for (let i = 0; i < bookingCards.length; i++) {
@@ -18,6 +17,12 @@ for (let i = 0; i < bookingCards.length; i++) {
 }
 
 
-deleteButton.addEventListener("click", ()=>{
-    deleteModal.show();
-});
+// Checks if deleteButton exists before adding event listener.
+// Throws errors in dev tools if there's no conditional
+if (deleteButton) {
+    const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+
+    deleteButton.addEventListener("click", function() {
+        deleteModal.show();
+    });
+}

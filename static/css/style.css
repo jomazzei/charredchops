@@ -282,7 +282,7 @@ footer a {
 }
 
 /* ---------------------- Detailed view */
-.detail-container {
+#booking-details {
     margin-top: 50px;
 }
 
@@ -300,6 +300,6 @@ footer a {
     color: #f6eddc;
 }
 
-.detail-buttons {
+#detail-buttons {
     margin-top: 20px;
 }

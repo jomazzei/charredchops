@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}
 <article id="booking-details">
 
-<div class="container detail-container">
+<div class="container">
 
     <div class="row justify-content-center">
 
@@ -72,7 +72,7 @@
                         </p>
                         {% endif %}
                     </div>
-                    <div class="detail-buttons text-center">
+                    <div id="detail-buttons" class="text-center">
                         <a href="{% url 'bookingedit' reservation.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
                         <button class="btn btn-danger" id="delete-button">Cancel Reservation</button>
                     </div>

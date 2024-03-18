@@ -38,7 +38,7 @@ def booking(request):
                 "Please check your form answers"
             )
 
-        # Handles refresh to cancel form resubmission
+        # Handles refresh to cancel out form resubmission
         return HttpResponseRedirect(request.path_info)
 
     else:
@@ -128,8 +128,9 @@ def booking_update(request, slug):
         else:
             messages.add_message(
                 request, messages.ERROR,
-                "Please check your form answers"
+                "One or more of your inputs were invalid, please re-enter your answers"
             )
+            return HttpResponseRedirect(request.path_info)
 
     elif request.user == reservation.customer:
         return render(request, "booking/form_update_booking.html",
@@ -144,6 +145,9 @@ def booking_update(request, slug):
 
 @login_required
 def booking_delete(request, slug):
+    """
+    Handles delete logic
+    """
     queryset = Reservation.objects.all()
     reservation = get_object_or_404(queryset, slug=slug)
     
