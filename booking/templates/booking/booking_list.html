@@ -13,6 +13,11 @@
     </div>
 
     <div class="row justify-content-center booking-row-split">
+        {% if not booking_list %}
+        <div class="col text-center">
+            <h3>No bookings</h3>
+        </div>
+        {% else %}
         {% for booking in booking_list %}
 
         <div class="col-4">
@@ -45,6 +50,7 @@
         <!-- Iterates through more on this row -->
         {% endfor %}
     </div>
+    {% endif %}
 
 </div> <!-- End container -->
 

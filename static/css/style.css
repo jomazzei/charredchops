@@ -282,24 +282,24 @@ footer a {
 }
 
 /* ---------------------- Detailed view */
-#detail-container {
+.detail-container {
     margin-top: 50px;
 }
 
-#detailed-booking-card {
-    height: 600px;
+.detailed-booking-card {
+    height: fit-content;
     border: 5px solid #3a3a3a;
     border-radius: 0.825rem;
 }
 
-#detailed-booking-card .card-header {
+.detailed-booking-card .card-header {
     border-bottom: 3px solid #ed381f;
 }
 
-#reservation-details-header {
+.reservation-details-header {
     color: #f6eddc;
 }
 
-#detail-buttons {
-    
+.detail-buttons {
+    margin-top: 20px;
 }

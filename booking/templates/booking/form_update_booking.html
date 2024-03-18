@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Charred Chops | Update Reservation{% endblock %}
+
+{% block content %}
+
+<div class="container detail-container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-sm-12 col-md-6">
+
+            <div class="card detailed-booking-card">
+                <div class="card-header text-center">
+                    <h1 class="reservation-details-header">Current reservation details</h1>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Your reservation is currently on:
+                        <strong>
+                            {{ reservation.booking_date }} |
+                            {{ reservation.booking_time }}
+                        </strong>
+                    </h5>
+
+                    <hr>
+
+                    <div>
+                        <p class="card-text">
+                            Guest count:
+                            <strong>
+                                {% if reservation.guest_count >= 2 %}
+                                {{ reservation.guest_count }} People
+                                {% else %}
+                                {{ reservation.guest_count }} Person
+                                {% endif %}
+                            </strong>
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                            Given e-mail address:
+                            <strong>
+                                {{ reservation.email }}
+                            </strong>
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                            Given name:
+                            <strong>
+                                {{ reservation.cust_fname }} {{ reservation.cust_lname }}
+                            </strong>
+                        </p>
+                        <hr>
+                        {% if reservation.comments == "" %}
+                        <p class="card-text">
+                            Additional comments:
+                            <strong>
+                                N/A
+                            </strong>
+                        </p>
+                        {% else %}
+                        <p class="card-text">
+                            Additional comments:
+                            <strong>
+                                {{ reservation.comments }}
+                            </strong>
+                        </p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-12 col-md-6">
+
+            <div class="card detailed-booking-card">
+                <div class="card-header text-center">
+                    <h1 class="reservation-details-header">Update details</h1>
+                </div>
+
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col">
+                                {{ update_form.cust_fname|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{ update_form.cust_lname|as_crispy_field}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ update_form.email|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ update_form.guest_count|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ update_form.booking_date|as_crispy_field }}
+                            </div>
+                            <div class="col">
+                                {{ update_form.booking_time|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ update_form.comments|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-success" type="submit">Update Details</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %}

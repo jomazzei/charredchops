@@ -29,7 +29,7 @@ class Reservation(models.Model):
                                       ])
     booking_date = models.DateField(null=False, blank=False)
     booking_time = models.TimeField(null=False, blank=False)
-    comments = models.TextField(blank=True, null=True)
+    comments = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -88,7 +88,7 @@ class Reservation(models.Model):
     def save(self, *args, **kwargs):
         # Call the format_entry_id method to generate and set the booking ID
         self.format_booking_id()
-        
+  
         if not self.slug:
             self.slug = slugify(self.cust_ref)
 

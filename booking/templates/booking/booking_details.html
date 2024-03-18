@@ -5,15 +5,15 @@
 
 {% block content %}
 
-<div class="container" id="detail-container">
+<div class="container detail-container">
 
     <div class="row justify-content-center">
 
         <div class="col-6">
 
-            <div class="card" id="detailed-booking-card">
+            <div class="card detailed-booking-card">
                 <div class="card-header text-center">
-                    <h1 id="reservation-details-header">Reservation details</h1>
+                    <h1 class="reservation-details-header">Reservation details</h1>
                 </div>
 
                 <div class="card-body">
@@ -53,9 +53,24 @@
                             </strong>
                         </p>
                         <hr>
+                        {% if reservation.comments == "" %}
+                        <p class="card-text">
+                            Additional comments:
+                            <strong>
+                                N/A
+                            </strong>
+                        </p>
+                        {% else %}
+                        <p class="card-text">
+                            Additional comments:
+                            <strong>
+                                {{ reservation.comments }}
+                            </strong>
+                        </p>
+                        {% endif %}
                     </div>
-                    <div id="detail-buttons" class="text-center">
-                        <button class="btn btn-primary">Edit Reservation</button>
+                    <div class="detail-buttons text-center">
+                        <a href="{% url 'bookingedit' reservation.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
                         <button class="btn btn-danger delete-button">Cancel Reservation</button>
                     </div>
 

@@ -1,12 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseForbidden
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from allauth.account.decorators import login_required
 from .models import Reservation
-from .forms import BookTableForm
+from .forms import BookTableForm, UpdateBookingForm
 
 
 # Create your views here.
@@ -59,7 +60,7 @@ def booking_success(request):
     return render(request, "booking/form_success.html")
 
 
-class BookingList(generic.ListView):
+class BookingList(LoginRequiredMixin, generic.ListView):
     """
     Renders the list view.
     Customer can manage their bookings here
@@ -70,19 +71,19 @@ class BookingList(generic.ListView):
     # unlike in the previous projects
     context_object_name = 'booking_list'
 
-    queryset = Reservation.objects.all()
+    # queryset = Reservation.objects.all()
     template_name = "booking/booking_list.html"
 
     # Filter to only owned bookings
-    # def get_queryset(self):
-        # return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
+    def get_queryset(self):
+        return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
 
 
 @login_required
 def booking_details(request, slug):
     """
     Renders the details of a single reservation item
-    Customer can edit details here
+    Customer can view details here
     """
     queryset = Reservation.objects.all()
     reservation = get_object_or_404(queryset, slug=slug)
@@ -91,7 +92,52 @@ def booking_details(request, slug):
     if request.user == reservation.customer:
         return render(request, "booking/booking_details.html",
                   {
-                      "reservation": reservation
+                      "reservation": reservation,
                   })
+
     else:
-        return HttpResponseForbidden
+        raise PermissionDenied()
+
+
+@login_required
+def booking_update(request, slug):
+    """
+    Renders the update page.
+    Customer can edit their details here
+    """
+    queryset = Reservation.objects.all()
+    reservation = get_object_or_404(queryset, slug=slug)
+    updating_form = UpdateBookingForm(instance=reservation)
+
+    if request.method == "POST" and request.user == reservation.customer:
+        update_form = UpdateBookingForm(request.POST, instance=reservation)
+
+        if update_form.is_valid():
+            booking = update_form.save(commit=False)
+            booking.customer = request.user
+            booking.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                "You have successfully updated your reservation"
+            )
+            return redirect(
+                reverse('bookingdetails',
+                        kwargs={'slug': reservation.slug})
+                )
+
+        # If form is NOT valid
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                "Please check your form answers"
+            )
+
+    elif request.user == reservation.customer:
+        return render(request, "booking/form_update_booking.html",
+                  {
+                      "reservation": reservation,
+                      "update_form": updating_form
+                  })
+
+    else:
+        raise PermissionDenied()
