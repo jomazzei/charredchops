@@ -66,7 +66,6 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     Customer can manage their bookings here
     """
     model = Reservation
-
     # Found online, won't iterate without this definition,
     # unlike in the previous projects
     context_object_name = 'booking_list'
@@ -139,5 +138,18 @@ def booking_update(request, slug):
                       "update_form": updating_form
                   })
 
+    else:
+        raise PermissionDenied()
+
+
+@login_required
+def booking_delete(request, slug):
+    queryset = Reservation.objects.all()
+    reservation = get_object_or_404(queryset, slug=slug)
+    
+    if request.user == reservation.customer:
+        reservation.delete()
+        return redirect(reverse("bookinglist"))
+    
     else:
         raise PermissionDenied()

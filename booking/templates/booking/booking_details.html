@@ -71,7 +71,7 @@
                     </div>
                     <div class="detail-buttons text-center">
                         <a href="{% url 'bookingedit' reservation.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
-                        <button class="btn btn-danger delete-button">Cancel Reservation</button>
+                        <button class="btn btn-danger" id="delete-button">Cancel Reservation</button>
                     </div>
 
                 </div>
@@ -82,6 +82,30 @@
 
     </div>
 
+</div> <!-- End container -->
+
+<!-- Delete reservation confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete reservation?</h5>
+        <button type="button" class="btn-close"
+          data-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your reservation? <br>
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="{% url 'bookingdelete' reservation.slug %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

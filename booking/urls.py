@@ -12,4 +12,5 @@ urlpatterns = [
     # Single reservation/booking
     path("mybookings/<slug:slug>/", views.booking_details, name="bookingdetails"),
     path("mybookings/<slug:slug>/update", views.booking_update, name="bookingedit"),
+    path("mybookings/<slug:slug>/cancel", views.booking_delete, name="bookingdelete"),
 ]

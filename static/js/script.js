@@ -1,5 +1,9 @@
 // Booking list cards
 const bookingCards = document.getElementsByClassName("bookingCardItem");
+// Delete confirm modal
+const deleteButton = document.getElementById("delete-button");
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+
 
 for (let i = 0; i < bookingCards.length; i++) {
     // Add event listener for mouseover
@@ -12,3 +16,8 @@ for (let i = 0; i < bookingCards.length; i++) {
         this.classList.remove("drop-shadow");
     });
 }
+
+
+deleteButton.addEventListener("click", ()=>{
+    deleteModal.show();
+});
