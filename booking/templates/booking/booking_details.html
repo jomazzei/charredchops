@@ -5,6 +5,9 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+<article id="booking-details">
+
 <div class="container detail-container">
 
     <div class="row justify-content-center">
@@ -84,6 +87,8 @@
 
 </div> <!-- End container -->
 
+</article>
+
 <!-- Delete reservation confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1"
   aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -91,21 +96,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"
-          id="deleteModalLabel">Delete reservation?</h5>
+          id="deleteModalLabel">Cancel reservation?</h5>
         <button type="button" class="btn-close"
-          data-dismiss="modal" aria-label="Close">X</button>
+        data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete your reservation? <br>
-        This action cannot be undone.
+        Are you sure you want to cancel your reservation?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
-          data-dismiss="modal">Close</button>
-        <a id="deleteConfirm" href="{% url 'bookingdelete' reservation.slug %}" class="btn btn-danger">Delete</a>
+        data-bs-dismiss="modal">No, don't cancel</button>
+        <a id="deleteConfirm" href="{% url 'bookingdelete' reservation.slug %}" class="btn btn-danger">Yes, cancel</a>
       </div>
     </div>
   </div>
 </div>
+{% endif %}
 
 {% endblock %}
