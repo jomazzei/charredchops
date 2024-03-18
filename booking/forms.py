@@ -8,14 +8,19 @@ class BookTableForm(forms.ModelForm):
     """
     Form to book table
     """
-    class Meta:   
-      model = Reservation
-      fields = ("cust_fname","cust_lname",
-                "email","guest_count",
-                "booking_date","booking_time",
-                "comments",
-                )
-      labels = {
+
+    class Meta:
+        model = Reservation
+        fields = (
+            "cust_fname",
+            "cust_lname",
+            "email",
+            "guest_count",
+            "booking_date",
+            "booking_time",
+            "comments",
+        )
+        labels = {
             "cust_fname": "First name",
             "cust_lname": "Last name",
             "email": "Your email address",
@@ -24,35 +29,47 @@ class BookTableForm(forms.ModelForm):
             "booking_time": "What time would you like your reservation to be?",
             "comments": "Special comments, requests, or allergies",
         }
-      widgets = {
-          'booking_date': forms.DateInput(attrs={'type': 'date',
-                                                 'min': now().isoformat(),
-                                                 'max': (now() + timedelta(weeks=52)).isoformat(),
-                                                 }),
-          'booking_time': forms.TimeInput(attrs={'type': 'time',}),
-      }
+        widgets = {
+            "booking_date": forms.DateInput(
+                attrs={
+                    "type": "date",
+                    "min": now().isoformat(),
+                    "max": (now() + timedelta(weeks=52)).isoformat(),
+                }
+            ),
+            "booking_time": forms.TimeInput(
+                attrs={
+                    "type": "time",
+                }
+            ),
+        }
 
     def clean(self):
-      cleaned_data = super().clean()
-      cleaned_data['cust_fname'] = cleaned_data.get('cust_fname', '').strip()
-      cleaned_data['cust_lname'] = cleaned_data.get('cust_lname', '').strip()
-      cleaned_data['email'] = cleaned_data.get('email', '').strip()
-      cleaned_data['comments'] = cleaned_data.get('comments', '').strip()
-      return cleaned_data
+        cleaned_data = super().clean()
+        cleaned_data["cust_fname"] = cleaned_data.get("cust_fname", "").strip()
+        cleaned_data["cust_lname"] = cleaned_data.get("cust_lname", "").strip()
+        cleaned_data["email"] = cleaned_data.get("email", "").strip()
+        cleaned_data["comments"] = cleaned_data.get("comments", "").strip()
+        return cleaned_data
 
 
 class UpdateBookingForm(forms.ModelForm):
     """
     Form to book table
     """
-    class Meta:   
-      model = Reservation
-      fields = ("cust_fname","cust_lname",
-                "email","guest_count",
-                "booking_date","booking_time",
-                "comments",
-                )
-      labels = {
+
+    class Meta:
+        model = Reservation
+        fields = (
+            "cust_fname",
+            "cust_lname",
+            "email",
+            "guest_count",
+            "booking_date",
+            "booking_time",
+            "comments",
+        )
+        labels = {
             "cust_fname": "First name",
             "cust_lname": "Last name",
             "email": "Email",
@@ -61,15 +78,23 @@ class UpdateBookingForm(forms.ModelForm):
             "booking_time": "Updated time",
             "comments": "Special comments, requests, or allergies",
         }
-      widgets = {
-          'booking_date': forms.DateInput(attrs={'type': 'date',}),
-          'booking_time': forms.TimeInput(attrs={'type': 'time',}),
-      }
+        widgets = {
+            "booking_date": forms.DateInput(
+                attrs={
+                    "type": "date",
+                }
+            ),
+            "booking_time": forms.TimeInput(
+                attrs={
+                    "type": "time",
+                }
+            ),
+        }
 
     def clean(self):
-      cleaned_data = super().clean()
-      cleaned_data['cust_fname'] = cleaned_data.get('cust_fname', '').strip()
-      cleaned_data['cust_lname'] = cleaned_data.get('cust_lname', '').strip()
-      cleaned_data['email'] = cleaned_data.get('email', '').strip()
-      cleaned_data['comments'] = cleaned_data.get('comments', '').strip()
-      return cleaned_data
+        cleaned_data = super().clean()
+        cleaned_data["cust_fname"] = cleaned_data.get("cust_fname", "").strip()
+        cleaned_data["cust_lname"] = cleaned_data.get("cust_lname", "").strip()
+        cleaned_data["email"] = cleaned_data.get("email", "").strip()
+        cleaned_data["comments"] = cleaned_data.get("comments", "").strip()
+        return cleaned_data

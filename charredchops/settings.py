@@ -117,10 +117,6 @@ if "DEBUG" in os.environ:
         }
     }
 
-# Testing database for test module
-elif 'test' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-
 # If Debug = False, it will instead connect to
 # the live hosted ESQL database for production deployment
 else:

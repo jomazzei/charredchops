@@ -14,10 +14,10 @@ from .forms import BookTableForm, UpdateBookingForm
 def booking(request):
     """
     Renders the booking page.
-    
+
     Also renders the booking form
     and controls the validation, saving, and posting.
-    """    
+    """
     if request.method == "POST":
         booking_form = BookTableForm(request.POST)
 
@@ -26,16 +26,14 @@ def booking(request):
             booking.customer = request.user
             booking.save()
             messages.add_message(
-                request, messages.SUCCESS,
-                "You have successfully booked a reservation!"
+                request, messages.SUCCESS, "You have successfully booked a reservation!"
             )
             return redirect("success/")
 
         # If form is NOT valid
         else:
             messages.add_message(
-                request, messages.ERROR,
-                "Please check your form answers"
+                request, messages.ERROR, "Please check your form answers"
             )
 
         # Handles refresh to cancel out form resubmission
@@ -44,12 +42,7 @@ def booking(request):
     else:
         booking_form = BookTableForm()
 
-    return render(
-        request,
-        "booking/booking.html",
-        {
-            "booking_form": booking_form
-        })
+    return render(request, "booking/booking.html", {"booking_form": booking_form})
 
 
 def booking_success(request):
@@ -65,17 +58,20 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     Renders the list view.
     Customer can manage their bookings here
     """
+
     model = Reservation
     # Found online, won't iterate without this definition,
     # unlike in the previous projects
-    context_object_name = 'booking_list'
+    context_object_name = "booking_list"
 
     # queryset = Reservation.objects.all()
     template_name = "booking/booking_list.html"
 
     # Filter to only owned bookings
     def get_queryset(self):
-        return Reservation.objects.filter(customer=self.request.user).order_by("-booking_date")
+        return Reservation.objects.filter(customer=self.request.user).order_by(
+            "-booking_date"
+        )
 
 
 @login_required
@@ -89,10 +85,13 @@ def booking_details(request, slug):
 
     # Checks for owner of reservation item vs. the user visiting url
     if request.user == reservation.customer:
-        return render(request, "booking/booking_details.html",
-                  {
-                      "reservation": reservation,
-                  })
+        return render(
+            request,
+            "booking/booking_details.html",
+            {
+                "reservation": reservation,
+            },
+        )
 
     else:
         raise PermissionDenied()
@@ -116,28 +115,29 @@ def booking_update(request, slug):
             booking.customer = request.user
             booking.save()
             messages.add_message(
-                request, messages.SUCCESS,
-                "You have successfully updated your reservation"
+                request,
+                messages.SUCCESS,
+                "You have successfully updated your reservation",
             )
             return redirect(
-                reverse('bookingdetails',
-                        kwargs={'slug': reservation.slug})
-                )
+                reverse("bookingdetails", kwargs={"slug": reservation.slug})
+            )
 
         # If form is NOT valid
         else:
             messages.add_message(
-                request, messages.ERROR,
-                "One or more of your inputs were invalid, please re-enter your answers"
+                request,
+                messages.ERROR,
+                "One or more of your inputs were invalid, please re-enter your answers",
             )
             return HttpResponseRedirect(request.path_info)
 
     elif request.user == reservation.customer:
-        return render(request, "booking/form_update_booking.html",
-                  {
-                      "reservation": reservation,
-                      "update_form": updating_form
-                  })
+        return render(
+            request,
+            "booking/form_update_booking.html",
+            {"reservation": reservation, "update_form": updating_form},
+        )
 
     else:
         raise PermissionDenied()
@@ -150,10 +150,10 @@ def booking_delete(request, slug):
     """
     queryset = Reservation.objects.all()
     reservation = get_object_or_404(queryset, slug=slug)
-    
+
     if request.user == reservation.customer:
         reservation.delete()
         return redirect(reverse("bookinglist"))
-    
+
     else:
         raise PermissionDenied()

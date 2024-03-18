@@ -11,36 +11,35 @@ class Reservation(models.Model):
     """
     Stores the data for a single instance of a reservation
     """
+
     entry_id = models.AutoField(primary_key=True, unique=True)
     cust_ref = models.CharField(blank=True, unique=True, max_length=8)
-    
+
     slug = models.SlugField(max_length=250, blank=True, null=False, unique=True)
 
-    customer = models.ForeignKey(User, on_delete=models.CASCADE,
-                                 related_name="booking", null=False)
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="booking", null=False
+    )
     cust_fname = models.CharField(max_length=20, blank=False, null=False)
     cust_lname = models.CharField(max_length=20, blank=False, null=False)
     email = models.EmailField()
-    guest_count = models.IntegerField(blank=False, null=False,
-                                      default=1,
-                                      validators=[
-                                          MaxValueValidator(8),
-                                          MinValueValidator(1)
-                                      ])
+    guest_count = models.IntegerField(
+        blank=False,
+        null=False,
+        default=1,
+        validators=[MaxValueValidator(8), MinValueValidator(1)],
+    )
     booking_date = models.DateField(null=False, blank=False)
     booking_time = models.TimeField(null=False, blank=False)
     comments = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-
     class Meta:
         ordering = ["entry_id", "booking_date", "booking_time", "guest_count"]
 
-
     def __str__(self):
         return f"Reservation ID: {self.entry_id} | Customer reference: {self.cust_ref}"
-
 
     # Queried ChatGPT on how to create unique references
     # that do not extend beyond a comprehendable digit count
@@ -57,17 +56,18 @@ class Reservation(models.Model):
     def generate_unique_booking_id(self):
         """
         Generates unique alphanumeric string.
-        
+
         Checks if previous cust_ref entries contain new string,
         if passes, returns the string value of random_id
         """
         is_unique = False
         while not is_unique:
-            random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+            random_id = "".join(
+                random.choices(string.ascii_uppercase + string.digits, k=6)
+            )
             # Must be Reservation.objects, not self.objects, as otherwise admin error is thrown
             if not Reservation.objects.filter(cust_ref__icontains=random_id).exists():
                 return random_id
-
 
     def format_booking_id(self):
         """
@@ -84,11 +84,10 @@ class Reservation(models.Model):
 
         return formatted_reference
 
-
     def save(self, *args, **kwargs):
         # Call the format_entry_id method to generate and set the booking ID
         self.format_booking_id()
-  
+
         if not self.slug:
             self.slug = slugify(self.cust_ref)
 
