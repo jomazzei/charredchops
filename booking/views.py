@@ -17,10 +17,10 @@ def booking_page(request):
     and controls the validation, saving, and posting.
     """
     if request.method == "POST":
-        booking_form = BookTableForm(request.POST)
+        form = BookTableForm(request.POST)
 
-        if booking_form.is_valid():
-            booking = booking_form.save(commit=False)
+        if form.is_valid():
+            booking = form.save(commit=False)
             booking.customer = request.user
             booking.save()
             messages.add_message(
@@ -33,23 +33,16 @@ def booking_page(request):
         # If form is NOT valid
         else:
             messages.add_message(
-                request,
-                messages.ERROR,
-                "Please check your form answers",
+                request, messages.ERROR, "Please check your form again."
             )
             # Returns the form so template can iterate field errors in template.
-            # return render(request, "booking/booking.html", {"booking_form": booking_form})
-
-            # Not using currently as it allows for user double submission on browser refresh,
-            # but current redirect can't return form data for errors.
-
-            # Handles refresh to cancel out form resubmission
-            return redirect(request.path_info)
+            return render(request, "booking/booking.html", {"form": form})
+            # Can cause resubmissions on refresh, need to fix
 
     else:
-        booking_form = BookTableForm()
+        form = BookTableForm()
 
-    return render(request, "booking/booking.html", {"booking_form": booking_form})
+    return render(request, "booking/booking.html", {"form": form})
 
 
 def booking_success(request):
@@ -112,13 +105,13 @@ def booking_update(request, slug):
     """
     queryset = Reservation.objects.all()
     reservation_item = get_object_or_404(queryset, slug=slug)
-    updating_form = UpdateBookingForm(instance=reservation_item)
+    form = UpdateBookingForm(instance=reservation_item)
 
     if request.method == "POST" and request.user == reservation_item.customer:
-        update_form = UpdateBookingForm(request.POST, instance=reservation_item)
+        form = UpdateBookingForm(request.POST, instance=reservation_item)
 
-        if update_form.is_valid():
-            booking = update_form.save(commit=False)
+        if form.is_valid():
+            booking = form.save(commit=False)
             booking.customer = request.user
             booking.save()
             messages.add_message(
@@ -143,7 +136,7 @@ def booking_update(request, slug):
         return render(
             request,
             "booking/form_update_booking.html",
-            {"reservation_item": reservation_item, "update_form": updating_form},
+            {"reservation_item": reservation_item, "form": form},
         )
 
     else:

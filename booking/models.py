@@ -3,7 +3,7 @@ import string
 from datetime import time, date
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.utils.text import slugify
 
 
@@ -35,8 +35,15 @@ class Reservation(models.Model):
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="booking", null=False
     )
-    cust_fname = models.CharField(max_length=20, blank=False, null=False)
-    cust_lname = models.CharField(max_length=20, blank=False, null=False)
+    cust_fname = models.CharField(
+        max_length=20,
+        blank=False,
+        null=False,
+        validators=[RegexValidator("[a-zA-Z]")],
+    )
+    cust_lname = models.CharField(
+        max_length=20, blank=False, null=False, validators=[RegexValidator("[a-zA-Z]")]
+    )
     email = models.EmailField()
     guest_count = models.IntegerField(
         blank=False,
@@ -86,6 +93,7 @@ class Reservation(models.Model):
             )
             # Must be Reservation.objects, not self.objects, as otherwise admin error is thrown
             if not Reservation.objects.filter(cust_ref__icontains=random_id).exists():
+                is_unique = True
                 return random_id
 
     def format_booking_id(self):
@@ -107,8 +115,8 @@ class Reservation(models.Model):
         # Call the format_entry_id method to generate and set the booking ID
         self.format_booking_id()
 
+        # Automatically generates slug for url based on cust_ref field
         if not self.slug:
             self.slug = slugify(self.cust_ref)
 
-        # Call the parent class's save method to save the instance
         super().save(*args, **kwargs)

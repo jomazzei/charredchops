@@ -59,19 +59,6 @@
         </div>
     </div>
 
-    {% if booking_form.errors %}
-            <div class="alert alert-danger">
-                <strong>Error:</strong> Please correct the following errors:
-                <ul>
-                    {% for field, errors in booking_form.errors.items %}
-                    {% for error in errors %}
-                    <li>{{ field }}: {{ error }}</li>
-                    {% endfor %}
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
-
     <!-- Form container if logged in -->
     <div class="container">
         <div class="row">
@@ -83,37 +70,37 @@
 
                     <div class="row">
                         <div class="col-6">
-                            {{ booking_form.cust_fname|as_crispy_field}}
+                            {{ form.cust_fname|as_crispy_field}}
                         </div>
                         <div class="col-6">
-                            {{ booking_form.cust_lname|as_crispy_field}}
+                            {{ form.cust_lname|as_crispy_field}}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            {{ booking_form.email|as_crispy_field }}
+                            {{ form.email|as_crispy_field }}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            {{ booking_form.guest_count|as_crispy_field }}
+                            {{ form.guest_count|as_crispy_field }}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            {{ booking_form.booking_date|as_crispy_field }}
+                            {{ form.booking_date|as_crispy_field }}
                         </div>
                         <div class="col">
-                            {{ booking_form.booking_time|as_crispy_field }}
+                            {{ form.booking_time|as_crispy_field }}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            {{ booking_form.comments|as_crispy_field }}
+                            {{ form.comments|as_crispy_field }}
                         </div>
                     </div>
 

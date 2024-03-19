@@ -39,6 +39,10 @@ class BookTableForm(forms.ModelForm):
             ),
         }
 
+        error_messages = {
+            "custf_name": "Must contain alphabetical characters and can't be blank"
+        }
+
     def clean(self):
         cleaned_data = super().clean()
         cleaned_data["cust_fname"] = cleaned_data.get("cust_fname", "").strip()

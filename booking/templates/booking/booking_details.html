@@ -8,108 +8,116 @@
 {% if user.is_authenticated %}
 <article id="booking-details">
 
-<div class="container">
+    <div class="container">
 
-    <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-        <div class="col-6">
+            <div class="col-6">
 
-            <div class="card detailed-booking-card">
-                <div class="card-header text-center">
-                    <h1 class="reservation-details-header">Reservation details</h1>
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Your reservation is on:
-                        <strong>
-                            {{ reservation_item.booking_date }} | 
-                            {{ reservation_item.booking_time }}
-                        </strong>
-                    </h5>
-                    
-                    <hr>
-
-                    <div>
-                        <p class="card-text">
-                            Guest count:
-                            <strong>
-                                {% if reservation_item.guest_count >= 2 %}
-                                {{ reservation_item.guest_count }} People
-                                {% else %}
-                                {{ reservation_item.guest_count }} Person
-                                {% endif %}
-                            </strong>
-                        </p>
-                        <hr>
-                        <p class="card-text">
-                            Given e-mail address:
-                            <strong>
-                                {{ reservation_item.email }}
-                            </strong>
-                        </p>
-                        <hr>
-                        <p class="card-text">
-                            Given name:
-                            <strong>
-                                {{ reservation_item.cust_fname }} {{ reservation_item.cust_lname }}
-                            </strong>
-                        </p>
-                        <hr>
-                        {% if reservation_item.comments == "" %}
-                        <p class="card-text">
-                            Additional comments:
-                            <strong>
-                                N/A
-                            </strong>
-                        </p>
-                        {% else %}
-                        <p class="card-text">
-                            Additional comments:
-                            <strong>
-                                {{ reservation_item.comments }}
-                            </strong>
-                        </p>
-                        {% endif %}
-                    </div>
-                    <div id="detail-buttons" class="text-center">
-                        <a href="{% url 'booking_update_page' reservation_item.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
-                        <button class="btn btn-danger" id="delete-button">Cancel Reservation</button>
+                <div class="card detailed-booking-card">
+                    <div class="card-header text-center">
+                        <h1 class="reservation-details-header">Reservation details</h1>
                     </div>
 
-                </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Your reservation is on:
+                            <strong>
+                                {{ reservation_item.booking_date }} |
+                                {{ reservation_item.booking_time }}
+                            </strong>
+                        </h5>
 
+                        <hr>
+
+                        <div>
+                            <p class="card-text">
+                                Guest count:
+                                <strong>
+                                    {% if reservation_item.guest_count >= 2 %}
+                                    {{ reservation_item.guest_count }} People
+                                    {% else %}
+                                    {{ reservation_item.guest_count }} Person
+                                    {% endif %}
+                                </strong>
+                            </p>
+                            <hr>
+                            <p class="card-text">
+                                Given e-mail address:
+                                <strong>
+                                    {{ reservation_item.email }}
+                                </strong>
+                            </p>
+                            <hr>
+                            <p class="card-text">
+                                Given name:
+                                <strong>
+                                    {{ reservation_item.cust_fname }} {{ reservation_item.cust_lname }}
+                                </strong>
+                            </p>
+                            <hr>
+                            {% if reservation_item.comments == "" %}
+                            <p class="card-text">
+                                Additional comments:
+                                <strong>
+                                    N/A
+                                </strong>
+                            </p>
+                            {% else %}
+                            <p class="card-text">
+                                Additional comments:
+                                <strong>
+                                    {{ reservation_item.comments }}
+                                </strong>
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div id="detail-buttons" class="text-center">
+                            <button class="btn btn-danger" id="delete-button">
+                                Cancel Reservation
+                            </button>
+                            <a href="{% url 'booking_update_page' reservation_item.slug %}" class="btn btn-success">Edit
+                                Reservation
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div> <!-- End of card -->
+
+            </div> <!-- End of col -->
+
+        </div> <!-- End of row -->
+
+        <div class="row">
+            <div class="col mt-5 text-center">
+                <a href="{% url 'booking_list_page' %}" class="btn btn-dark">All bookings</a>
             </div>
-
         </div>
 
-    </div>
-
-</div> <!-- End container -->
+    </div> <!-- End container -->
 
 </article>
 
+
 <!-- Delete reservation confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1"
-  aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"
-          id="deleteModalLabel">Cancel reservation?</h5>
-        <button type="button" class="btn-close"
-        data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to cancel your reservation?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-        data-bs-dismiss="modal">No, don't cancel</button>
-        <a id="deleteConfirm" href="{% url 'booking_delete_page' reservation_item.slug %}" class="btn btn-danger">Yes, cancel</a>
-      </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Cancel reservation?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to cancel your reservation?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, don't cancel</button>
+                <a id="deleteConfirm" href="{% url 'booking_delete_page' reservation_item.slug %}"
+                    class="btn btn-danger">Yes, cancel</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endif %}
 

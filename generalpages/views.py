@@ -43,6 +43,7 @@ def custom_500(request):
     """
     return render(request, "generalpages/500.html")
 
+
 def custom_400(request, exception):
     """
     Renders custom 400 page
