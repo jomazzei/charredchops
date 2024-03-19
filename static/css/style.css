@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     color: #10222e;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
@@ -38,11 +38,8 @@ header {
     background-color: #10222e;
     position: fixed;
     z-index: 99;
-    width: 100vw;
+    width: 100%;
     box-shadow: 0 2px 2px #ed381f;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
 }
 
 header a {
@@ -50,19 +47,13 @@ header a {
     color: #f6eddc;
 }
 
-
 /* ---------------------- Navbar */
 #navUL {
-    display: flex;
     font-size: 110%;
     letter-spacing: 4px;
     list-style-type: none;
-    justify-content: center;
+    margin: auto;
 }
-
-/* #navUL>li {
-    padding-left: 1rem;
-} */
 
 .nav-item {
     padding-left: 1rem;
@@ -70,7 +61,7 @@ header a {
 }
 
 #navUL a:hover {
-    border-bottom: 1px solid #ed381f;
+    border-bottom: 2px solid #ed381f;
 }
 
 .separator {
@@ -187,29 +178,21 @@ footer a {
 /* -------------------------------------------------------------- AUTH */
 
 /* ---------------------- Sign up page */
-#signup {
-
-}
+#signup {}
 
 
 /* ---------------------- Log in page */
-#login {
-
-}
+#login {}
 
 
 /* ---------------------- Log out page */
-#logout {
-
-}
+#logout {}
 
 
 /* -------------------------------------------------------------- BOOK NOW */
 
 /* ---------------------- Contact details */
-#contact-article {
-
-}
+#contact-article {}
 
 /* ---------------------- Location / Map */
 #location-article {
@@ -268,7 +251,7 @@ footer a {
     border-bottom: 2px solid #ed381f;
 }
 
-.card-header > h5 {
+.card-header>h5 {
     margin: 0;
     padding: .5rem;
 }
@@ -320,5 +303,9 @@ footer a {
 
     .nav-item {
         margin-top: 10px;
+    }
+
+    #book-action-call {
+        margin-top: 20px;
     }
 }

@@ -26,7 +26,7 @@
 
     <!-- Navigation Bar -->
     <header>
-
+        <!-- ORIGINAL -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a href="{% url 'home' %}" class="navbar-brand">
@@ -63,7 +63,7 @@
             </div>
         </nav>
 
-
+        <!-- BS NOT WORKING -->
         <!-- <div class="container justify-content-around">
             <div class="row justify-content-between">
 
@@ -93,8 +93,6 @@
 
         </div> -->
 
-
-
     </header>
 
 
@@ -118,8 +116,8 @@
         {% endif %}
 
 
-        {% block content %}
         <!-- Page content goes here -->
+        {% block content %}
         {% endblock %}
 
     </main>
