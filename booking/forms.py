@@ -26,7 +26,7 @@ class BookTableForm(forms.ModelForm):
             "email": "Your email address",
             "guest_count": "How many guests? Up to 8 people",
             "booking_date": "What day would you like to book?",
-            "booking_time": "What time?",
+            "booking_time": "What time slot?",
             "comments": "Special comments, requests, or allergies",
         }
         widgets = {
@@ -35,11 +35,6 @@ class BookTableForm(forms.ModelForm):
                     "type": "date",
                     "min": now().isoformat(),
                     "max": (now() + timedelta(weeks=52)).isoformat(),
-                }
-            ),
-            "booking_time": forms.TimeInput(
-                attrs={
-                    "type": "time",
                 }
             ),
         }
@@ -75,18 +70,13 @@ class UpdateBookingForm(forms.ModelForm):
             "email": "Email",
             "guest_count": "Updated guests, max 8",
             "booking_date": "Updated date",
-            "booking_time": "Updated time",
+            "booking_time": "Updated time slot",
             "comments": "Special comments, requests, or allergies",
         }
         widgets = {
             "booking_date": forms.DateInput(
                 attrs={
                     "type": "date",
-                }
-            ),
-            "booking_time": forms.TimeInput(
-                attrs={
-                    "type": "time",
                 }
             ),
         }

@@ -228,24 +228,33 @@ footer a {
 }
 
 
+/* -------------------------------------------------------------- MENU */
+#menu-article {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    text-decoration: underline #ed381f;
+}
+
+
 /* -------------------------------------------------------------- AUTH */
 
 /* ---------------------- Sign up page */
-#signup {}
+/* #signup {} */
 
 
 /* ---------------------- Log in page */
-#login {}
+/* #login {} */
 
 
 /* ---------------------- Log out page */
-#logout {}
+/* #logout {} */
 
 
 /* -------------------------------------------------------------- BOOK NOW */
 
 /* ---------------------- Contact details */
-#contact-article {}
+/* #contact-article {} */
 
 
 /* ---------------------- Location / Map */
@@ -352,7 +361,7 @@ footer a {
 }
 
 
-/* -------------------------------------------------------------- Media queries */
+/* -------------------------------------------------------------- MEDIA QUERIES */
 @media screen and (max-width:567px) {
     .nav-logo {
         width: 200px;

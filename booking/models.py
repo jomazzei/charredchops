@@ -1,5 +1,6 @@
 import random
 import string
+from datetime import time, date
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -11,6 +12,20 @@ class Reservation(models.Model):
     """
     Stores the data for a single instance of a reservation
     """
+
+    TIME_SLOTS = (
+        (time(17, 0), "5:00 PM"),
+        (time(17, 30), "5:30 PM"),
+        (time(18, 0), "6:00 PM"),
+        (time(18, 30), "6:30 PM"),
+        (time(19, 0), "7:00 PM"),
+        (time(19, 30), "7:30 PM"),
+        (time(20, 0), "8:00 PM"),
+        (time(20, 30), "8:30 PM"),
+        (time(21, 0), "9:00 PM"),
+        (time(21, 30), "9:30 PM"),
+        (time(22, 0), "10:00 PM"),
+    )
 
     entry_id = models.AutoField(primary_key=True, unique=True)
     cust_ref = models.CharField(blank=True, unique=True, max_length=8)
@@ -29,8 +44,12 @@ class Reservation(models.Model):
         default=1,
         validators=[MaxValueValidator(8), MinValueValidator(1)],
     )
-    booking_date = models.DateField(null=False, blank=False)
-    booking_time = models.TimeField(null=False, blank=False)
+    booking_date = models.DateField(
+        null=False,
+        blank=False,
+        validators=[MinValueValidator(limit_value=date.today())],
+    )
+    booking_time = models.TimeField(null=False, blank=False, choices=TIME_SLOTS)
     comments = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
