@@ -42,7 +42,9 @@ class Reservation(models.Model):
         validators=[RegexValidator("[a-zA-Z]")],
     )
     cust_lname = models.CharField(
-        max_length=20, blank=False, null=False, validators=[RegexValidator("[a-zA-Z]")]
+        max_length=20,
+        blank=False, null=False,
+        validators=[RegexValidator("[a-zA-Z]")]
     )
     email = models.EmailField()
     guest_count = models.IntegerField(
