@@ -46,6 +46,7 @@ header a {
     color: #f6eddc;
 }
 
+
 /* ---------------------- Navbar */
 .nav-logo {
     width: 250px;
@@ -68,6 +69,7 @@ header a {
 }
 
 nav hr {
+    opacity: .7;
     margin-bottom: 3px;
     border-bottom: 2px solid #fa1d00;
 }
@@ -86,16 +88,19 @@ nav hr {
     justify-content: space-between;
 }
 
+
 /* ---------------------- Django messages */
 #feedback-msg-container {
     z-index: 10;
 }
+
 
 /* ---------------------- General */
 main {
     margin-top: 100px;
     margin-bottom: 30px;
 }
+
 
 /* ---------------------- Footer */
 footer {
@@ -181,9 +186,18 @@ footer a {
     width: 300px;
     border-radius: 45%;
     object-fit: contain;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     padding: 2px;
     border: 2px solid #10222e;
+
+    float: left;
+    shape-outside: circle(45%);
+    margin-right: 50px;
+}
+
+#who-content {
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 
@@ -211,6 +225,7 @@ footer a {
 /* ---------------------- Contact details */
 #contact-article {}
 
+
 /* ---------------------- Location / Map */
 #location-article {
     background-color: rgba(237, 56, 31, .8);
@@ -233,6 +248,7 @@ footer a {
     width: 460px;
     height: 250px;
 }
+
 
 /* ---------------------- Form */
 #form-article {
@@ -287,6 +303,7 @@ footer a {
 .drop-shadow {
     box-shadow: 5px 6px rgb(112, 112, 112);
 }
+
 
 /* ---------------------- Detailed view */
 #booking-details {
