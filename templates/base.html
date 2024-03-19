@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'media/CCFavicon32.ico' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/CCFavicon16.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'media/favicon32.ico' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/favicon16.ico' %}">
     <!-- Bootstrap 5.3 style sheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -24,13 +24,14 @@
 
 <body>
 
+
     <!-- Navigation Bar -->
     <header>
-        <!-- ORIGINAL -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
+
                 <a href="{% url 'home' %}" class="navbar-brand">
-                    <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="250">
+                    <img src="{% static 'media/cc-logo-transparent.png' %}" alt="logo" class="nav-logo">
                 </a>
 
                 <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" class="navbar-toggler"
@@ -39,7 +40,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
+
                     <ul class="navbar-nav" id="navUL">
+
+                        <hr class="d-lg-none">
+
                         <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
                         <li class="separator"><strong>|</strong></li>
                         <li class="nav-item"><a href="{% url 'menu' %}">Menu</a></li>
@@ -56,43 +61,14 @@
                         <li class="nav-item"><a href="{% url 'account_login' %}">Log in</a></li>
                         {% endif %}
                     </ul>
+
                     <a href="{% url 'bookingpage' %}" class="nav-item btn btn-success" id="book-action-call">
                         Book table!</a>
 
                 </div>
+
             </div>
         </nav>
-
-        <!-- BS NOT WORKING -->
-        <!-- <div class="container justify-content-around">
-            <div class="row justify-content-between">
-
-                <nav class="navbar navbar-expand-sm">
-
-                    <a href="#" class="navbar-brand mb-0 h1">
-                        <img src="{% static 'media/CCLogoTransparent.png' %}" class="d-inline-block align-top"
-                            alt="logo" width="250">
-                    </a>
-                    <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                        class="navbar-toggler">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-                            <li class="nav-item"><a href="{% url 'menu' %}">Menu</a></li>
-                            <li class="nav-item"><a href="{% url 'bookinglist' %}">My bookings</a></li>
-                            <li class="nav-item"><a href="{% url 'bookingpage' %}" class="btn btn-success">
-                                    Book a table!</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </nav>
-            </div>
-
-        </div> -->
-
     </header>
 
 
@@ -129,10 +105,10 @@
         <div id="logo-bar">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-3 text-center">
+                    <div class="col-12 text-center">
                         <div>
                             <a href="{% url 'home' %}">
-                                <img src="{% static 'media/CCLogoTransparent.png' %}" alt="logo" width="150px">
+                                <img src="{% static 'media/cc-logo-transparent.png' %}" alt="logo" width="150px">
                             </a>
                         </div>
                     </div>
@@ -142,10 +118,10 @@
 
         <div class="container">
 
-            <hr>
+            <hr class="d-none d-md-block">
 
             <div class="row justify-content-evenly">
-                <div class="col-2 text-start footer-link-group">
+                <div class="d-none d-md-block col-md-6 col-xl-3 text-start footer-link-group">
                     <ul>
                         <li><a href="{% url 'home' %}" aria-label="Opens Home page">
                                 Home
@@ -158,7 +134,7 @@
                     </ul>
                 </div>
 
-                <div class="col-2 text-start footer-link-group">
+                <div class="d-none d-md-block col-md-6 col-xl-3 text-start footer-link-group">
                     <ul>
                         <li><a href="{% url 'bookingpage' %}" aria-label="Opens Booking page">
                                 Book table
@@ -186,7 +162,7 @@
                     </ul>
                 </div>
 
-                <div class="col-2 text-start footer-link-group">
+                <div class="d-none d-md-block col-md-6 col-xl-3 text-start footer-link-group">
                     <ul>
                         <li><strong>Phone Number :</strong></li>
                         <li>012345678</li>
@@ -194,18 +170,20 @@
                         <li>charredchops.customer@gmail.com</li>
                     </ul>
                 </div>
-                <div class="col-2 text-end footer-link-group">
+                <div class="d-none d-md-block col-md-6 col-xl-3 text-md-start text-xl-end footer-link-group">
                     <ul>
                         <li><strong>Our Address :</strong></li>
                         <li>Bond St S, Broadmead, Bristol BS1 3BD</li>
+                        <li><strong>Opening Times:</strong></li>
+                        <li>Every day, 5PM - 10PM</li>
                     </ul>
                 </div>
             </div>
 
-            <hr>
+            <hr class="d-none d-md-block">
 
             <div class="row justify-content-center">
-                <div class="col text-center" id="sub-text">
+                <div class="col-12 text-center" id="sub-text">
                     <a href="https://github.com/jomazzei" target="_blank" rel="noopener"
                         aria-label="Opens GitHub in new tab">
                         <p>&copy; Joseph Mazzei - 2024</p>

@@ -26,7 +26,7 @@ class BookTableForm(forms.ModelForm):
             "email": "Your email address",
             "guest_count": "How many guests? Up to 8 people",
             "booking_date": "What day would you like to book?",
-            "booking_time": "What time would you like your reservation to be?",
+            "booking_time": "What time?",
             "comments": "Special comments, requests, or allergies",
         }
         widgets = {

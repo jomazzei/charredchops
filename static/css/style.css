@@ -1,7 +1,5 @@
-/* Google fonts import */
+/* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
 
 
 /* -------------------------------------------------------------- GENERAL */
@@ -26,6 +24,7 @@ h1,
 h2,
 h3 {
     font-family: 'Oswald', sans-serif;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -38,7 +37,7 @@ header {
     background-color: #10222e;
     position: fixed;
     z-index: 99;
-    width: 100%;
+    width: 100vw;
     box-shadow: 0 2px 2px #ed381f;
 }
 
@@ -48,6 +47,10 @@ header a {
 }
 
 /* ---------------------- Navbar */
+.nav-logo {
+    width: 250px;
+}
+
 #navUL {
     font-size: 110%;
     letter-spacing: 4px;
@@ -62,6 +65,11 @@ header a {
 
 #navUL a:hover {
     border-bottom: 2px solid #ed381f;
+}
+
+#navUL hr {
+    margin-bottom: 3px;
+    border-bottom: 2px solid #fa1d00;
 }
 
 .separator {
@@ -141,14 +149,14 @@ footer a {
     width: 100%;
     background: url("../../static/media/steak-img1.png") no-repeat center center / cover;
     position: relative;
+    box-shadow: 0 3px 5px #10222e;
 }
 
 #cover-text {
     background-color: rgba(237, 56, 31, .7);
-    font-size: 130%;
     position: absolute;
     bottom: 30px;
-    width: 80%;
+    width: 45%;
     min-height: 200px;
     padding-top: 40px;
     padding-left: 10px;
@@ -161,19 +169,28 @@ footer a {
 
 
 /* ---------------------- Who we are */
-#circle-cover-bg {
-    background: url("../../static/media/chef-grilling.png") no-repeat top center/cover;
-    width: 90vw;
-    height: 90vw;
+#who-we-are {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 130%;
+    background-color: rgba(237, 56, 31, .8);
+    width: 100%;
+}
+
+#chef-pic {
+    width: 300px;
+    border-radius: 45%;
+    object-fit: contain;
     margin-bottom: 20px;
-    border-radius: 50%;
-    max-width: 300px;
-    max-height: 300px;
+    padding: 2px;
+    border: 2px solid #10222e;
 }
 
 
 /* ---------------------- Call to action */
-
+#call-to-action {
+    box-shadow: 0 -3px 5px #10222e;
+}
 
 /* -------------------------------------------------------------- AUTH */
 
@@ -196,7 +213,7 @@ footer a {
 
 /* ---------------------- Location / Map */
 #location-article {
-    background-color: rgba(237, 56, 31, .7);
+    background-color: rgba(237, 56, 31, .8);
     font-size: 130%;
     width: 100%;
     padding-top: 40px;
@@ -296,6 +313,16 @@ footer a {
 
 
 /* -------------------------------------------------------------- Media queries */
+@media screen and (max-width:567px) {
+    .nav-logo {
+        width: 200px;
+    }
+
+    main {
+        margin-top: 89px;
+    }
+}
+
 @media screen and (max-width:991px) {
     .separator {
         display: none;
@@ -307,5 +334,6 @@ footer a {
 
     #book-action-call {
         margin-top: 20px;
+        margin-bottom: 20px;
     }
 }

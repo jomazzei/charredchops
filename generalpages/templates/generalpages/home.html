@@ -5,19 +5,49 @@
 
 {% block content %}
 
-    <section id="hero">
-        <div id="cover-text">
-            <h2>Come find out</h2>
-            <h3>why we're the best at what we do</h3>
+<section id="hero">
+    <div id="cover-text">
+        <h2>Come find out</h2>
+        <h3>why we're the best at what we do</h3>
+    </div>
+</section>
+
+<article id="who-we-are">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Who we are...</h2>
+            </div>
         </div>
-    </section>
 
-    <section id="who-we-are">
-        <h2>Who we are...</h2>
-    </section>
+        <div class="row">
+            <div class="col-6 text-end">
+                <img src="{% static 'media/chef-grilling-cropped.png' %}" alt="image of chef grilling" id="chef-pic">
+            </div>
 
-    <section id="call-to-action">
-        <h2>Hungry?</h2>
-    </section>
+            <div class="col align-self-center">
+                <p>
+                    We're more than just a steakhouse; we are a culinary destination where sizzling flavors meet
+                    exceptional service.
+                </p>
+                <p>
+                    With a passion for premium cuts and artisanal craftsmanship, we elevate the
+                    steakhouse experience to new heights.
+                    <br>
+                    From our meticulously curated menu to our warm and inviting
+                    ambiance,
+                    we invite you
+                    to indulge in the finest cuts of meat and savor every moment with us at Charred Chops.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</article>
+
+<section id="call-to-action">
+    <h2>Hungry?</h2>
+</section>
 
 {% endblock %}
