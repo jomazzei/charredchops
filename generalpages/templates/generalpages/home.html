@@ -12,6 +12,7 @@
     </div>
 </section>
 
+
 <article id="who-we-are">
     <div class="container">
 
@@ -23,7 +24,8 @@
 
         <div class="row">
             <div class="col" id="who-content">
-                <img src="{% static 'media/chef-grilling-cropped.png' %}" alt="image of chef grilling" id="chef-pic">
+                <img src="{% static 'media/chef-grilling-cropped.png' %}" alt="image of chef grilling" id="chef-pic"
+                    class="d-none d-sm-block">
                 <p>
                     We're more than just a steakhouse; we are a culinary destination where sizzling flavors meet
                     exceptional service.
@@ -31,7 +33,8 @@
                 <p>
                     With a passion for premium cuts and artisanal craftsmanship, we elevate the
                     steakhouse experience to new heights.
-                    <br>
+                </p>
+                <p>
                     From our meticulously curated menu to our warm and inviting
                     ambiance,
                     we invite you
@@ -40,33 +43,51 @@
             </div>
         </div>
 
-        <!-- <div class="row">
-            <div class="col-6 text-end">
-                <img src="{% static 'media/chef-grilling-cropped.png' %}" alt="image of chef grilling" id="chef-pic">
-            </div>
-
-            <div class="col align-self-center">
-                <p>
-                    We're more than just a steakhouse; we are a culinary destination where sizzling flavors meet
-                    exceptional service.
-                </p>
-                <p>
-                    With a passion for premium cuts and artisanal craftsmanship, we elevate the
-                    steakhouse experience to new heights.
-                    <br>
-                    From our meticulously curated menu to our warm and inviting
-                    ambiance,
-                    we invite you
-                    to indulge in the finest cuts of meat and savor every moment with us at Charred Chops.
-                </p>
-            </div>
-        </div> -->
-
     </div>
 </article>
 
+
 <section id="call-to-action">
-    <h2>Hungry?</h2>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Hungry? <i class="fa-solid fa-utensils"></i></h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 text-center">
+                <div class="action-call">
+                    <p>
+                        <strong>Get started by registering an account with us!</strong>
+                    </p>
+                    <a href="{% url 'account_signup' %}" class="btn btn-success">Sign up!</a>
+                </div>
+            </div>
+
+            <div class="col-6 text-center">
+                <div class="action-call">
+                    <p>
+                        <strong>Already have an acount? Log in!</strong>
+                    </p>
+                    <a href="{% url 'account_login' %}" class="btn btn-success">Log in!</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <div id="action-call-book">
+                    <p>
+                        <strong>Book a table with us now!</strong>
+                    </p>
+                    <a href="{% url 'bookingpage' %}" class="btn btn-success">Book table!</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 {% endblock %}

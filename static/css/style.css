@@ -154,7 +154,7 @@ footer a {
     width: 100%;
     background: url("../../static/media/steak-img1.png") no-repeat center center / cover;
     position: relative;
-    box-shadow: 0 3px 5px #10222e;
+    /* box-shadow: 0 3px 5px #10222e; */
 }
 
 #cover-text {
@@ -176,23 +176,25 @@ footer a {
 /* ---------------------- Who we are */
 #who-we-are {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     font-size: 130%;
     background-color: rgba(237, 56, 31, .8);
     width: 100%;
+    box-shadow: 0 0px 15px inset #10222e;
 }
 
 #chef-pic {
     width: 300px;
     border-radius: 45%;
     object-fit: contain;
-    /* margin-bottom: 20px; */
     padding: 2px;
     border: 2px solid #10222e;
+    box-shadow: 0px 0px 2px #10222e;
 
     float: left;
     shape-outside: circle(45%);
     margin-right: 50px;
+    margin-bottom: 5px;
 }
 
 #who-content {
@@ -203,8 +205,28 @@ footer a {
 
 /* ---------------------- Call to action */
 #call-to-action {
-    box-shadow: 0 -3px 5px #10222e;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    font-size: 130%;
 }
+
+.action-call {
+    margin-top: 30px;
+}
+
+#call-to-action a {
+    padding: 10px 25px;
+    letter-spacing: 2px;
+}
+
+#call-to-action p {
+    text-decoration: underline #ed381f;
+}
+
+#action-call-book {
+    margin-top: 100px;
+}
+
 
 /* -------------------------------------------------------------- AUTH */
 
@@ -233,6 +255,7 @@ footer a {
     width: 100%;
     padding-top: 40px;
     padding-bottom: 40px;
+    box-shadow: 0 0px 10px inset #10222e;
 }
 
 #map-embed-container {
@@ -251,7 +274,7 @@ footer a {
 
 
 /* ---------------------- Form */
-#form-article {
+#form-section {
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -337,6 +360,10 @@ footer a {
 
     main {
         margin-top: 89px;
+    }
+
+    #who-content {
+        text-align: center;
     }
 }
 
