@@ -59,6 +59,19 @@
         </div>
     </div>
 
+    {% if booking_form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error:</strong> Please correct the following errors:
+                <ul>
+                    {% for field, errors in booking_form.errors.items %}
+                    {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
     <!-- Form container if logged in -->
     <div class="container">
         <div class="row">

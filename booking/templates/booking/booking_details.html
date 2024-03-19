@@ -23,8 +23,8 @@
                     <h5 class="card-title">
                         Your reservation is on:
                         <strong>
-                            {{ reservation.booking_date }} | 
-                            {{ reservation.booking_time }}
+                            {{ reservation_item.booking_date }} | 
+                            {{ reservation_item.booking_time }}
                         </strong>
                     </h5>
                     
@@ -34,10 +34,10 @@
                         <p class="card-text">
                             Guest count:
                             <strong>
-                                {% if reservation.guest_count >= 2 %}
-                                {{ reservation.guest_count }} People
+                                {% if reservation_item.guest_count >= 2 %}
+                                {{ reservation_item.guest_count }} People
                                 {% else %}
-                                {{ reservation.guest_count }} Person
+                                {{ reservation_item.guest_count }} Person
                                 {% endif %}
                             </strong>
                         </p>
@@ -45,18 +45,18 @@
                         <p class="card-text">
                             Given e-mail address:
                             <strong>
-                                {{ reservation.email }}
+                                {{ reservation_item.email }}
                             </strong>
                         </p>
                         <hr>
                         <p class="card-text">
                             Given name:
                             <strong>
-                                {{ reservation.cust_fname }} {{ reservation.cust_lname }}
+                                {{ reservation_item.cust_fname }} {{ reservation_item.cust_lname }}
                             </strong>
                         </p>
                         <hr>
-                        {% if reservation.comments == "" %}
+                        {% if reservation_item.comments == "" %}
                         <p class="card-text">
                             Additional comments:
                             <strong>
@@ -67,13 +67,13 @@
                         <p class="card-text">
                             Additional comments:
                             <strong>
-                                {{ reservation.comments }}
+                                {{ reservation_item.comments }}
                             </strong>
                         </p>
                         {% endif %}
                     </div>
                     <div id="detail-buttons" class="text-center">
-                        <a href="{% url 'bookingedit' reservation.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
+                        <a href="{% url 'booking_update_page' reservation_item.slug %}"><button class="btn btn-primary">Edit Reservation</button></a>
                         <button class="btn btn-danger" id="delete-button">Cancel Reservation</button>
                     </div>
 
@@ -106,7 +106,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
         data-bs-dismiss="modal">No, don't cancel</button>
-        <a id="deleteConfirm" href="{% url 'bookingdelete' reservation.slug %}" class="btn btn-danger">Yes, cancel</a>
+        <a id="deleteConfirm" href="{% url 'booking_delete_page' reservation_item.slug %}" class="btn btn-danger">Yes, cancel</a>
       </div>
     </div>
   </div>

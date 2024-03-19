@@ -5,11 +5,11 @@
 {% block title %}Charred Chops | Update Reservation{% endblock %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
 <div class="container detail-container">
 
     <div class="row justify-content-center">
-
         <div class="col-sm-12 col-md-6">
 
             <div class="card detailed-booking-card">
@@ -21,8 +21,8 @@
                     <h5 class="card-title">
                         Your reservation is currently on:
                         <strong>
-                            {{ reservation.booking_date }} |
-                            {{ reservation.booking_time }}
+                            {{ reservation_item.booking_date }} |
+                            {{ reservation_item.booking_time }}
                         </strong>
                     </h5>
 
@@ -32,10 +32,10 @@
                         <p class="card-text">
                             Guest count:
                             <strong>
-                                {% if reservation.guest_count >= 2 %}
-                                {{ reservation.guest_count }} People
+                                {% if reservation_item.guest_count >= 2 %}
+                                {{ reservation_item.guest_count }} People
                                 {% else %}
-                                {{ reservation.guest_count }} Person
+                                {{ reservation_item.guest_count }} Person
                                 {% endif %}
                             </strong>
                         </p>
@@ -43,18 +43,18 @@
                         <p class="card-text">
                             Given e-mail address:
                             <strong>
-                                {{ reservation.email }}
+                                {{ reservation_item.email }}
                             </strong>
                         </p>
                         <hr>
                         <p class="card-text">
                             Given name:
                             <strong>
-                                {{ reservation.cust_fname }} {{ reservation.cust_lname }}
+                                {{ reservation_item.cust_fname }} {{ reservation_item.cust_lname }}
                             </strong>
                         </p>
                         <hr>
-                        {% if reservation.comments == "" %}
+                        {% if reservation_item.comments == "" %}
                         <p class="card-text">
                             Additional comments:
                             <strong>
@@ -65,7 +65,7 @@
                         <p class="card-text">
                             Additional comments:
                             <strong>
-                                {{ reservation.comments }}
+                                {{ reservation_item.comments }}
                             </strong>
                         </p>
                         {% endif %}
@@ -130,7 +130,7 @@
 
                     </form>
 
-                        <a href="{% url 'bookingdetails' reservation.slug %}" class="btn btn-secondary">Don't Update</a>
+                        <a href="{% url 'booking_details_page' reservation_item.slug %}" class="btn btn-secondary">Don't Update</a>
 
                     </div>
                     
@@ -140,4 +140,5 @@
     </div>
 </div>
 {% endif %}
+
 {% endblock %}

@@ -19,6 +19,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Custom CSS style sheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <title>{% block title %}Charred Chops | Steakhouse{% endblock %}</title>
 </head>
 
@@ -49,7 +50,7 @@
                         <li class="separator"><strong>|</strong></li>
 
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a href="{% url 'bookinglist' %}">My bookings</a></li>
+                        <li class="nav-item"><a href="{% url 'booking_list_page' %}">My bookings</a></li>
                         <li class="separator"><strong>|</strong></li>
                         <li class="nav-item"><a href="{% url 'account_logout' %}">Logout</a></li>
 
@@ -60,7 +61,7 @@
                         {% endif %}
                     </ul>
 
-                    <a href="{% url 'bookingpage' %}" class="nav-item btn btn-success" id="book-action-call">
+                    <a href="{% url 'booking_page' %}" class="nav-item btn btn-success" id="book-action-call">
                         Book table!</a>
 
                 </div>
@@ -134,12 +135,12 @@
 
                 <div class="d-none d-md-block col-md-6 col-xl-3 text-start footer-link-group">
                     <ul>
-                        <li><a href="{% url 'bookingpage' %}" aria-label="Opens Booking page">
+                        <li><a href="{% url 'booking_page' %}" aria-label="Opens Booking page">
                                 Book table
                             </a>
                         </li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'bookinglist' %}" aria-label="Opens My bookings page">
+                        <li><a href="{% url 'booking_list_page' %}" aria-label="Opens My bookings page">
                                 Manage bookings
                             </a>
                         </li>

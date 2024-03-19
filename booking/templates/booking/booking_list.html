@@ -23,7 +23,7 @@
         {% for booking in booking_list %}
 
         <div class="col-4">
-            <a href="{% url 'bookingdetails' booking.slug %}">
+            <a href="{% url 'booking_details_page' booking.slug %}">
                 <div class="card bookingCardItem">
                     <div class="card-header">
                         <h5>{{ booking.booking_date }}</h5>
