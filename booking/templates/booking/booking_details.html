@@ -9,17 +9,17 @@
 <article id="booking-details">
 
     <div class="container">
-
         <div class="row justify-content-center">
 
-            <div class="col-6">
-
+            <div class="col-lg-6">
                 <div class="card detailed-booking-card">
+
                     <div class="card-header text-center">
                         <h1 class="reservation-details-header">Reservation details</h1>
                     </div>
 
                     <div class="card-body">
+
                         <h5 class="card-title">
                             Your reservation is on:
                             <strong>
@@ -72,22 +72,22 @@
                             </p>
                             {% endif %}
                         </div>
-                        <div id="detail-buttons" class="text-center">
+                        <div id="detail-buttons" class="text-center my-4">
                             <button class="btn btn-danger" id="delete-button">
                                 Cancel Reservation
                             </button>
-                            <a href="{% url 'booking_update_page' reservation_item.slug %}" class="btn btn-success">Edit
-                                Reservation
+                            <a href="{% url 'booking_update_page' reservation_item.slug %}" class="btn btn-success">
+                                Edit Reservation
                             </a>
                         </div>
 
                     </div>
 
                 </div> <!-- End of card -->
-
             </div> <!-- End of col -->
 
         </div> <!-- End of row -->
+
 
         <div class="row">
             <div class="col mt-5 text-center">

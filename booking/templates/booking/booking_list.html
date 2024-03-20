@@ -12,7 +12,7 @@
         <h1 class="text-center">Manage current bookings</h1>
     </div>
 
-    <div class="row justify-content-center booking-row-split">
+    <div class="row justify-content-center">
         {% if not booking_list %}
         <div class="col text-center">
             <h3>No bookings</h3>
@@ -22,7 +22,7 @@
 
         {% for booking in booking_list %}
 
-        <div class="col-4">
+        <div class="col-md-4 my-2">
             <a href="{% url 'booking_details_page' booking.slug %}">
                 <div class="card bookingCardItem">
                     <div class="card-header">
@@ -37,7 +37,7 @@
                             {{ booking.guest_count }} Person
                             {% endif %}
                         </p>
-                        <div class="btn detail-button">Click for Details</div>
+                        <div class="btn see-detail-button">Click for Details</div>
                     </div>
                 </div>
             </a>
@@ -47,7 +47,7 @@
         {% if forloop.counter|divisibleby:2 %}
     </div> <!-- End row -->
 
-    <div class="row justify-content-center booking-row-split">
+    <div class="row justify-content-center">
         {% endif %}
         <!-- Iterates through more on this row -->
         {% endfor %}

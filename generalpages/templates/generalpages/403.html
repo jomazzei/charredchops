@@ -3,12 +3,15 @@
 {% block title %}Charred Chops | 403{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col text-center">
-            <h1>You don't have permission to view this page</h1>
-            <p>Error: 403</p>
+<section class="errors-page">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>You don't have permission to view this page</h1>
+                <p>Error: 403</p>
+                <a href="{% url 'home' %}" class="btn btn-success">Back to Home page</a>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

@@ -8,79 +8,11 @@
 
 {% if user.is_authenticated %}
 <div class="container detail-container">
-
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-6">
 
+        <div class="col-12 col-lg-10 my-4">
             <div class="card detailed-booking-card">
-                <div class="card-header text-center">
-                    <h1 class="reservation-details-header">Current reservation details</h1>
-                </div>
 
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Your reservation is currently on:
-                        <strong>
-                            {{ reservation_item.booking_date }} |
-                            {{ reservation_item.booking_time }}
-                        </strong>
-                    </h5>
-
-                    <hr>
-
-                    <div>
-                        <p class="card-text">
-                            Guest count:
-                            <strong>
-                                {% if reservation_item.guest_count >= 2 %}
-                                {{ reservation_item.guest_count }} People
-                                {% else %}
-                                {{ reservation_item.guest_count }} Person
-                                {% endif %}
-                            </strong>
-                        </p>
-                        <hr>
-                        <p class="card-text">
-                            Given e-mail address:
-                            <strong>
-                                {{ reservation_item.email }}
-                            </strong>
-                        </p>
-                        <hr>
-                        <p class="card-text">
-                            Given name:
-                            <strong>
-                                {{ reservation_item.cust_fname }} {{ reservation_item.cust_lname }}
-                            </strong>
-                        </p>
-                        <hr>
-                        {% if reservation_item.comments == "" %}
-                        <p class="card-text">
-                            Additional comments:
-                            <strong>
-                                N/A
-                            </strong>
-                        </p>
-                        {% else %}
-                        <p class="card-text">
-                            Additional comments:
-                            <strong>
-                                {{ reservation_item.comments }}
-                            </strong>
-                        </p>
-                        {% endif %}
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-sm-12 col-md-6">
-
-            <div class="card detailed-booking-card">
                 <div class="card-header text-center">
                     <h1 class="reservation-details-header">Update details</h1>
                 </div>
@@ -90,55 +22,58 @@
                         {% csrf_token %}
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 {{ form.booking_date|as_crispy_field }}
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 {{ form.booking_time|as_crispy_field }}
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 {{ form.guest_count|as_crispy_field }}
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 {{ form.email|as_crispy_field }}
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 {{ form.cust_fname|as_crispy_field}}
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 {{ form.cust_lname|as_crispy_field}}
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 {{ form.comments|as_crispy_field }}
                             </div>
                         </div>
 
-                        <div class="text-center">
-                            <button class="btn btn-success" type="submit">Update Details</button>
+                        <div class="text-center my-4">
+                            <button class="btn btn-success" id="update-button" type="submit">
+                                Update Details
+                            </button>
+                            <a href="{% url 'booking_details_page' reservation_item.slug %}" class="btn btn-secondary">
+                                Don't Update
+                            </a>
+                        </div>
 
                     </form>
-
-                        <a href="{% url 'booking_details_page' reservation_item.slug %}" class="btn btn-secondary">Don't Update</a>
-
-                    </div>
-                    
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
+
+    </div> <!-- End row -->
+</div> <!-- End container -->
 {% endif %}
 
 {% endblock %}

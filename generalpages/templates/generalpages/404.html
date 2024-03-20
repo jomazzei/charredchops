@@ -3,12 +3,15 @@
 {% block title %}Charred Chops | 404{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col text-center">
-            <h1>There was a problem loading this page</h1>
-            <p>Error: 404</p>
+<section class="errors-page">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>There was a problem loading this page</h1>
+                <p>Error: 404</p>
+                <a href="{% url 'home' %}" class="btn btn-success">Back to Home page</a>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
