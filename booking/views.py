@@ -32,6 +32,7 @@ def booking_page(request):
                 navigate to the 'My bookings' tab and select the booking you wish 
                 to change.""",
             )
+            return True
 
     if request.method == "POST":
         form = BookTableForm(request.POST)
@@ -42,17 +43,7 @@ def booking_page(request):
 
             # Checks if user has a previous reservation on the date they chose
             chosen_date = booking.booking_date
-            if Reservation.objects.filter(
-                customer=request.user, booking_date=chosen_date
-            ).exists():
-                messages.add_message(
-                    request,
-                    messages.ERROR,
-                    """You already have a booking for this day, 
-                    if you would like to change the time or cancel please 
-                    navigate to the 'My bookings' tab and select the booking you wish 
-                    to change.""",
-                )
+            if compare_new_booking(chosen_date):
                 return render(request, "booking/booking.html", {"form": form})
 
             # Regular save handling
@@ -80,14 +71,6 @@ def booking_page(request):
         form = BookTableForm()
 
     return render(request, "booking/booking.html", {"form": form})
-
-
-def booking_success(request):
-    """
-    Renders a success page,
-    only used in booking form validation feedback
-    """
-    return render(request, "booking/form_success.html")
 
 
 class BookingList(LoginRequiredMixin, generic.ListView):
