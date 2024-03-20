@@ -1,4 +1,4 @@
-<h1 align="center">(/DocAssets/cc-logo-bg.png)</h1>
+<h1 align="center">![logo](/DocAssets/cc-logo-bg.png)</h1>
 <h1 align="center">Charred Chops</h1>
 
 [View live deployment here!](https://jomazzei-charred-chops-161a869d9d8b.herokuapp.com/)
