@@ -6,14 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("booking", "0006_alter_reservation_options_and_more"),
+        ('booking', '0006_alter_reservation_options_and_more'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="reservation",
-            name="comments",
-            field=models.TextField(blank=True, default="blank"),
+            model_name='reservation',
+            name='comments',
+            field=models.TextField(blank=True, default='blank'),
             preserve_default=False,
         ),
     ]

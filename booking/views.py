@@ -16,6 +16,23 @@ def booking_page(request):
     Also renders the booking form
     and controls the validation, saving, and posting.
     """
+
+    def compare_new_booking(new_date):
+        """
+        Checks desired updated date against previous entries
+        """
+        if Reservation.objects.filter(
+            customer=request.user, booking_date=new_date
+        ).exists():
+            messages.add_message(
+                request,
+                messages.ERROR,
+                """You already have a booking for this day, 
+                if you would like to change the time or cancel please 
+                navigate to the 'My bookings' tab and select the booking you wish 
+                to change.""",
+            )
+
     if request.method == "POST":
         form = BookTableForm(request.POST)
 
@@ -128,12 +145,22 @@ def booking_update(request, slug):
     reservation_item = get_object_or_404(queryset, slug=slug)
     form = UpdateBookingForm(instance=reservation_item)
 
+    def compare_bookings_for_update():
+        """
+        Checks desired updated date against previous entries,
+        excluding current reservation's date.
+        """
+        # 1. Needs to check if desired date matches owned items.
+        # 2. Cannot save onto owned items EXCEPT on the same date
+        # as the booking currently being edited.
+
     if request.method == "POST" and request.user == reservation_item.customer:
         form = UpdateBookingForm(request.POST, instance=reservation_item)
 
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer = request.user
+
             booking.save()
             messages.add_message(
                 request,
@@ -144,7 +171,6 @@ def booking_update(request, slug):
                 reverse("booking_details_page", kwargs={"slug": reservation_item.slug})
             )
 
-        # If form is NOT valid
         else:
             messages.add_message(
                 request,

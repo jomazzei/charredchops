@@ -15,34 +15,24 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Reservation",
+            name='Reservation',
             fields=[
-                (
-                    "entry_id",
-                    models.AutoField(primary_key=True, serialize=False, unique=True),
-                ),
-                ("cust_ref", models.CharField(blank=True, max_length=8, unique=True)),
-                ("cust_fname", models.CharField(max_length=20)),
-                ("cust_lname", models.CharField(max_length=20)),
-                ("email", models.EmailField(max_length=254)),
-                ("guest_count", models.IntegerField()),
-                ("booking_date", models.DateField()),
-                ("booking_time", models.TimeField()),
-                ("comments", models.TextField()),
-                ("created_on", models.DateTimeField(auto_now_add=True)),
-                ("updated_on", models.DateTimeField()),
-                ("cancelled", models.BooleanField(default=False)),
-                (
-                    "customer",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="booking",
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
+                ('entry_id', models.AutoField(primary_key=True, serialize=False, unique=True)),
+                ('cust_ref', models.CharField(blank=True, max_length=8, unique=True)),
+                ('cust_fname', models.CharField(max_length=20)),
+                ('cust_lname', models.CharField(max_length=20)),
+                ('email', models.EmailField(max_length=254)),
+                ('guest_count', models.IntegerField()),
+                ('booking_date', models.DateField()),
+                ('booking_time', models.TimeField()),
+                ('comments', models.TextField()),
+                ('created_on', models.DateTimeField(auto_now_add=True)),
+                ('updated_on', models.DateTimeField()),
+                ('cancelled', models.BooleanField(default=False)),
+                ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='booking', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                "ordering": ["entry_id", "booking_date", "booking_time", "guest_count"],
+                'ordering': ['entry_id', 'booking_date', 'booking_time', 'guest_count'],
             },
         ),
     ]

@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("booking", "0004_alter_reservation_options"),
+        ('booking', '0004_alter_reservation_options'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name="reservation",
-            name="allergies",
+            model_name='reservation',
+            name='allergies',
         ),
     ]
