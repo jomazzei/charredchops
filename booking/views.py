@@ -16,19 +16,47 @@ def booking_page(request):
     Also renders the booking form
     and controls the validation, saving, and posting.
     """
+
+    def compare_new_booking(date):
+        """
+        Checks desired updated date against previous entries
+        """
+        if Reservation.objects.filter(
+            customer=request.user, booking_date=date
+        ).exists():
+            messages.add_message(
+                request,
+                messages.ERROR,
+                """You already have a booking for this day, 
+                if you would like to change the time or cancel please 
+                navigate to the 'My bookings' tab and select the booking you wish 
+                to change.""",
+            )
+            return True
+
     if request.method == "POST":
         form = BookTableForm(request.POST)
 
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer = request.user
-            booking.save()
-            messages.add_message(
-                request, messages.SUCCESS, "You have successfully booked a reservation!"
-            )
-            return redirect(
-                reverse("booking_details_page", kwargs={"slug": booking.slug})
-            )
+
+            # Checks if user has a previous reservation on the date they chose
+            chosen_date = booking.booking_date
+            if compare_new_booking(chosen_date):
+                return render(request, "booking/booking.html", {"form": form})
+
+            # Regular save handling
+            else:
+                booking.save()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    "You have successfully booked a reservation!",
+                )
+                return redirect(
+                    reverse("booking_details_page", kwargs={"slug": booking.slug})
+                )
 
         # If form is NOT valid
         else:
@@ -45,14 +73,6 @@ def booking_page(request):
     return render(request, "booking/booking.html", {"form": form})
 
 
-def booking_success(request):
-    """
-    Renders a success page,
-    only used in booking form validation feedback
-    """
-    return render(request, "booking/form_success.html")
-
-
 class BookingList(LoginRequiredMixin, generic.ListView):
     """
     Renders the list view.
@@ -60,14 +80,13 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     """
 
     model = Reservation
-    # Found online, won't iterate without this definition,
-    # unlike in the previous projects
+    # Found online, won't iterate without this definition, unlike in previous projects
     context_object_name = "booking_list"
 
-    # queryset = Reservation.objects.all()
     template_name = "booking/booking_list.html"
 
-    # Filter to only owned bookings
+    # Filter to only owned bookings, needs to be a function as the class
+    # doesn't inheritly pass request without the extra layer
     def get_queryset(self):
         return Reservation.objects.filter(customer=self.request.user).order_by(
             "-booking_date"
@@ -107,23 +126,59 @@ def booking_update(request, slug):
     reservation_item = get_object_or_404(queryset, slug=slug)
     form = UpdateBookingForm(instance=reservation_item)
 
+    def compare_bookings_for_update(date, single_reservation):
+        """
+        Checks desired updated date against previous entries,
+        excluding current reservation's date.
+        """
+        # 1. Needs to check if desired date matches owned items.
+        # 2. Cannot save onto owned items EXCEPT on the same date
+        # as the booking currently being edited.
+        if (
+            Reservation.objects.filter(
+                customer=request.user,
+                booking_date=date,
+            )
+            .exclude(pk=reservation_item.pk)
+            .exists()
+        ):
+            messages.add_message(
+                request,
+                messages.ERROR,
+                """You already have a booking for this day, 
+                if you would like to change the time for that reservation, 
+                please use the buttons at the bottom of the card to stop editing and 
+                navigate to that reservation""",
+            )
+            return True
+
     if request.method == "POST" and request.user == reservation_item.customer:
         form = UpdateBookingForm(request.POST, instance=reservation_item)
 
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer = request.user
-            booking.save()
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                "You have successfully updated your reservation",
-            )
-            return redirect(
-                reverse("booking_details_page", kwargs={"slug": reservation_item.slug})
-            )
 
-        # If form is NOT valid
+            # Checks if user has a previous reservation on the date they chose
+            chosen_date = booking.booking_date
+            if compare_bookings_for_update(chosen_date, reservation_item):
+                return redirect(request.path_info)
+
+            # Regular saving logic
+            else:
+                booking.save()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    "You have successfully updated your reservation",
+                )
+                return redirect(
+                    reverse(
+                        "booking_details_page", kwargs={"slug": reservation_item.slug}
+                    )
+                )
+
+        # Invalid form
         else:
             messages.add_message(
                 request,
