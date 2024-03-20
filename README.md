@@ -25,6 +25,8 @@
 
 
 ## Project Methodology and Tech Stack
+[back to content table](#table-of-contents)
+<br>
 
 - __Ideation & Project Management__
 
@@ -35,7 +37,9 @@
 <br>
 
 
-## Wireframes
+# Wireframes
+[back to content table](#table-of-contents)
+<br>
 
 ### Home Page
 ![home](/DocAssets/home-fresh-view.png)
@@ -67,7 +71,9 @@ For a full overview of all user stories and features, please look at the [projec
 <br>
 
 
-## Testing 
+# Testing 
+[back to content table](#table-of-contents)
+<br>
 This project is currently undergoing the following validations and performance tests, and are updated according to progress
 ### Validation
 - __HTML__
