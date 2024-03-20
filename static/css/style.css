@@ -162,7 +162,6 @@ footer a {
     width: 100%;
     background: url("../../static/media/steak-img1.png") no-repeat center center / cover;
     position: relative;
-    /* box-shadow: 0 3px 5px #10222e; */
 }
 
 #cover-text {
@@ -254,6 +253,7 @@ footer a {
 /* ---------------------- Sign up page */
 #signup {
     margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: 100px;
 }
 
@@ -261,6 +261,7 @@ footer a {
 /* ---------------------- Log in page */
 #login {
     margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: 100px;
 }
 
@@ -268,6 +269,7 @@ footer a {
 /* ---------------------- Log out page */
 #logout {
     margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: 100px;
 }
 
@@ -403,6 +405,7 @@ footer a {
 }
 
 @media screen and (max-width:567px) {
+    /* ---------------------- Base HTML */
     .nav-logo {
         width: 200px;
     }
@@ -411,10 +414,12 @@ footer a {
         margin-top: 89px;
     }
 
+    /* ---------------------- Home */
     #who-content {
         text-align: center;
     }
 
+    /* ---------------------- Booking */
     #map-embed-container {
         border: none;
     }
@@ -422,9 +427,25 @@ footer a {
     #map-embed {
         width: 250px;
     }
+
+    /* ---------------------- Sign up */
+    #signup {
+        margin-left: 0px;
+    }
+    
+    /* ---------------------- Log in */
+    #login {
+        margin-left: 0px;
+    }
+    
+    /* ---------------------- Log out */
+    #logout {
+        margin-left: 0px;
+    }
 }
 
 @media screen and (max-width:768px) {
+    /* ---------------------- Home */
     #action-call-book {
         margin-top: 35px;
     }
@@ -432,13 +453,10 @@ footer a {
     .action-call {
         margin-bottom: 20px;
     }
-
-    #current-box {
-        display: none;
-    }
 }
 
 @media screen and (max-width:991px) {
+    /* ---------------------- Base HTML */
     .separator {
         display: none;
     }
@@ -447,6 +465,7 @@ footer a {
         margin-top: 10px;
     }
 
+    /* ---------------------- Home */
     #book-action-call {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -454,6 +473,7 @@ footer a {
 }
 
 @media screen and (max-width:1199px) {
+    /* ---------------------- Booking */
     #map-embed-container {
         margin: auto;
     }
