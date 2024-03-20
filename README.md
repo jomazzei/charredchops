@@ -17,6 +17,8 @@
 
 * [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
 * [Wireframes](#wireframes)
+  * [Home page](#home-page)
+  * [booking page](#booking-page) 
 * [User Stories and Features](#user-stories-and-features)
 * [Testing](#testing)
 * [Credits](#credits)
@@ -38,8 +40,9 @@
 <br>
 
 
-# Wireframes
+## Wireframes
 [back to content table](#table-of-contents)
+<br>
 <br>
 
 ### Home Page
@@ -72,9 +75,11 @@ For a full overview of all user stories and features, please look at the [projec
 <br>
 
 
-# Testing 
+## Testing 
 [back to content table](#table-of-contents)
 <br>
+<br>
+
 This project is currently undergoing the following validations and performance tests, and are updated according to progress
 ### Validation
 - __HTML__
@@ -99,6 +104,7 @@ This project is currently undergoing the following validations and performance t
 
 # Credits
 [back to content table](#table-of-contents)
+<br>
 <br>
 
 ### Images
