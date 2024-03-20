@@ -90,9 +90,9 @@ This project is currently undergoing the following validations and performance t
 <br>
 
 
-<p>
-  <span><h1> Credits</h1></span> [back to index](#table-of-contents) 
-</p>
+# Credits
+[back to content table](#table-of-contents)
+<br>
 
 ### Images
 ![logo](/DocAssets/cc-logo-bg.png)
