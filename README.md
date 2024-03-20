@@ -12,9 +12,9 @@
 
 #### Skip to content section:
 
-* [Project Methodology and Tech Stack](#project-methodology-&#38;-tech-stack)
+* [Project Methodology &#38; Tech Stack](#project-methodology-&#38;-tech-stack)
 * [Wireframes](#wireframes)
-* [User Stories and Features](#user-stories-&#38;-features)
+* [User Stories &#38; Features](#user-stories-&#38;-features)
 * [Testing](#testing)
 * [Credits](#credits)
 
