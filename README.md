@@ -13,7 +13,7 @@
 <br>
 
 
-#### Skip to content section:
+#### Table of Contents:
 
 * [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
 * [Wireframes](#wireframes)
@@ -90,7 +90,9 @@ This project is currently undergoing the following validations and performance t
 <br>
 
 
-# Credits
+<p>
+  <span><h1> Credits</h1></span> [back to index](#table-of-contents) 
+</p>
 
 ### Images
 ![logo](/DocAssets/cc-logo-bg.png)
