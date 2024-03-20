@@ -266,7 +266,14 @@ footer a {
 /* -------------------------------------------------------------- BOOK NOW */
 
 /* ---------------------- Contact details */
-/* #contact-article {} */
+#contact-article {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#contact-article strong {
+    text-decoration: underline 2px #fa1d00;
+}
 
 
 /* ---------------------- Location / Map */
@@ -298,6 +305,10 @@ footer a {
 #form-section {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+#form-section h2 {
+    margin-bottom: 30px;
 }
 
 #booking-form {
