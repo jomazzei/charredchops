@@ -6,12 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('booking', '0003_alter_reservation_options_reservation_allergies_and_more'),
+        ("booking", "0003_alter_reservation_options_reservation_allergies_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='reservation',
-            options={'ordering': ['cancelled', 'entry_id', 'booking_date', 'booking_time', 'guest_count']},
+            name="reservation",
+            options={
+                "ordering": [
+                    "cancelled",
+                    "entry_id",
+                    "booking_date",
+                    "booking_time",
+                    "guest_count",
+                ]
+            },
         ),
     ]

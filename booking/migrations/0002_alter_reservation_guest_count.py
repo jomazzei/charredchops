@@ -7,13 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('booking', '0001_initial'),
+        ("booking", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='reservation',
-            name='guest_count',
-            field=models.IntegerField(default=1, validators=[django.core.validators.MaxValueValidator(8), django.core.validators.MinValueValidator(1)]),
+            model_name="reservation",
+            name="guest_count",
+            field=models.IntegerField(
+                default=1,
+                validators=[
+                    django.core.validators.MaxValueValidator(8),
+                    django.core.validators.MinValueValidator(1),
+                ],
+            ),
         ),
     ]

@@ -6,37 +6,45 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('booking', '0002_alter_reservation_guest_count'),
+        ("booking", "0002_alter_reservation_guest_count"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='reservation',
-            options={'ordering': ['entry_id', 'booking_date', 'booking_time', 'guest_count', 'cancelled']},
+            name="reservation",
+            options={
+                "ordering": [
+                    "entry_id",
+                    "booking_date",
+                    "booking_time",
+                    "guest_count",
+                    "cancelled",
+                ]
+            },
         ),
         migrations.AddField(
-            model_name='reservation',
-            name='allergies',
+            model_name="reservation",
+            name="allergies",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='reservation',
-            name='slug',
+            model_name="reservation",
+            name="slug",
             field=models.SlugField(blank=True, max_length=250, unique=True),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='cancelled',
+            model_name="reservation",
+            name="cancelled",
             field=models.BooleanField(blank=True, default=False),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='comments',
+            model_name="reservation",
+            name="comments",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='reservation',
-            name='updated_on',
+            model_name="reservation",
+            name="updated_on",
             field=models.DateTimeField(auto_now=True),
         ),
     ]

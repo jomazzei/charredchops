@@ -22,13 +22,33 @@ def booking_page(request):
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer = request.user
-            booking.save()
-            messages.add_message(
-                request, messages.SUCCESS, "You have successfully booked a reservation!"
-            )
-            return redirect(
-                reverse("booking_details_page", kwargs={"slug": booking.slug})
-            )
+
+            # Checks if user has a previous reservation on the date they chose
+            chosen_date = booking.booking_date
+            if Reservation.objects.filter(
+                customer=request.user, booking_date=chosen_date
+            ).exists():
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    """You already have a booking for this day, 
+                    if you would like to change the time or cancel please 
+                    navigate to the 'My bookings' tab and select the booking you wish 
+                    to change.""",
+                )
+                return render(request, "booking/booking.html", {"form": form})
+
+            # Regular save handling
+            else:
+                booking.save()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    "You have successfully booked a reservation!",
+                )
+                return redirect(
+                    reverse("booking_details_page", kwargs={"slug": booking.slug})
+                )
 
         # If form is NOT valid
         else:
@@ -60,11 +80,12 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     """
 
     model = Reservation
-    # Found online, won't iterate without this definition,
-    # unlike in the previous projects
+    # Found online, won't iterate without this definition, unlike in previous projects
     context_object_name = "booking_list"
 
-    # queryset = Reservation.objects.all()
+    # queryset = Reservation.objects.filter(customer=self.request.user).order_by(
+    #         "-booking_date"
+    #     )
     template_name = "booking/booking_list.html"
 
     # Filter to only owned bookings
