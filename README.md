@@ -27,6 +27,7 @@
 ## Project Methodology and Tech Stack
 [back to content table](#table-of-contents)
 <br>
+<br>
 
 - __Ideation & Project Management__
 
