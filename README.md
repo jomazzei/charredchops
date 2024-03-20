@@ -12,16 +12,16 @@
 
 #### Skip to content section:
 
-* [Project Methodology &#38; Tech Stack](#project-methodology-&#38;-tech-stack)
+* [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
 * [Wireframes](#wireframes)
-* [User Stories &#38; Features](#user-stories-&#38;-features)
+* [User Stories and Features](#user-stories-and-features)
 * [Testing](#testing)
 * [Credits](#credits)
 
 <br>  
 
 
-## Project Methodology &#38; Tech Stack
+## Project Methodology and Tech Stack
 
 - __Ideation & Project Management__
 
@@ -46,7 +46,7 @@
 
 <br>
 
-## User Stories &#38; Features
+## User Stories and Features
 
 ### Core Focus
 Core stories and features revolve around what the main purpose of the website is.   
