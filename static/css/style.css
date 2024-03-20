@@ -200,7 +200,7 @@ footer a {
     box-shadow: 0px 0px 2px #10222e;
 
     float: left;
-    
+
     /* Validator won't recognize this one line
     as it seems to not be widely supported */
     shape-outside: circle(45%);
@@ -252,15 +252,24 @@ footer a {
 /* -------------------------------------------------------------- AUTH */
 
 /* ---------------------- Sign up page */
-/* #signup {} */
+#signup {
+    margin-top: 50px;
+    margin-left: 100px;
+}
 
 
 /* ---------------------- Log in page */
-/* #login {} */
+#login {
+    margin-top: 50px;
+    margin-left: 100px;
+}
 
 
 /* ---------------------- Log out page */
-/* #logout {} */
+#logout {
+    margin-top: 50px;
+    margin-left: 100px;
+}
 
 
 /* -------------------------------------------------------------- BOOK NOW */
