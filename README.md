@@ -21,7 +21,7 @@
 <br>  
 
 
-## Project Methodology & Tech Stack
+## Project Methodology &#38; Tech Stack
 
 - __Ideation & Project Management__
 
@@ -46,7 +46,7 @@
 
 <br>
 
-## User Stories & Features
+## User Stories &#38; Features
 
 ### Core Focus
 Core stories and features revolve around what the main purpose of the website is.   
