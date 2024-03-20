@@ -249,6 +249,36 @@ footer a {
 }
 
 
+<<<<<<< HEAD
+=======
+/* -------------------------------------------------------------- AUTH */
+
+/* ---------------------- Sign up page */
+/* #signup {} */
+
+
+/* ---------------------- Log in page */
+/* #login {} */
+
+
+/* ---------------------- Log out page */
+/* #logout {} */
+
+
+/* -------------------------------------------------------------- BOOK NOW */
+
+/* ---------------------- Contact details */
+#contact-article {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#contact-article strong {
+    text-decoration: underline 2px #fa1d00;
+}
+
+
+>>>>>>> 734c29137e00baeadcef09337466e943d9f4a0fb
 /* ---------------------- Location / Map */
 #location-article {
     background-color: rgba(237, 56, 31, .8);
@@ -278,6 +308,10 @@ footer a {
 #form-section {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+#form-section h2 {
+    margin-bottom: 30px;
 }
 
 #booking-form {
