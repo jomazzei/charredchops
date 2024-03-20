@@ -393,12 +393,14 @@ footer a {
 
 /* -------------------------------------------------------------- MEDIA QUERIES */
 @media screen and (max-width:320px) {
+    /* ---------------------- Edit form */
     #update-button {
         margin-bottom: 20px;
     }
 }
 
 @media screen and (max-width:373px) {
+    /* ---------------------- Detailed view */
     #delete-button {
         margin-bottom: 20px;
     }

@@ -64,10 +64,10 @@ class Reservation(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["entry_id", "booking_date", "booking_time", "guest_count"]
+        ordering = ["booking_date", "booking_time", "guest_count", "entry_id"]
 
     def __str__(self):
-        return f"Reservation ID: {self.entry_id} | Customer reference: {self.cust_ref}"
+        return f"Date: {self.booking_date} | ID: {self.entry_id} | Reference: {self.cust_ref}"
 
     # Queried ChatGPT on how to create unique references
     # that do not extend beyond a comprehendable digit count
