@@ -17,12 +17,12 @@ def booking_page(request):
     and controls the validation, saving, and posting.
     """
 
-    def compare_new_booking(new_date):
+    def compare_new_booking(date):
         """
         Checks desired updated date against previous entries
         """
         if Reservation.objects.filter(
-            customer=request.user, booking_date=new_date
+            customer=request.user, booking_date=date
         ).exists():
             messages.add_message(
                 request,
@@ -83,12 +83,10 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     # Found online, won't iterate without this definition, unlike in previous projects
     context_object_name = "booking_list"
 
-    # queryset = Reservation.objects.filter(customer=self.request.user).order_by(
-    #         "-booking_date"
-    #     )
     template_name = "booking/booking_list.html"
 
-    # Filter to only owned bookings
+    # Filter to only owned bookings, needs to be a function as the class
+    # doesn't inheritly pass request without the extra layer
     def get_queryset(self):
         return Reservation.objects.filter(customer=self.request.user).order_by(
             "-booking_date"
@@ -128,7 +126,7 @@ def booking_update(request, slug):
     reservation_item = get_object_or_404(queryset, slug=slug)
     form = UpdateBookingForm(instance=reservation_item)
 
-    def compare_bookings_for_update():
+    def compare_bookings_for_update(date, single_reservation):
         """
         Checks desired updated date against previous entries,
         excluding current reservation's date.
@@ -136,6 +134,23 @@ def booking_update(request, slug):
         # 1. Needs to check if desired date matches owned items.
         # 2. Cannot save onto owned items EXCEPT on the same date
         # as the booking currently being edited.
+        if (
+            Reservation.objects.filter(
+                customer=request.user,
+                booking_date=date,
+            )
+            .exclude(pk=reservation_item.pk)
+            .exists()
+        ):
+            messages.add_message(
+                request,
+                messages.ERROR,
+                """You already have a booking for this day, 
+                if you would like to change the time for that reservation, 
+                please use the buttons at the bottom of the card to stop editing and 
+                navigate to that reservation""",
+            )
+            return True
 
     if request.method == "POST" and request.user == reservation_item.customer:
         form = UpdateBookingForm(request.POST, instance=reservation_item)
@@ -144,16 +159,26 @@ def booking_update(request, slug):
             booking = form.save(commit=False)
             booking.customer = request.user
 
-            booking.save()
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                "You have successfully updated your reservation",
-            )
-            return redirect(
-                reverse("booking_details_page", kwargs={"slug": reservation_item.slug})
-            )
+            # Checks if user has a previous reservation on the date they chose
+            chosen_date = booking.booking_date
+            if compare_bookings_for_update(chosen_date, reservation_item):
+                return redirect(request.path_info)
 
+            # Regular saving logic
+            else:
+                booking.save()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    "You have successfully updated your reservation",
+                )
+                return redirect(
+                    reverse(
+                        "booking_details_page", kwargs={"slug": reservation_item.slug}
+                    )
+                )
+
+        # Invalid form
         else:
             messages.add_message(
                 request,
