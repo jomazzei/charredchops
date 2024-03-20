@@ -14,7 +14,7 @@
 
 * [Project Methodology and Tech Stack](#project-methodology-&-tech-stack)
 * [Wireframes](#wireframes)
-* [User Stories and Features](#user-stories-and-features)
+* [User Stories and Features](#user-stories-&-features)
 * [Testing](#testing)
 * [Credits](#credits)
 
@@ -46,7 +46,7 @@
 
 <br>
 
-## User Stories and Features
+## User Stories & Features
 
 ### Core Focus
 Core stories and features revolve around what the main purpose of the website is.   
