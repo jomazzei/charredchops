@@ -39,7 +39,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # Takes value from the env.py file
 # Automatically sets Debug to True for development,
 # when pushed to GitHub it will set itself to False
-DEBUG = 'DEBUG' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1' ,'.herokuapp.com',]
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/','https://*.herokuapp.com',]
