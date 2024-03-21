@@ -15,7 +15,7 @@
 
 #### Table of Contents:
 
-* [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
+* [Agile and Tech Stack Overview](#agile-and-tech-stack-overview)
 * [Wireframes](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
@@ -27,12 +27,12 @@
 <br>  
 
 
-## Project Methodology and Tech Stack
+## Agile and Tech Stack Overview
 [back to content table](#table-of-contents)
 <br>
 <br>
 
-- __Ideation & Project Management__
+- __Ideation & Agile__
 
 
 - __Development__
@@ -64,6 +64,9 @@
 <br>
 
 ## User Stories and Features
+[back to content table](#table-of-contents)
+<br>
+<br>
 
 ### Core Focus
 Core stories and features revolve around what the main purpose of the website is.   
