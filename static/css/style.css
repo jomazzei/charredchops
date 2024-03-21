@@ -217,7 +217,7 @@ footer a {
 /* ---------------------- Call to action */
 #call-to-action {
     margin-top: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-size: 130%;
 }
 
@@ -330,9 +330,13 @@ footer a {
 /* -------------------------------------------------------------- MY BOOKINGS */
 
 /* ---------------------- List items */
-.booking-row-split {
-    margin-top: 20px;
-    margin-bottom: 10px;
+#list-container {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#list-container h1 {
+    margin-bottom: 20px;
 }
 
 #list-container a {
