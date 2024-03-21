@@ -62,23 +62,21 @@ class Reservation(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["booking_date", "booking_time", "guest_count", "entry_id"]
+        ordering = [
+            "booking_date",
+            "booking_time",
+            "guest_count",
+            "created_on",
+            "entry_id",
+        ]
 
     def __str__(self):
         return f"Date: {self.booking_date} | ID: {self.entry_id} | Reference: {self.cust_ref}"
 
-    # Queried ChatGPT on how to create unique references
-    # that do not extend beyond a comprehendable digit count
-
-    # 2 Stage approach for generating customer references.
-    # First, generate a random alphanumeric string of 6 digits
-    # and check it against previous reference entries.
-    # If previous entry CONTAINS (important,
-    # as straight equal check wouldn't account for stage 2) the random id, re run until pass.
-
-    # Second, after a new unique string is generated,
-    # get customer initials and append them to the front of the string.
-    # Return the new formatted id and call the entire process in the save method.
+    # Needed help from ChatGPT on how to create unique references
+    # that do not extend beyond a comprehendable digit count,
+    # using alphanumeric characters in a string instead of UUID4.
+    # Doing it this way allows a level of readable logic
     def generate_unique_booking_id(self):
         """
         Generates unique alphanumeric string.
@@ -88,10 +86,12 @@ class Reservation(models.Model):
         """
         is_unique = False
         while not is_unique:
+            # "".join() stops it from just generating a list,
+            # instead it concatenates together into 1 string.
             random_id = "".join(
                 random.choices(string.ascii_uppercase + string.digits, k=6)
             )
-            # Must be Reservation.objects, not self.objects, as otherwise admin error is thrown
+            # Must be Reservation.objects, not self.objects, otherwise admin error is thrown
             if not Reservation.objects.filter(cust_ref__icontains=random_id).exists():
                 is_unique = True
                 return random_id

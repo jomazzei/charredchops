@@ -15,34 +15,65 @@
 
 #### Table of Contents:
 
-* [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
-* [Wireframes](#wireframes)
+* [Agile and Tech Stack Overview](#agile-and-tech-stack-overview)
+  * [Ideation and Agile](#ideation-and-agile)
+  * [Tech Stack](#tech-stack)
+* [Wireframes](#wireframes-and-database-schema)
   * [Home page](#home-page)
-  * [booking page](#booking-page) 
+  * [Booking page](#booking-page)
+  * [Database diagram](#database-diagram) 
 * [User Stories and Features](#user-stories-and-features)
+  * [Full Layout of Milestones](#full-layout-of-milestones)
+  * [Core Focus](#core-focus)
+  * [Future focus](#future-focus)
 * [Testing](#testing)
 * [Credits](#credits)
 
 <br>  
 
 
-## Project Methodology and Tech Stack
+## Agile and Tech Stack Overview
 [back to content table](#table-of-contents)
-<br>
-<br>
-
-- __Ideation & Project Management__
-
-
-- __Development__
-
 
 <br>
 
+#### Ideation and Agile
+<p>
+ During the ideation process for choosing a project I referred to the briefs on the CI LMS. I ended up choosing the restaurant booking system as the outline for my project.
+ I did some quick brainstorming for names and wrote out baseline user stories, whether those be current or future iterations, that informed the core features of the website.<br>
+</p>
+<p>
+ Throughout development I would add more user stories to my project board that would expand the website's functionality and enrich it's value, while ensuring I maintained a focussed scope and goal for this deadline<br>
+ I split certain features into easier to track issues or task checklists depending on whether they were explicitly part of a user story or not.<br>
+ Certain design aspects would fit into that category, such as error pages. They could have been rephrased and reworked into more stories but I felt it would take away from the main focus
+ of agile, which is to inform scope and promote efficiency throughout an iteration through breaking down tasks.
+</p>
 
-## Wireframes
+<br>
+
+#### Tech Stack
+<p>
+ The following high level technologies and frameworks were used to deliver the project in it's current state:
+</p>
+
+- VS Code
+- Lucidchart
+- HTML5 & CSS3
+- Bootstrap 5
+- JavaScript
+- Python 3.12
+- Django 4.2
+
+<p>
+ For a detailed list of package usage and requirements, please see the requirements.txt.
+</p>
+
+<br>
+
+
+## Wireframes and Database schema
 [back to content table](#table-of-contents)
-<br>
+
 <br>
 
 ### Home Page
@@ -55,9 +86,26 @@
 
 <br>
 
+### Database Diagram
+![database](/DocAssets/lucidchart-schema.png)
+
+<p>
+ I drew out the model quite broadly initially, more fitting to a larger scope and longer iteration.<br>
+ During the prioritization I narrowed down the model quite a bit to focus more on the key feature of booking a reservation
+</p>
+
+<br>
+
 <br>
 
 ## User Stories and Features
+[back to content table](#table-of-contents)
+<br>
+<br>
+
+### Full Layout of Milestones
+
+<br>
 
 ### Core Focus
 Core stories and features revolve around what the main purpose of the website is.   
@@ -66,18 +114,20 @@ These include:
 <li></li>
 </ul>
 
-### Features Left to Implement
+<br>
+
+### Future Focus
 The main features left to implement are currently:
 - 
 
-For a full overview of all user stories and features, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
+For a full overview of all tasks, prioritization and backlog, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
 
 <br>
 
 
 ## Testing 
 [back to content table](#table-of-contents)
-<br>
+
 <br>
 
 This project is currently undergoing the following validations and performance tests, and are updated according to progress
