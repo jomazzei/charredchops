@@ -18,10 +18,11 @@
 * [Agile and Tech Stack Overview](#agile-and-tech-stack-overview)
   * [Ideation and Agile](#ideation-and-agile)
   * [Tech Stack](#tech-stack)
-* [Wireframes](#wireframes-and-database-schema)
+* [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
-  * [Database diagram](#database-diagram) 
+  * [Database diagram](#database-diagram)
+  * [Changes to the Reservation Model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
@@ -57,6 +58,7 @@
 </p>
 
 - VS Code
+- GitHub
 - Lucidchart
 - HTML5 & CSS3
 - Bootstrap 5
@@ -89,10 +91,15 @@
 ### Database Diagram
 ![database](/DocAssets/lucidchart-schema.png)
 
+#### Changes to the Reservation Model
+
 <p>
  I drew out the model quite broadly initially, more fitting to a larger scope and longer iteration.<br>
- During the prioritization I narrowed down the model quite a bit to focus more on the key feature of booking a reservation
+ During the prioritization I narrowed down the model quite a bit to focus more on the key feature of booking a reservation.<br>
+ This is the current working version of the model in diagram form:
 </p>
+
+![database-working](/DocAssets/working-version-schema.png)
 
 <br>
 
@@ -105,20 +112,43 @@
 
 ### Full Layout of Milestones
 
+- __Reservation__
+  - USER STORY: Book a table:
+    - As a user I want to book a table so that I can secure a reservation.
+  - USER STORY: View own bookings:
+    - As a user I can access my own bookings so that I can edit their details, cancel them, or just view them.
+  - USER STORY: Edit reservation details:
+    - As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs.
+  - USER STORY: Cancel booking:
+    - As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up.
+  - USER STORY: E-mail booking confirmation:
+    - As a user I want to receive email notifications for booking confirmations so that I have extra peace of mind that my booking is successful, as external confirmation is the current norm.  
+  - FEATURE/TASK: Reservation model:
+    - Create model that will contain and save the data in relevant fields for a restaurant booking.
+
+- __User Auth__
+  - USER STORY: Account creation / login:
+    - As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
+  - USER STORY: Account management:
+    - As a user I want to be able to view my account details so that I can confirm and edit my details, or delete my account.
+  - 403 Pages:
+    - All pages that require authentication need a 403 Error if unauthorized access is detected.
+
+- __Design__
+  - USER STORY: Contact and location info:
+    - As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
+
 <br>
 
 ### Core Focus
-Core stories and features revolve around what the main purpose of the website is.   
-These include:
-<ul>
-<li></li>
-</ul>
+The focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations.  
+
 
 <br>
 
 ### Future Focus
 The main features left to implement are currently:
-- 
+
 
 For a full overview of all tasks, prioritization and backlog, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
 
@@ -130,20 +160,26 @@ For a full overview of all tasks, prioritization and backlog, please look at the
 
 <br>
 
-This project is currently undergoing the following validations and performance tests, and are updated according to progress
+This project is currently undergoing the following validations and performance tests, and are updated according to progress.
 ### Validation
 - __HTML__
   - [The W3C Markup Validator](https://validator.w3.org/#validate_by_input)
+    - All HTML has passed full validation except for 1 page, Sign Up. Validator error is missing paragraph tags within it's scope, though they appear where expected. Presumably a problem with the default AllAuth forms and they will be changed in an upcoming update to a custom sign in model that takes e-mails as the primary username field.
 - __CSS__
   - [The W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+    - CSS has passed full validation except for 1 line, "shape-outside". It's a seemingly often unsupported style across some browsers and will be changed to a suitable alternative/removed in future.
 - __Python Linter__
   - [CI Python Linter](https://pep8ci.herokuapp.com/)
+
+<br>
 
 ### Performance & Contrast Tests
 - __Performance__
   - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
+
+<br>
 
 ### Debugging & Test Module
 -__Some of the key bugs will be listed here and how they were dealt with__
