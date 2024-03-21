@@ -62,7 +62,13 @@ class Reservation(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["booking_date", "booking_time", "guest_count", "created_on", "entry_id"]
+        ordering = [
+            "booking_date",
+            "booking_time",
+            "guest_count",
+            "created_on",
+            "entry_id",
+        ]
 
     def __str__(self):
         return f"Date: {self.booking_date} | ID: {self.entry_id} | Reference: {self.cust_ref}"
@@ -70,7 +76,7 @@ class Reservation(models.Model):
     # Needed help from ChatGPT on how to create unique references
     # that do not extend beyond a comprehendable digit count,
     # using alphanumeric characters in a string instead of UUID4.
-    # Doing it this way allows a level of readable logic 
+    # Doing it this way allows a level of readable logic
     def generate_unique_booking_id(self):
         """
         Generates unique alphanumeric string.
