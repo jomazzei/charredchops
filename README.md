@@ -16,9 +16,10 @@
 #### Table of Contents:
 
 * [Project Methodology and Tech Stack](#project-methodology-and-tech-stack)
-* [Wireframes](#wireframes)
+* [Wireframes](#wireframes-and-database-schema)
   * [Home page](#home-page)
-  * [booking page](#booking-page) 
+  * [Booking page](#booking-page)
+  * [Database diagram](#database-diagram) 
 * [User Stories and Features](#user-stories-and-features)
 * [Testing](#testing)
 * [Credits](#credits)
@@ -40,7 +41,7 @@
 <br>
 
 
-## Wireframes
+## Wireframes and Database schema
 [back to content table](#table-of-contents)
 <br>
 <br>
@@ -52,6 +53,11 @@
 
 ### Booking Page
 ![bookingpage](/DocAssets/booking-logged-in.png)
+
+<br>
+
+### Database Diagram
+![database](/DocAssets/lucidchart-schema.png)
 
 <br>
 
