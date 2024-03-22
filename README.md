@@ -200,10 +200,12 @@ This project is currently undergoing the following validations and performance t
 
 <div align="center">
 
-| Test Description  | Expected Result | Actual Result | Comment |
+| Test Description  | Expected Result | Actual Result | Pass / Fail |
 | ------------- | ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | 
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | 
+| Sign up feature | Guest Users can enter information on sign up page. On successful registration the user account is stored and accessible via admin panel and log in page. | Users can sign up and their information is stored for use in authentication  | __Pass__  | 
+| Log in feature | Users can enter the same information from sign up on the log in page, enabling autherized pages and features | Users can log in and gain authorization to specific features | __Pass__ | 
+| Log out feature | Users can log out from the logout page and lose access to autherized features | A logged in user can log themselves out, disabling autherized features | __Pass__ |
+| Booking page | (Guest) Users can open the book now page and see all relevant restaurant information, a Guest User will be presented with a prompt to log in or sign up instead of a form | Anyone can access the book now page, with unauthorized users being presented with a log in / sign up prompt | __Pass__ | 
 
 </div>
 
