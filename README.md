@@ -73,7 +73,7 @@
   - Django 4.2 - Framework for rapid creation of database-reliant web applications
   - ElephantSQL - Database hosting service
 
-- __Backend__
+- __Deployment__
   - Heroku - Full-stack web application hosting service
 
 <p>
