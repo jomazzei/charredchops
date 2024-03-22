@@ -27,10 +27,11 @@ def booking_page(request):
             messages.add_message(
                 request,
                 messages.ERROR,
-                """You already have a booking for this day, 
-                if you would like to change the time or cancel please 
-                navigate to the 'My bookings' tab and select the booking you wish 
-                to change.""",
+                """You already have a booking for this day,
+                 if you would like to change the time or cancel please
+                 navigate to the 'My bookings' tab and
+                 select the booking you wish
+                 to change.""",
             )
             return True
 
@@ -55,7 +56,10 @@ def booking_page(request):
                     "You have successfully booked a reservation!",
                 )
                 return redirect(
-                    reverse("booking_details_page", kwargs={"slug": booking.slug})
+                    reverse(
+                        "booking_details_page",
+                        kwargs={"slug": booking.slug}
+                    )
                 )
 
         # If form is NOT valid
@@ -63,7 +67,8 @@ def booking_page(request):
             messages.add_message(
                 request, messages.ERROR, "Please check your form again."
             )
-            # Returns the form so template can iterate field errors in template.
+            # Returns the form so template can
+            # iterate field errors in template.
             return render(request, "booking/booking.html", {"form": form})
             # Can cause resubmissions on refresh, need to fix
 
@@ -80,7 +85,8 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     """
 
     model = Reservation
-    # Found online, won't iterate without this definition, unlike in previous projects
+    # Found online, won't iterate without
+    # this definition, unlike in previous projects
     context_object_name = "booking_list"
 
     template_name = "booking/booking_list.html"
@@ -145,10 +151,11 @@ def booking_update(request, slug):
             messages.add_message(
                 request,
                 messages.ERROR,
-                """You already have a booking for this day, 
-                if you would like to change the time for that reservation, 
-                please use the buttons at the bottom of the card to stop editing and 
-                navigate to that reservation""",
+                """You already have a booking for this day,
+                 if you would like to change the time for that reservation,
+                 please use the buttons at the
+                 bottom of the card to stop editing and
+                 navigate to that reservation""",
             )
             return True
 
@@ -174,7 +181,8 @@ def booking_update(request, slug):
                 )
                 return redirect(
                     reverse(
-                        "booking_details_page", kwargs={"slug": reservation_item.slug}
+                        "booking_details_page",
+                        kwargs={"slug": reservation_item.slug}
                     )
                 )
 
@@ -183,7 +191,8 @@ def booking_update(request, slug):
             messages.add_message(
                 request,
                 messages.ERROR,
-                "One or more of your inputs were invalid, please re-enter your answers",
+                """One or more of your inputs were invalid,
+                 please re-enter your answers""",
             )
             return redirect(request.path_info)
 

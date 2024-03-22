@@ -38,10 +38,6 @@ class BookTableForm(forms.ModelForm):
             ),
         }
 
-        error_messages = {
-            "custf_name": "Must contain alphabetical characters and can't be blank"
-        }
-
     def clean(self):
         cleaned_data = super().clean()
         cleaned_data["cust_fname"] = cleaned_data.get("cust_fname", "").strip()
@@ -80,6 +76,7 @@ class UpdateBookingForm(forms.ModelForm):
             "booking_date": forms.DateInput(
                 attrs={
                     "type": "date",
+                    "min": date.today(),
                 }
             ),
         }
