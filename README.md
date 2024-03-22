@@ -57,14 +57,24 @@
  The following high level technologies and frameworks were used to deliver the project in it's current state:
 </p>
 
-- VS Code
-- GitHub
-- Lucidchart
-- HTML5 & CSS3
-- Bootstrap 5
-- JavaScript
-- Python 3.12
-- Django 4.2
+- __Ideation, project management and version control__
+  - Lucidchart - Entity relationship diagram
+  - Balsamiq - Wireframes sketching tool
+  - VS Code - Text editor / IDE
+  - GitHub - Version control system / online code repository
+
+- __Frontend__
+  - HTML5 & CSS3 - Content and design
+  - Bootstrap 5 - Framework for fast design elements
+  - JavaScript - Interactivity
+
+- __Backend__
+  - Python 3.12 - Base language for Django
+  - Django 4.2 - Framework for rapid creation of database-reliant web applications
+  - ElephantSQL - Database hosting service
+
+- __Backend__
+  - Heroku - Full-stack web application hosting service
 
 <p>
  For a detailed list of package usage and requirements, please see the requirements.txt.
@@ -216,9 +226,11 @@ This project is currently undergoing the following validations and performance t
 <br>
 
 ### Content and Code
-- Design inspirationas from [Miller & Carter steakhouse](https://www.millerandcarter.co.uk/).
+- Design inspirations from [Miller & Carter steakhouse](https://www.millerandcarter.co.uk/).
+- Basic outline for header, footer and hero image section adapted from [Love Running walkthrough project](https://github.com/jomazzei/love-running), originally created by [Code Institute](https://codeinstitute.net/?_gl=1*xh7bh0*_up*MQ..&gclid=CjwKCAjwkuqvBhAQEiwA65XxQA_KVRG0RaWOXmBe9aqfp9kJ_Vw14KkL0WQhpPMGA4STT5MNmkBC2hoC-aUQAvD_BwE).
 - Baseline HTML template for AllAuth taken from [Django blog walkthrough project](https://github.com/jomazzei/django-blog), originally created by [Code Institute](https://codeinstitute.net/?_gl=1*xh7bh0*_up*MQ..&gclid=CjwKCAjwkuqvBhAQEiwA65XxQA_KVRG0RaWOXmBe9aqfp9kJ_Vw14KkL0WQhpPMGA4STT5MNmkBC2hoC-aUQAvD_BwE).
 - Baseline code for similar functions, such as List view and Form submission view adapted from [Django blog walkthrough project](https://github.com/jomazzei/django-blog), originally created by [Code Institute](https://codeinstitute.net/?_gl=1*xh7bh0*_up*MQ..&gclid=CjwKCAjwkuqvBhAQEiwA65XxQA_KVRG0RaWOXmBe9aqfp9kJ_Vw14KkL0WQhpPMGA4STT5MNmkBC2hoC-aUQAvD_BwE).
+- Delete modal prompt adapted from the hackathon project [Campus Connect](https://github.com/jomazzei/campus-connect).
 - ReadMe structure templated from the hackathon project [Campus Connect](https://github.com/jomazzei/campus-connect), from which the ReadMe was originally based off of hackathon project [Belgian Bakes](https://github.com/Tariq-845/belgian-bakes).
 - Referred to various sources (not all inclusive) for fixes and implementations for features I wasn't knowledgeable on:
   - Django docs
