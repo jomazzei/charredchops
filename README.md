@@ -22,7 +22,7 @@
   * [Home page](#home-page)
   * [Booking page](#booking-page)
   * [Database diagram](#database-diagram)
-  * [Changes to the Reservation Model](#changes-to-the-reservation-model)
+  * [Changes to the Reservation model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
@@ -101,7 +101,7 @@
 ### Database Diagram
 ![database](/DocAssets/lucidchart-schema.png)
 
-#### Changes to the Reservation Model
+#### Changes to the Reservation model
 
 <p>
  I drew out the model quite broadly initially, more fitting to a larger scope and longer iteration.<br>
