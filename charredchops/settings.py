@@ -41,8 +41,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # when pushed to GitHub it will set itself to False
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['127.0.0.1' ,'.herokuapp.com',]
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/','https://*.herokuapp.com',]
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/', 'https://*.herokuapp.com']
 
 
 # Application definition
@@ -69,7 +69,6 @@ SITE_ID = 1
 # Redirects to home page on log-in/-out
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
 
 
 MIDDLEWARE = [

@@ -30,7 +30,12 @@ class Reservation(models.Model):
     entry_id = models.AutoField(primary_key=True, unique=True)
     cust_ref = models.CharField(blank=True, unique=True, max_length=8)
 
-    slug = models.SlugField(max_length=250, blank=True, null=False, unique=True)
+    slug = models.SlugField(
+        max_length=250,
+        blank=True,
+        null=False,
+        unique=True
+    )
 
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="booking", null=False
@@ -42,7 +47,9 @@ class Reservation(models.Model):
         validators=[RegexValidator("[a-zA-Z]")],
     )
     cust_lname = models.CharField(
-        max_length=20, blank=False, null=False, validators=[RegexValidator("[a-zA-Z]")]
+        max_length=20,
+        blank=False, null=False,
+        validators=[RegexValidator("[a-zA-Z]")],
     )
     email = models.EmailField()
     guest_count = models.IntegerField(
@@ -54,9 +61,15 @@ class Reservation(models.Model):
     booking_date = models.DateField(
         null=False,
         blank=False,
-        validators=[MinValueValidator(limit_value=date.today())],
+        validators=[MinValueValidator(
+            limit_value=date.today()
+        )],
     )
-    booking_time = models.TimeField(null=False, blank=False, choices=TIME_SLOTS)
+    booking_time = models.TimeField(
+        null=False,
+        blank=False,
+        choices=TIME_SLOTS
+    )
     comments = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -71,7 +84,8 @@ class Reservation(models.Model):
         ]
 
     def __str__(self):
-        return f"Date: {self.booking_date} | ID: {self.entry_id} | Reference: {self.cust_ref}"
+        return f""""Date: {self.booking_date} |
+     ID: {self.entry_id} | Reference: {self.cust_ref}"""
 
     # Needed help from ChatGPT on how to create unique references
     # that do not extend beyond a comprehendable digit count,
@@ -91,8 +105,11 @@ class Reservation(models.Model):
             random_id = "".join(
                 random.choices(string.ascii_uppercase + string.digits, k=6)
             )
-            # Must be Reservation.objects, not self.objects, otherwise admin error is thrown
-            if not Reservation.objects.filter(cust_ref__icontains=random_id).exists():
+            # Must be Reservation.objects, not self.objects,
+            # otherwise admin error is thrown
+            if not Reservation.objects.filter(
+                cust_ref__icontains=random_id
+            ).exists():
                 is_unique = True
                 return random_id
 

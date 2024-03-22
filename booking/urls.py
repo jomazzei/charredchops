@@ -6,8 +6,12 @@ urlpatterns = [
     path("booknow/", views.booking_page, name="booking_page"),
     # Bookings list
     path("mybookings/", views.BookingList.as_view(), name="booking_list_page"),
-    # Single reservation/booking
-    path("mybookings/<slug:slug>/", views.booking_details, name="booking_details_page"),
+    # Booking detail
+    path(
+        "mybookings/<slug:slug>/",
+        views.booking_details,
+        name="booking_details_page"
+    ),
     path(
         "mybookings/<slug:slug>/update",
         views.booking_update,
