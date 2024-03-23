@@ -46,7 +46,6 @@ CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/', 'https://*.herokuapp.com']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -69,7 +68,6 @@ SITE_ID = 1
 # Redirects to home page on log-in/-out
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
