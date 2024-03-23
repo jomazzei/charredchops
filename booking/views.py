@@ -194,13 +194,23 @@ def booking_update(request, slug):
                 """One or more of your inputs were invalid,
                  please re-enter your answers""",
             )
-            return redirect(request.path_info)
+            return render(
+                request,
+                "booking/form_update_booking.html",
+                {
+                    "reservation_item": reservation_item,
+                    "form": form
+                },
+            )
 
     elif request.user == reservation_item.customer:
         return render(
             request,
             "booking/form_update_booking.html",
-            {"reservation_item": reservation_item, "form": form},
+            {
+                "reservation_item": reservation_item,
+                "form": form
+            },
         )
 
     else:
@@ -217,6 +227,12 @@ def booking_delete(request, slug):
 
     if request.user == reservation_item.customer:
         reservation_item.delete()
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            f"""Reservation on
+             {reservation_item.booking_date} successfully canceled""",
+        )
         return redirect(reverse("booking_list_page"))
 
     else:
