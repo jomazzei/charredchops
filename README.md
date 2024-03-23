@@ -151,6 +151,62 @@
 - __Design__
   - USER STORY: Contact and location info:
     - As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
+  - USER STORY: Wants to see the menu:
+    - As a user I want to be able to view the menu so that I can decide if I like the items sold or not before going.
+  - Style Auth pages:
+    - Auth pages need work to fit inputs and layout into the website theme.
+  - 500 page design:
+    - Create a custom 500 error page that inherits from base.html.
+  - 404 page design:
+    - Create a custom 404 error page that inherits from base.html.
+  - 403 page design:
+    - Create a custom 403 error page that inherits from base.html.
+  - Home page design:
+    - Home page design, HTML and CSS content.
+  - Booking page design:
+    - Booking page design, HTML and CSS content.
+  - Manage booking page design:
+    - Manage booking page design, HTML and CSS content.
+  - Detailed reservation view page design:
+    - Detailed reservation page design, HTML and CSS content.
+  - Responsivity:
+    - All elements must resize based on screen sizes across every template.
+
+- __Capacity__
+  - Can't double book:
+    - Users can't book twice on the same day. Each reservation made by a single user must be on new days.
+  - USER STORY - OWNER: Capacity limit
+    - As the owner I would like my restaurant to have a capacity limit so that we cannot overbook.
+  - USER STORY: Wants to choose a preferred table during booking:
+    - As a user I want to see the floor plan so that I know which table I would prefer to book.
+  - Table model:
+    - As a user I want to see the floor plan so that I know which table I would prefer to book.
+  - Floor plan:
+    - Floor plan will give users an understandable overview of where each table number is.
+
+- __Staff Booking Management__
+  - USER STORY - STAFF: Wiew all bookings:
+    - As a staff member I can view all current bookings in a list view so that I can read their details or perform CRUD operations.
+  - USER STORY - STAFF: Cancel bookings:
+    - As a staff member I can cancel any bookings from users so that I can manage black listed customers, any potential problems with specific reservations, etc.
+  - USER STORY - STAFF: Edit menu items:
+    - As a staff member I want to be able to edit items on the menu database so that I can change information about them, f.e. name, ingredients. etc.
+  - USER STORY - STAFF: Delete menu items:
+    - As a staff member I want to be able to delete items off the menu database so that I can remove them from the menu page if we don't sell it anymore.
+
+- __Menu__
+  - Menu database:
+    - The online menu can be turned into a database for easier adjustments by staff when items are added or edited.
+  - USER STORY - STAFF: Add menu items:
+    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
+  - USER STORY - STAFF: Add menu items:
+    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
+
+- __Documentation__
+  - Floor plan:
+    - Floor plan will give users an understandable overview of where each table number is.
+  - Validation:
+    - Validate all pages to enforce standards
 
 <br>
 
