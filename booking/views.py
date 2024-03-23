@@ -230,7 +230,8 @@ def booking_delete(request, slug):
         messages.add_message(
             request,
             messages.SUCCESS,
-            f"""Reservation on {reservation_item.booking_date} successfully canceled""",
+            f"""Reservation on
+             {reservation_item.booking_date} successfully canceled""",
         )
         return redirect(reverse("booking_list_page"))
 
