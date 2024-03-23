@@ -145,7 +145,7 @@
     - As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
   - USER STORY: Account management:
     - As a user I want to be able to view my account details so that I can confirm and edit my details, or delete my account.
-  - 403 Pages:
+  - FEATURE/TASK: 403 Pages:
     - All pages that require authentication need a 403 Error if unauthorized access is detected.
 
 - __Design__
@@ -153,35 +153,35 @@
     - As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
   - USER STORY: Wants to see the menu:
     - As a user I want to be able to view the menu so that I can decide if I like the items sold or not before going.
-  - Style Auth pages:
+  - FEATURE/TASK: Style Auth pages:
     - Auth pages need work to fit inputs and layout into the website theme.
-  - 500 page design:
+  - FEATURE/TASK: 500 page design:
     - Create a custom 500 error page that inherits from base.html.
-  - 404 page design:
+  - FEATURE/TASK: 404 page design:
     - Create a custom 404 error page that inherits from base.html.
-  - 403 page design:
+  - FEATURE/TASK: 403 page design:
     - Create a custom 403 error page that inherits from base.html.
-  - Home page design:
+  - FEATURE/TASK: Home page design:
     - Home page design, HTML and CSS content.
-  - Booking page design:
+  - FEATURE/TASK: Booking page design:
     - Booking page design, HTML and CSS content.
-  - Manage booking page design:
+  - FEATURE/TASK: Manage booking page design:
     - Manage booking page design, HTML and CSS content.
-  - Detailed reservation view page design:
+  - FEATURE/TASK: Detailed reservation view page design:
     - Detailed reservation page design, HTML and CSS content.
-  - Responsivity:
+  - FEATURE/TASK: Responsivity:
     - All elements must resize based on screen sizes across every template.
 
 - __Capacity__
-  - Can't double book:
-    - Users can't book twice on the same day. Each reservation made by a single user must be on new days.
   - USER STORY - OWNER: Capacity limit
     - As the owner I would like my restaurant to have a capacity limit so that we cannot overbook.
   - USER STORY: Wants to choose a preferred table during booking:
     - As a user I want to see the floor plan so that I know which table I would prefer to book.
-  - Table model:
+  - FEATURE/TASK: Can't double book:
+    - Users can't book twice on the same day. Each reservation made by a single user must be on new days.
+  - FEATURE/TASK: Table model:
     - As a user I want to see the floor plan so that I know which table I would prefer to book.
-  - Floor plan:
+  - FEATURE/TASK: Floor plan:
     - Floor plan will give users an understandable overview of where each table number is.
 
 - __Staff Booking Management__
@@ -195,17 +195,17 @@
     - As a staff member I want to be able to delete items off the menu database so that I can remove them from the menu page if we don't sell it anymore.
 
 - __Menu__
-  - Menu database:
+  - USER STORY - STAFF: Add menu items:
+    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
+  - USER STORY - STAFF: Add menu items:
+    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
+  - FEATURE/TASK: Menu database:
     - The online menu can be turned into a database for easier adjustments by staff when items are added or edited.
-  - USER STORY - STAFF: Add menu items:
-    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
-  - USER STORY - STAFF: Add menu items:
-    - As a staff member I want to be able to add items to the menu database so that I can add extra items to the database to render on our menu page.
 
 - __Documentation__
-  - Floor plan:
+  - FEATURE/TASK: Floor plan:
     - Floor plan will give users an understandable overview of where each table number is.
-  - Validation:
+  - FEATURE/TASK: Validation:
     - Validate all pages to enforce standards
 
 <br>
