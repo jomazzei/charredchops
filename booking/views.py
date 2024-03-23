@@ -194,7 +194,14 @@ def booking_update(request, slug):
                 """One or more of your inputs were invalid,
                  please re-enter your answers""",
             )
-            return redirect(request.path_info)
+            return render(
+                request,
+                "booking/form_update_booking.html",
+                {
+                "reservation_item": reservation_item,
+                 "form": form
+                },
+            )
 
     elif request.user == reservation_item.customer:
         return render(
