@@ -198,8 +198,8 @@ def booking_update(request, slug):
                 request,
                 "booking/form_update_booking.html",
                 {
-                "reservation_item": reservation_item,
-                 "form": form
+                    "reservation_item": reservation_item,
+                    "form": form
                 },
             )
 
@@ -207,7 +207,10 @@ def booking_update(request, slug):
         return render(
             request,
             "booking/form_update_booking.html",
-            {"reservation_item": reservation_item, "form": form},
+            {
+                "reservation_item": reservation_item,
+                "form": form
+            },
         )
 
     else:
@@ -224,6 +227,11 @@ def booking_delete(request, slug):
 
     if request.user == reservation_item.customer:
         reservation_item.delete()
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            f"""Reservation on {reservation_item.booking_date} successfully canceled""",
+        )
         return redirect(reverse("booking_list_page"))
 
     else:
