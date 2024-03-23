@@ -1,4 +1,4 @@
-<p align="center"><img src="/DocAssets/cc-logo-bg.png"></p>
+<p align="center"><img src="/DocAssets/mock-up.png"></p>
 <hr>
 
 <h1 align="center">Charred Chops</h1>
