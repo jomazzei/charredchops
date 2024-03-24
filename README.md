@@ -56,7 +56,7 @@
   * [Images](#images)
   * [Content and Code](#content-and-code)
   * [Note on ChatGPT](#note-on-the-use-of-chatgpt-for-coding-related-queries)
-  * [Thank you](#a-thank-you)
+* [Thank you](#a-thank-you)
 
 <br>  
 
@@ -570,6 +570,7 @@ These answers were often items in the Django docs or other tools and packages th
 In more specific code block cases, my questions centered around debugging and making sure I was on the right track for the sake of time.
 One such instance is writing a for loop for every form error from the view rather than the template, and displaying them in a single toast message. I couldn't get it to work within a single toast message and went back to iterating from the template.
 
+<hr>
 <br>
 
 #### A thank you
