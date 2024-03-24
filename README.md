@@ -464,7 +464,7 @@ This project is currently undergoing the following validations and performance t
 
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
-    - Currently being updated.
+    - Currently undergoing testing - to be updated.
 
 <br>
 
