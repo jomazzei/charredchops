@@ -21,6 +21,8 @@
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
+  * [My Bookings Page](#my-bookings-page)
+  * [Reservation Detail Page](#reservation-detail-page)
   * [Database diagram](#database-diagram)
   * [Changes to the Reservation model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
