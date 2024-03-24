@@ -21,12 +21,15 @@
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
+  * [My Bookings Page](#my-bookings-page)
+  * [Reservation Detail Page](#reservation-detail-page)
   * [Database diagram](#database-diagram)
   * [Changes to the Reservation model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
   * [Future focus](#future-focus)
+* [Current Key Feature Implementations](#current-key-feature-implementations)
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
@@ -99,6 +102,16 @@
 
 ### Booking Page
 ![bookingpage](/DocAssets/booking-logged-in.png)
+
+<br>
+
+### My Bookings Page
+![listview](/DocAssets/bookings-list-view.png)
+
+<br>
+
+### Reservation Detail Page
+![detailview](/DocAssets/detailed-booking-view.png)
 
 <br>
 
@@ -225,6 +238,12 @@ For a full overview of all tasks, prioritization and backlog, please look at the
 <br>
 
 
+## Current Key Feature Implementations
+
+
+<br>
+
+
 ## Validation and Testing
 [back to content table](#table-of-contents)
 
@@ -234,21 +253,31 @@ This project is currently undergoing the following validations and performance t
 ### Validation
 - __HTML__
   - [The W3C Markup Validator](https://validator.w3.org/#validate_by_input)
-    - All HTML has passed validation except for 1 page, Sign Up. Validator error is missing paragraph tags within it's scope, though they appear where expected. Presumably a problem with the default AllAuth forms and they will be changed in an upcoming update to a custom sign in model that takes e-mails as the primary username field.
+    - Sign up page has failed validation. 4 errors were found:
+      - End tag p implied, but there were open elements.
+      -  Unclosed element span.
+      -  Stray end tag span.
+      -  No p element in scope but a p end tag seen.
+    - These errors seem to stem from the current version of Django AllAuth. A future update will see a potential downgrade to a previous error-free version and an overhaul to the auth pages styling and content.
+    - All other pages have passed validation
 - __CSS__
   - [The W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-    - CSS has passed validation except for 1 line, "shape-outside". It's a seemingly often unsupported style across some browsers and will be changed to a suitable alternative/removed in future.
+    - Line 205 has failed validation, "	Property shape-outside doesn't exist : circle(45%)". It's a false positive, as the value does exist and works, including having [documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside), but is considered experimental/not generally supported so a future update to the project will include an alternative option to wrap the text.
+    - All other values have passed validation.
 - __Python Linter__
   - [CI Python Linter](https://pep8ci.herokuapp.com/)
-    - Python has passed validation ecxept for settings.py and booking/models.py. Each file has 1 line too long. Settings.py is a key/val pair that's too long, models.py has a import line too long.
+    - The settings.py file has 4 line too long errors, line 131, 134, 137, 140. These are default lines that Django generates during the set up process and as such were not touched.
+    - All other files have passed validation and were formatted to PEP8 standards.
 
 <br>
 
 ### Performance and Contrast Tests
 - __Performance__
   - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
+    - Currently being updated.
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
+    - Currently being updated.
 
 <br>
 
