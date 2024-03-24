@@ -448,7 +448,7 @@ Create a `env.py` file and write out the environment variables for:
 
 Your lines should look similar to this:  
 `os.environ.setdefault("DEBUG", "1")`  
-`os.environ.setdefault("SECRET_KEY", "******Y")`  
+`os.environ.setdefault("SECRET_KEY", "******")`  
 `os.environ.setdefault("DB_URL", "postgres://")`  
 
 This file is not included in the repo as it contains sensitive data in links and keys that require hiding from public usage.  
