@@ -21,15 +21,15 @@
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
-  * [My Bookings Page](#my-bookings-page)
-  * [Reservation Detail Page](#reservation-detail-page)
+  * [My Bookings page](#my-bookings-page)
+  * [Reservation Detail page](#reservation-detail-page)
   * [Database diagram](#database-diagram)
   * [Changes to the Reservation model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
   * [Future focus](#future-focus)
-* [Current Key Feature Implementations](#current-key-feature-implementations)
+* [Current Key User Story Implementations](#current-key-user-story-implementations)
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
@@ -224,7 +224,7 @@
 <br>
 
 ### Core Focus
-The focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations.  
+With the limited time for this iteration the focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations and expanded features.  
 
 
 <br>
@@ -238,8 +238,61 @@ For a full overview of all tasks, prioritization and backlog, please look at the
 <br>
 
 
-## Current Key Feature Implementations
+## Current Key User Story Implementations
+[back to content table](#table-of-contents)
 
+<br>
+
+### Design for all main pages:
+
+  - FEATURE/TASK: Home page design:
+    - Home page design, HTML and CSS content.
+     
+  - FEATURE/TASK: Booking page design:
+    - Booking page design, HTML and CSS content.
+     
+  - FEATURE/TASK: Manage booking page design:
+    - Manage booking page design, HTML and CSS content.
+     
+  - FEATURE/TASK: Detailed reservation view page design:
+    - Detailed reservation page design, HTML and CSS content.
+     
+  - Error pages
+  - FEATURE/TASK: Responsivity:
+
+    - All elements must resize based on screen sizes across every template.
+
+Color palette, sectioned content, consistent design.
+
+<br>
+
+### USER STORY: Contact and location info:
+As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
+
+<br>
+
+### USER STORY: Account creation / login:
+As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
+
+<br>
+
+### USER STORY: Book a table:
+As a user I want to book a table so that I can secure a reservation.
+
+<br>
+
+### USER STORY: View own bookings:
+As a user I can access my own bookings so that I can edit their details, cancel them, or just view them.
+
+<br>
+
+### USER STORY: Edit reservation details:
+As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs.
+
+<br>
+
+### USER STORY: Cancel booking:
+As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up.
 
 <br>
 
