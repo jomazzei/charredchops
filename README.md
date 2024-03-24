@@ -41,6 +41,11 @@
     * [Detail View](#detail-view)
   * [USER STORY: Edit reservation details](#user-story-edit-reservation-details)
   * [USER STORY: Cancel booking](#user-story-cancel-booking)
+  * [Toast feedback message](#toast-feedback-message)
+    * [Create Booking](#create-booking)
+    * [Update Booking](#update-booking)
+    * [Cancel Booking](#cancel-booking)
+    * [Error](#error)
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
@@ -241,7 +246,9 @@ With the limited time for this iteration the focus so far has been to deliver a 
 <br>
 
 ### Future Focus
-The main features left to implement are currently:
+Adjust the cancel functionality so that User canceled reservations are added to a canceled item list for analytics and management purposes.  
+Cancelation prompt will include form for cancelation reason, provides restaurant information.  
+All operations around bookings and account management will send e-mails to User's associated e-mail. This will include all CRUD operations by both Staff and their own User account that affected their reservation items.  
 
 
 For a full overview of all tasks, prioritization and backlog, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
@@ -330,11 +337,19 @@ As a user I want to be able to cancel a booking so that I can change the schedul
 
 <br>
 
-### Toast feedback message:
+### Toast feedback message
 Users should get informative visual feedback on CRUD operations.
+
+#### Create Booking
 ![createtoast](/DocAssets/book-toast.png)
+
+#### Update Booking
 ![updatetoast](/DocAssets/update-toast.png)
+
+#### Cancel Booking
 ![canceltoast](/DocAssets/cancel-toast.png)
+
+#### Error
 ![errortoast](/DocAssets/error-toast.png)
 
 <br>
