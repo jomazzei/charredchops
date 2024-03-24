@@ -15,8 +15,9 @@
 
 #### Table of Contents:
 
-* [Agile and Tech Stack Overview](#agile-and-tech-stack-overview)
+* [Agile, Project Management and Tech Stack Overview](#agile-project-management-and-tech-stack-overview)
   * [Ideation and Agile](#ideation-and-agile)
+  * [Project Management and Version Control](#project-management-and-version-control)
   * [Tech Stack](#tech-stack)
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
@@ -56,12 +57,12 @@
 <br>  
 
 
-## Agile and Tech Stack Overview
+## Agile, Project Management and Tech Stack Overview
 [back to content table](#table-of-contents)
 
 <br>
 
-#### Ideation and Agile
+### Ideation and Agile
 <p>
  During the ideation process for choosing a project I referred to the briefs on the CI LMS. I ended up choosing the restaurant booking system as the outline for my project.
  I did some quick brainstorming for names and wrote out baseline user stories, whether those be current or future iterations, that informed the core features of the website.<br>
@@ -75,7 +76,27 @@
 
 <br>
 
-#### Tech Stack
+#### Project Management and Version Control
+<p>
+ To manage my development and deployment smoothly I seperated those 2 key components of the app's life cycle into their own branches.<br>
+ This gives me more control over updating certain features, being able to cut out unfinished features or bugged code from the deployed version of the website without having to comment and uncomment entire sections of my project every time I update the deployment for a finished feature.<br>
+</p>
+<p>
+ This was very helpful at the start when having to work on multiple elements at once as they were all co-dependent on eachother. Going back and forth introduced some bugs but being able to dedicate a branch specifically to a streamlined version was helpful in this process.
+</p>
+<p>
+ For further protection against introducing unwanted bugs and non-functional code I created a 3rd merge branch.<br>
+ In effect, this is just an extra step between merging branches directly and using commits as a back up, arguably this might muddy the development when git has built in functionality to handle these steps.<br>
+ The reason I chose this way regardless was for an extra layer of protection for my Stable branch, providing an extra back up where I can locally test the combined branches without having to rerun commit restores and re-pulling the branches if there's a mistake.<br>
+ So while it is an extra step, for my process it streamlined testing.<br>
+</p>
+<p>
+ I think my approach worked for a 1-person project, as there was no need for the more standard "branch-per-feature" common in a larger team where everyone is developing mostly isolated features.
+</p>
+
+<br>
+
+### Tech Stack
 <p>
  The following high level technologies and frameworks were used to deliver the project in it's current state:
 </p>
