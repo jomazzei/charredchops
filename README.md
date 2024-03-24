@@ -53,6 +53,10 @@
   * [Testing table](#testing-table)  
   * [Test Module and Debugging](#test-module-and-debugging)
 * [Credits](#credits)
+  * [Images](#images)
+  * [Content and Code](#content-and-code)
+  * [Note on ChatGPT](#note-on-the-use-of-chatgpt-for-coding-related-queries)
+  * [Thank you](#a-thank-you)
 
 <br>  
 
@@ -558,7 +562,7 @@ While the solution was really simple in the end, I include this section as it di
 
 <br>
 
-#### Note on the use of ChatGPT for coding related queries:
+#### Note on the use of ChatGPT for coding related queries
 I ensured that I used ChatGPT only as an assisting tool throughout this project.
 Most use-cases were not finding the right answers on stackoverflow to aid in writing out my functions or needing a more specific question answered.
 These answers were often items in the Django docs or other tools and packages that I didn't know existed - such as built-in parameters like "context_object_name" and "validators", or "datetime" and "string" modules.
