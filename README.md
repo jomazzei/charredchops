@@ -492,7 +492,20 @@ This project is currently undergoing the following validations and performance t
 <br>
 
 ### Test Module and Debugging
--__Some of the key bugs will be listed here and how they were dealt with__
+
+I only encountered relatively minor bugs throughout the creation of the project up to this stage, any noteable bugs that halted development for any measure of time were tracked on the [project board](https://github.com/users/jomazzei/projects/3/views/1).  
+
+The only real noteable bug I got hung up on was [Issue #20](https://github.com/jomazzei/charredchops/issues/20).  
+When a User enters information and submits the form, it would throw an error. Debugging error messages list wouldn't show up in the template, just that the form did not save.
+
+To start, I searched for potential problems on Google but nothing matched my issue. I then ran my code through ChatGPT to see if I missed anything but it could not spot any errors.  
+After those two initial high level options I created a tests_forms.py file and a test case with hardcoded values for my form fields to see if there were problems in my form. This was to rule out any errors on the form validation, even though initially I never got any form errors displayed in print statements or template iterations.  
+
+The form handled values correctly and my tests passed. Not being able to find my issue this way, I added print statements to each step of my form handling process. The form would get to POST request, couldn't save, but also wouldn't come back with any errors.  
+I compared my form handling code to others' on stack overflow again and this time noticed that I was missing the argument _request.POST_ in my POST instance of the form.  
+
+While the solution was really simple in the end, I include this section as it displayed my debugging process where it was necessary in my project.  
+
   - Currently the full view of all tracked and fixed bugs can be found on the [project board](https://github.com/users/jomazzei/projects/3/views/1)
 
 <br>
@@ -551,4 +564,4 @@ Most use-cases were not finding the right answers on stackoverflow to aid in wri
 These answers were often items in the Django docs or other tools and packages that I didn't know existed - such as built-in parameters like "context_object_name" and "validators", or "datetime" and "string" modules.
 
 In more specific code block cases, my questions centered around debugging and making sure I was on the right track for the sake of time.
-One such instance is writing a for loop for every form error from the view rather than the template, and displaying them in a single toast message. I couldn't get it to work within a single toast message and went back to iterating from the template
+One such instance is writing a for loop for every form error from the view rather than the template, and displaying them in a single toast message. I couldn't get it to work within a single toast message and went back to iterating from the template.
