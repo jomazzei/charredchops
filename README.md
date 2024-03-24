@@ -262,7 +262,10 @@
 
 ### Core Focus
 With the limited time for this iteration the focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations and expanded features.  
+The core development focus for this iteration was on the customer booking feature and it's related content and dependencies.  
+Given a longer iteration the next step would have been a custom user model that builds around the e-mail being the primary identifier and giving users the ability to manage their own account details.  
 
+I feel the goals for the current iteration were met by and large. I've delivered a strong booking feature with robust validation and testing.  
 
 <br>
 
