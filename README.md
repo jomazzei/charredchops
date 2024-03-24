@@ -53,6 +53,10 @@
   * [Testing table](#testing-table)  
   * [Test Module and Debugging](#test-module-and-debugging)
 * [Credits](#credits)
+  * [Images](#images)
+  * [Content and Code](#content-and-code)
+  * [Note on ChatGPT](#note-on-the-use-of-chatgpt-for-coding-related-queries)
+* [Thank you](#a-thank-you)
 
 <br>  
 
@@ -460,7 +464,7 @@ This project is currently undergoing the following validations and performance t
 
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
-    - Currently being updated.
+    - Currently undergoing testing - to be updated.
 
 <br>
 
@@ -558,10 +562,21 @@ While the solution was really simple in the end, I include this section as it di
 
 <br>
 
-#### Note on the use of ChatGPT for coding related queries:
+#### Note on the use of ChatGPT for coding related queries
 I ensured that I used ChatGPT only as an assisting tool throughout this project.
 Most use-cases were not finding the right answers on stackoverflow to aid in writing out my functions or needing a more specific question answered.
 These answers were often items in the Django docs or other tools and packages that I didn't know existed - such as built-in parameters like "context_object_name" and "validators", or "datetime" and "string" modules.
 
 In more specific code block cases, my questions centered around debugging and making sure I was on the right track for the sake of time.
 One such instance is writing a for loop for every form error from the view rather than the template, and displaying them in a single toast message. I couldn't get it to work within a single toast message and went back to iterating from the template.
+
+<hr>
+<br>
+
+#### A thank you
+I wanted to extend a heartfelt thanks to..  
+David, our group's facilitator, for his support to us throughout the bootcamp.  
+Kevin and Martin, our SME and Coding Coaches, for their wealth of knowledge and insight.  
+Daisy, my mentor, for helping me during the past 2 weeks in reviewing and honing in on my project.  
+The entire bootcamp group, for sharing their thoughts and projects during this whole course.  
+Finally all together for being great people and it's been fun getting to know everyone.  
