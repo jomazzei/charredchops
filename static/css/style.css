@@ -286,6 +286,19 @@ footer a {
     text-decoration: underline 2px #fa1d00;
 }
 
+.contact-info {
+    font-size: 130%;
+}
+
+.contact-info a {
+    text-decoration: underline blue;
+    color: black;
+}
+
+.click-me {
+    font-size: .8em;
+}
+
 
 /* ---------------------- Location / Map */
 #location-article {
