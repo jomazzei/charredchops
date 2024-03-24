@@ -286,40 +286,26 @@ For a full overview of all tasks, prioritization and backlog, please look at the
 
 <br>
 
-### Design for all main pages:
-
-  - FEATURE/TASK: Home page design:
-    - Home page design, HTML and CSS content.
-    - ![](/DocAssets/.png)
-     
-  - FEATURE/TASK: Booking page design:
-    - Booking page design, HTML and CSS content.
-    - ![](/DocAssets/.png)
-     
-  - FEATURE/TASK: Manage booking page design:
-    - Manage booking page design, HTML and CSS content.
-    - ![](/DocAssets/.png)
-     
-  - FEATURE/TASK: Detailed reservation view page design:
-    - Detailed reservation page design, HTML and CSS content.
-    - ![](/DocAssets/.png)
-     
-  - Error pages
-    - ![](/DocAssets/.png)
-
-Color palette, sectioned content, consistent design.
-
-<br>
-
 ### USER STORY Contact and location info
-As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
+
+"As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is."
+
+I chose to combine the contact information and the booking form onto 1 page, as I feel the information is relevant to eachother in a case where the user wants to know what number to dial if they'd like to make a reservation over the phone.
+
+#### Contact Section
 ![contactpage](/DocAssets/contact-page.png)
+
+#### Contact Footer Information
 ![contactfooter](/DocAssets/contact-footer.png)
 
 <br>
 
 ### USER STORY Account creation and login
-As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
+
+"As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation."
+
+I used the Django AllAuth package to handle User registration and log in. It's a perfect solution that saves on time otherwise spent making custom models and authorization.
+Where ever there's an authorization prompt, customized templates from AllAuth will be rendered and handle the necessary information.
 
 #### Sign Up
 ![signuppage](/DocAssets/sign-up.png)
@@ -333,14 +319,41 @@ As a user I want to be able to sign up for an account/log in to my account so th
 <br>
 
 ### USER STORY Book a table
-As a user I want to book a table so that I can secure a reservation.
+
+"As a user I want to book a table so that I can secure a reservation."
+
+The User can navigate to the booking form in a number of ways. There's a button rendered in the nav bar, a link item in the footer menu and a call to action section on the home page.  
+I chose to leave the navigation items for the booking page available to Guests and logged in Users as this page contains 1. contact information for the restaurant, and 2. it encourages Users to go to the page and sign up to use our form.  
+
+For this feature to work it required a custom Reservation model to be made, and the default form validation to be overruled by explicit cleaning parameters to ensure the right values are passed to the database.  
+The model holds all relevant information related to booking with a restaurant, including:
+  
+- Customer's name.
+- E-mail address.
+- Desired booking date and time, up to an hour before closing time.
+- Guest count for the table, with a max table size of 8 people.
+- Any special comments or requests.
+
+All information is stored as a Reservation entry into the live database and able to be recalled in necessary functions.  
+Additionally, there is a check in place in the booking view that compares the dates of the new entry request against the User's previous entries. If matching, the User is instructed to navigate to that booking and change details or cancel it if they'd like to affect that date in particular.  
+On completion and validation of a new booking, the User is redirected straight to the detail view of the newly created item so they can 1. see their details, and 2. know they have successfully created a booking along with the feedback from the toast messages.  
+
 ![booknowpage](/DocAssets/booking-fresh.png)
 ![booknowscrolled](/DocAssets/booking-scrolled.png)
 
 <br>
 
 ### USER STORY View own bookings
-As a user I can access my own bookings so that I can edit their details, cancel them, or just view them.
+
+"As a user I can access my own bookings so that I can edit their details, cancel them, or just view them."  
+
+The User can navigate to this page view the nav bar item for "My bookings" or the footer menu link, both of which are only available in the rendered page when logged in.  
+I used the LoginRequired mixin decorator for this class based view so that if a Guest visits the associated link for the list view directly, they will be prompted to log in.  
+If they log in, they will be able to see all their own Reservation items if any are available to them. The logic for returning User associated items is in the _get_queryset_ function.
+If they do not log in, they cannot enter the page, every time they try they will be met with the log in prompt.  
+
+From the list view, if there are any items available, the User will be able to click on any of the items to see further associated information about that entry.  
+The detail view will recall all their entered information for that booking and display it back to the User. From here they will be able to access the Update and Delete functions.  
 
 #### List View
 ![listviewpage](/DocAssets/list-view.png)
@@ -351,19 +364,40 @@ As a user I can access my own bookings so that I can edit their details, cancel 
 <br>
 
 ### USER STORY Edit reservation details
-As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs.
+
+"As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs."  
+
+The User can navigate to this page from the detailed Reservation view and clicking on the green button at the bottom of the card that says "Edit Reservation".  
+When clicked, the User is taken to a prepolutated form, which is a different form in the forms.py file for the sake of different labels, which contains all their current information associated with the item.  
+
+The User can change any of the details they would like to with no restrictions except for date matching.  
+Like with creating a new booking, this view compares the requested date with other entries from the same User, excluding itself. If any matches are found, the same error message from the create view will inform the User here.  
+
+If the User instead would like to _not_ commit their changes to the entry, there is a grey button supplied at the bottom of the card that will revert to the detail view and discard their changes.
+
 ![updatepage](/DocAssets/update.png)
 
 <br>
 
 ### USER STORY Cancel booking
-As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up.
+
+"As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up."
+
+Like with the Update view, there is a red button supplied at the bottom of the detail view card that says "Cancel Reservation".  
+Upon clicking this button, JavaScript will pop up a modal that asks the User for an extra input to protect against accidental cancellation of their booking.
+Using bootstrap modals in this way ensures good user experience by providing a non-intrusive confirmation box.
+
 ![deletemodal](/DocAssets/delete-modal.png)
 
 <br>
 
 ### Toast feedback message
-Users should get informative visual feedback on CRUD operations.
+
+"Users should get informative visual feedback on CRUD operations."
+
+I've supplied the User lots of feedback with toast messages across all CRUD operations.  
+I've ensured these boxes are informative and relative to what the User is (attempting) to do.  
+In the case of form errors I've gone with the error toast directing the User to the form as the built in Crispy errors are a lot nicer and less obtrusive in displaying errors than it would be to add them all into a toast.
 
 #### Create Booking
 ![createtoast](/DocAssets/book-toast.png)
