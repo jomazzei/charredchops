@@ -442,14 +442,22 @@ Install the requirements using `pip install -r requirements.txt`.
 
 Create a `env.py` file and write out the environment variables for:  
 
-  - Debug, any value.
-  - SECRET_KEY, write out your own combination of characters.
-  - DB_URL, link to your own database. I have used ElephantSQL's free postgres database for my production.  
+  - `DEBUG`, any value.
+  - `SECRET_KEY`, write out your own combination of characters.
+  - `DB_URL`, link to your own database. I have used ElephantSQL's free postgres database for my production.  
 
 Your lines should look similar to this:  
 `os.environ.setdefault("DEBUG", "1")`  
 `os.environ.setdefault("SECRET_KEY", "******")`  
 `os.environ.setdefault("DB_URL", "postgres://")`  
+
+In `settings.py` make sure `DEBUG` near the top of the file reads:  
+`DEBUG = 'DEBUG' in os.environ`  
+This line automatically handles whether `DEBUG` should be set to True or False depending on the availability of the `env.py` file in your workspace vs. deployment.  
+Though not necessary, for safety and good practice put `DEBUG` to False instead of the `DEBUG = 'DEBUG' in os.environ` line on your deployment branch or push.  
+
+If deploying on Heroku, in your app settings click reveal config vars and add `SECRET_KEY` and `DB_URL`.  
+`SECRET_KEY` does not have to match the same as your `env.py`, but `DB_URL` should be the same if you have been accessing that database during local development.  
 
 This file is not included in the repo as it contains sensitive data in links and keys that require hiding from public usage.  
 
