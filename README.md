@@ -19,6 +19,7 @@
   * [Ideation and Agile](#ideation-and-agile)
   * [Project Management and Version Control](#project-management-and-version-control)
   * [Tech Stack](#tech-stack)
+
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
@@ -26,10 +27,12 @@
   * [Reservation Detail page](#reservation-detail-page)
   * [Database diagram](#database-diagram)
   * [Changes to the Reservation model](#changes-to-the-reservation-model)
+
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
   * [Future focus](#future-focus)
+
 * [Current Key User Story Implementations](#current-key-user-story-implementations)
   * [USER STORY: Contact and location info](#user-story-contact-and-location-info)
   * [USER STORY: Account creation / login](#user-story-account-creation-and-login)
@@ -47,11 +50,15 @@
     * [Update Booking](#update-booking)
     * [Cancel Booking](#cancel-booking)
     * [Error](#error)
+
+* [Forking](#forking)
+
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
   * [Testing table](#testing-table)  
   * [Test Module and Debugging](#test-module-and-debugging)
+
 * [Credits](#credits)
   * [Images](#images)
   * [Content and Code](#content-and-code)
@@ -427,6 +434,28 @@ In the case of form errors I've gone with the error toast directing the User to 
 <br>
 
 
+## Forking
+To set up your own fork from this repo, these are the general steps and things to take into account:  
+
+To start the fork, go to the top of this repo and click on the fork dropdown, follow its process.  
+Install the requirements using `pip install -r requirements.txt`.  
+
+Create a `env.py` file and write out the environment variables for:  
+
+  - Debug, any value.
+  - SECRET_KEY, write out your own combination of characters.
+  - DB_URL, link to your own database. I have used ElephantSQL's free postgres database for my production.  
+
+Your lines should look similar to this:  
+`os.environ.setdefault("DEBUG", "1")`  
+`os.environ.setdefault("SECRET_KEY", "******Y")`  
+`os.environ.setdefault("DB_URL", "postgres://")`  
+
+This file is not included in the repo as it contains sensitive data in links and keys that require hiding from public usage.  
+
+<br>
+
+
 ## Validation and Testing
 [back to content table](#table-of-contents)
 
@@ -515,7 +544,7 @@ While the solution was really simple in the end, I include this section as it di
 <br>
 
 
-# Credits
+## Credits
 [back to content table](#table-of-contents)
 <br>
 <br>
@@ -573,7 +602,7 @@ One such instance is writing a for loop for every form error from the view rathe
 <hr>
 <br>
 
-#### A thank you
+#### _A thank you_
 I wanted to extend a heartfelt thanks to..  
 David, our group's facilitator, for his support to us throughout the bootcamp.  
 Kevin and Martin, our SME and Coding Coaches, for their wealth of knowledge and insight.  
