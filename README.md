@@ -103,6 +103,16 @@
 
 <br>
 
+### Booking Page
+![listview](/DocAssets/bookings-list-view.png)
+
+<br>
+
+### Booking Page
+![detailview](/DocAssets/detailed-booking-view.png)
+
+<br>
+
 ### Database Diagram
 ![database](/DocAssets/lucidchart-schema.png)
 
