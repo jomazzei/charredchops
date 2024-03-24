@@ -30,6 +30,12 @@
   * [Core Focus](#core-focus)
   * [Future focus](#future-focus)
 * [Current Key User Story Implementations](#current-key-user-story-implementations)
+  * [USER STORY: Contact and location info](#user-story:-contact-and-location-info:)
+  * [USER STORY: Account creation / login](#user-story:-account-creation-/-login:)
+  * [USER STORY: Book a table](#user-story:-book-a-table:)
+  * [USER STORY: View own bookings](#user-story:-view-own-bookings:)
+  * [USER STORY: Edit reservation details](#user-story:-edit-reservation-details:)
+  * [USER STORY: Cancel booking](#user-story:-cancel-booking:)
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
@@ -247,20 +253,22 @@ For a full overview of all tasks, prioritization and backlog, please look at the
 
   - FEATURE/TASK: Home page design:
     - Home page design, HTML and CSS content.
+    - ![](/DocAssets/.png)
      
   - FEATURE/TASK: Booking page design:
     - Booking page design, HTML and CSS content.
+    - ![](/DocAssets/.png)
      
   - FEATURE/TASK: Manage booking page design:
     - Manage booking page design, HTML and CSS content.
+    - ![](/DocAssets/.png)
      
   - FEATURE/TASK: Detailed reservation view page design:
     - Detailed reservation page design, HTML and CSS content.
+    - ![](/DocAssets/.png)
      
   - Error pages
-  - FEATURE/TASK: Responsivity:
-
-    - All elements must resize based on screen sizes across every template.
+    - ![](/DocAssets/.png)
 
 Color palette, sectioned content, consistent design.
 
@@ -268,31 +276,61 @@ Color palette, sectioned content, consistent design.
 
 ### USER STORY: Contact and location info:
 As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is.
+![contactpage](/DocAssets/contact-page.png)
+![contactfooter](/DocAssets/contact-footer.png)
 
 <br>
 
 ### USER STORY: Account creation / login:
 As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
 
+#### Sign Up
+![signuppage](/DocAssets/sign-up.png)
+
+#### Log In
+![loginpage](/DocAssets/log-in.png)
+
+#### Log Out
+![logoutpage](/DocAssets/log-out.png)
+
 <br>
 
 ### USER STORY: Book a table:
 As a user I want to book a table so that I can secure a reservation.
+![booknowpage](/DocAssets/booking-fresh.png)
+![booknowscrolled](/DocAssets/booking-scrolled.png)
 
 <br>
 
 ### USER STORY: View own bookings:
 As a user I can access my own bookings so that I can edit their details, cancel them, or just view them.
 
+#### List view
+![listviewpage](/DocAssets/list-view.png)
+
+#### Detail view
+![detailviewpage](/DocAssets/detail-view.png)
+
 <br>
 
 ### USER STORY: Edit reservation details:
 As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs.
+![updatepage](/DocAssets/update.png)
 
 <br>
 
 ### USER STORY: Cancel booking:
 As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up.
+![deletemodal](/DocAssets/delete-modal.png)
+
+<br>
+
+### Toast feedback message:
+Users should get informative visual feedback on CRUD operations.
+![createtoast](/DocAssets/book-toast.png)
+![updatetoast](/DocAssets/update-toast.png)
+![canceltoast](/DocAssets/cancel-toast.png)
+![errortoast](/DocAssets/error-toast.png)
 
 <br>
 
