@@ -103,12 +103,12 @@
 
 <br>
 
-### Booking Page
+### My Bookings Page
 ![listview](/DocAssets/bookings-list-view.png)
 
 <br>
 
-### Booking Page
+### Reservation Detail Page
 ![detailview](/DocAssets/detailed-booking-view.png)
 
 <br>
