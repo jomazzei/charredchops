@@ -267,10 +267,14 @@ With the limited time for this iteration the focus so far has been to deliver a 
 <br>
 
 ### Future Focus
-Adjust the cancel functionality so that User canceled reservations are added to a canceled item list for analytics and management purposes.  
-Cancelation prompt will include form for cancelation reason, provides restaurant information.  
-All operations around bookings and account management will send e-mails to User's associated e-mail. This will include all CRUD operations by both Staff and their own User account that affected their reservation items.  
 
+- Adjust the cancel functionality so that User canceled reservations are added to a canceled item list for analytics and management purposes.
+- Cancelation prompt will include form for cancelation reason, provides information for the restaurant.
+- All operations around bookings and account management will send e-mails to User's associated e-mail. This will include all CRUD operations by both Staff and their own User account that affected their reservation items.
+- Account managing system for Users to adjust details.
+- Capacity model and table availability tracking
+
+<br>
 
 For a full overview of all tasks, prioritization and backlog, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
 
