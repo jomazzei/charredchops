@@ -31,9 +31,14 @@
   * [Future focus](#future-focus)
 * [Current Key User Story Implementations](#current-key-user-story-implementations)
   * [USER STORY: Contact and location info](#user-story-contact-and-location-info)
-  * [USER STORY: Account creation / login](#user-story-account-creation-/-login)
+  * [USER STORY: Account creation / login](#user-story-account-creation-and-login)
+    *  [Sign Up](#sign-up)
+    *  [Log In](#log-in)
+    *  [Log Out](#log-out)
   * [USER STORY: Book a table](#user-story-book-a-table)
   * [USER STORY: View own bookings](#user-story-view-own-bookings)
+    * [List View](#list-view)
+    * [Detail View](#detail-view)
   * [USER STORY: Edit reservation details](#user-story-edit-reservation-details)
   * [USER STORY: Cancel booking](#user-story-cancel-booking)
 * [Validation and Testing](#validation-and-testing)
@@ -281,7 +286,7 @@ As a user I want to be able to see the restaurants contact info and location so 
 
 <br>
 
-### USER STORY Account creation / login
+### USER STORY Account creation and login
 As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation.
 
 #### Sign Up
@@ -305,10 +310,10 @@ As a user I want to book a table so that I can secure a reservation.
 ### USER STORY View own bookings
 As a user I can access my own bookings so that I can edit their details, cancel them, or just view them.
 
-#### List view
+#### List View
 ![listviewpage](/DocAssets/list-view.png)
 
-#### Detail view
+#### Detail View
 ![detailviewpage](/DocAssets/detail-view.png)
 
 <br>
