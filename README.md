@@ -15,21 +15,38 @@
 
 #### Table of Contents:
 
-* [Agile and Tech Stack Overview](#agile-and-tech-stack-overview)
+* [Agile, Project Management and Tech Stack Overview](#agile-project-management-and-tech-stack-overview)
   * [Ideation and Agile](#ideation-and-agile)
+  * [Project Management and Version Control](#project-management-and-version-control)
   * [Tech Stack](#tech-stack)
 * [Wireframes and Database Schema](#wireframes-and-database-schema)
   * [Home page](#home-page)
   * [Booking page](#booking-page)
-  * [My Bookings Page](#my-bookings-page)
-  * [Reservation Detail Page](#reservation-detail-page)
+  * [My Bookings page](#my-bookings-page)
+  * [Reservation Detail page](#reservation-detail-page)
   * [Database diagram](#database-diagram)
   * [Changes to the Reservation model](#changes-to-the-reservation-model)
 * [User Stories and Features](#user-stories-and-features)
   * [Full Layout of Milestones](#full-layout-of-milestones)
   * [Core Focus](#core-focus)
   * [Future focus](#future-focus)
-* [Current Key Feature Implementations](#current-key-feature-implementations)
+* [Current Key User Story Implementations](#current-key-user-story-implementations)
+  * [USER STORY: Contact and location info](#user-story-contact-and-location-info)
+  * [USER STORY: Account creation / login](#user-story-account-creation-and-login)
+    *  [Sign Up](#sign-up)
+    *  [Log In](#log-in)
+    *  [Log Out](#log-out)
+  * [USER STORY: Book a table](#user-story-book-a-table)
+  * [USER STORY: View own bookings](#user-story-view-own-bookings)
+    * [List View](#list-view)
+    * [Detail View](#detail-view)
+  * [USER STORY: Edit reservation details](#user-story-edit-reservation-details)
+  * [USER STORY: Cancel booking](#user-story-cancel-booking)
+  * [Toast feedback message](#toast-feedback-message)
+    * [Create Booking](#create-booking)
+    * [Update Booking](#update-booking)
+    * [Cancel Booking](#cancel-booking)
+    * [Error](#error)
 * [Validation and Testing](#validation-and-testing)
   * [Validation](#validation)
   * [Performance and Contrast Tests](#performance-and-contrast-tests)
@@ -40,12 +57,12 @@
 <br>  
 
 
-## Agile and Tech Stack Overview
+## Agile, Project Management and Tech Stack Overview
 [back to content table](#table-of-contents)
 
 <br>
 
-#### Ideation and Agile
+### Ideation and Agile
 <p>
  During the ideation process for choosing a project I referred to the briefs on the CI LMS. I ended up choosing the restaurant booking system as the outline for my project.
  I did some quick brainstorming for names and wrote out baseline user stories, whether those be current or future iterations, that informed the core features of the website.<br>
@@ -59,7 +76,27 @@
 
 <br>
 
-#### Tech Stack
+#### Project Management and Version Control
+<p>
+ To manage my development and deployment smoothly I seperated those 2 key components of the app's life cycle into their own branches.<br>
+ This gives me more control over updating certain features, being able to cut out unfinished features or bugged code from the deployed version of the website without having to comment and uncomment entire sections of my project every time I update the deployment for a finished feature.<br>
+</p>
+<p>
+ This was very helpful at the start when having to work on multiple elements at once as they were all co-dependent on eachother. Going back and forth introduced some bugs but being able to dedicate a branch specifically to a streamlined version was helpful in this process.
+</p>
+<p>
+ For further protection against introducing unwanted bugs and non-functional code I created a 3rd merge branch.<br>
+ In effect, this is just an extra step between merging branches directly and using commits as a back up, arguably this might muddy the development when git has built in functionality to handle these steps.<br>
+ The reason I chose this way regardless was for an extra layer of protection for my Stable branch, providing an extra back up where I can locally test the combined branches without having to rerun commit restores and re-pulling the branches if there's a mistake.<br>
+ So while it is an extra step, for my process it streamlined testing.<br>
+</p>
+<p>
+ I think my approach worked for a 1-person project, as there was no need for the more standard "branch-per-feature" common in a larger team where everyone is developing mostly isolated features.
+</p>
+
+<br>
+
+### Tech Stack
 <p>
  The following high level technologies and frameworks were used to deliver the project in it's current state:
 </p>
@@ -224,22 +261,164 @@
 <br>
 
 ### Core Focus
-The focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations.  
+With the limited time for this iteration the focus so far has been to deliver a robust booking system and easy to use interface, as well as lay strong foundations for future implementations and expanded features.  
+The core development focus for this iteration was on the customer booking feature and it's related content and dependencies.  
+Given a longer iteration the next step would have been a custom user model that builds around the e-mail being the primary identifier and giving users the ability to manage their own account details.  
 
+I feel the goals for the current iteration were met by and large. I've delivered a strong booking feature with robust validation and testing.  
 
 <br>
 
 ### Future Focus
-The main features left to implement are currently:
 
+- Adjust the cancel functionality so that User canceled reservations are added to a canceled item list for analytics and management purposes.
+- Cancelation prompt will include form for cancelation reason, provides information for the restaurant.
+
+- Account registration will use e-mail instead of a seperate username.
+- Account managing system for Users to adjust their details.
+- All operations around bookings and account management will send e-mails to User's associated e-mail. This will include all CRUD operations by both Staff and their own User account that affected their reservation items.
+- Capacity model and table availability tracking
+
+- Menu database models to allow customizable menu items to be displayed.
+- Iterate the menu items with Django Template Language.
+- Staff account will get a custom interface where they can add, delete and change items.
+
+<br>
 
 For a full overview of all tasks, prioritization and backlog, please look at the [project board](https://github.com/users/jomazzei/projects/4/views/1).
 
 <br>
 
 
-## Current Key Feature Implementations
+## Current Key User Story Implementations
+[back to content table](#table-of-contents)
 
+<br>
+
+### USER STORY Contact and location info
+
+"As a user I want to be able to see the restaurants contact info and location so that I can call them if needed, or see where the restaurant is."
+
+I chose to combine the contact information and the booking form onto 1 page, as I feel the information is relevant to eachother in a case where the user wants to know what number to dial if they'd like to make a reservation over the phone.
+
+#### Contact Section
+![contactpage](/DocAssets/contact-page.png)
+
+#### Contact Footer Information
+![contactfooter](/DocAssets/contact-footer.png)
+
+<br>
+
+### USER STORY Account creation and login
+
+"As a user I want to be able to sign up for an account/log in to my account so that I can book or manage reservation."
+
+I used the Django AllAuth package to handle User registration and log in. It's a perfect solution that saves on time otherwise spent making custom models and authorization.
+Where ever there's an authorization prompt, customized templates from AllAuth will be rendered and handle the necessary information.
+
+#### Sign Up
+![signuppage](/DocAssets/sign-up.png)
+
+#### Log In
+![loginpage](/DocAssets/log-in.png)
+
+#### Log Out
+![logoutpage](/DocAssets/log-out.png)
+
+<br>
+
+### USER STORY Book a table
+
+"As a user I want to book a table so that I can secure a reservation."
+
+The User can navigate to the booking form in a number of ways. There's a button rendered in the nav bar, a link item in the footer menu and a call to action section on the home page.  
+I chose to leave the navigation items for the booking page available to Guests and logged in Users as this page contains 1. contact information for the restaurant, and 2. it encourages Users to go to the page and sign up to use our form.  
+
+For this feature to work it required a custom Reservation model to be made, and the default form validation to be overruled by explicit cleaning parameters to ensure the right values are passed to the database.  
+The model holds all relevant information related to booking with a restaurant, including:
+  
+- Customer's name.
+- E-mail address.
+- Desired booking date and time, up to an hour before closing time.
+- Guest count for the table, with a max table size of 8 people.
+- Any special comments or requests.
+
+All information is stored as a Reservation entry into the live database and able to be recalled in necessary functions.  
+Additionally, there is a check in place in the booking view that compares the dates of the new entry request against the User's previous entries. If matching, the User is instructed to navigate to that booking and change details or cancel it if they'd like to affect that date in particular.  
+On completion and validation of a new booking, the User is redirected straight to the detail view of the newly created item so they can 1. see their details, and 2. know they have successfully created a booking along with the feedback from the toast messages.  
+
+![booknowpage](/DocAssets/booking-fresh.png)
+![booknowscrolled](/DocAssets/booking-scrolled.png)
+
+<br>
+
+### USER STORY View own bookings
+
+"As a user I can access my own bookings so that I can edit their details, cancel them, or just view them."  
+
+The User can navigate to this page view the nav bar item for "My bookings" or the footer menu link, both of which are only available in the rendered page when logged in.  
+I used the LoginRequired mixin decorator for this class based view so that if a Guest visits the associated link for the list view directly, they will be prompted to log in.  
+If they log in, they will be able to see all their own Reservation items if any are available to them. The logic for returning User associated items is in the _get_queryset_ function.
+If they do not log in, they cannot enter the page, every time they try they will be met with the log in prompt.  
+
+From the list view, if there are any items available, the User will be able to click on any of the items to see further associated information about that entry.  
+The detail view will recall all their entered information for that booking and display it back to the User. From here they will be able to access the Update and Delete functions.  
+
+#### List View
+![listviewpage](/DocAssets/list-view.png)
+
+#### Detail View
+![detailviewpage](/DocAssets/detail-view.png)
+
+<br>
+
+### USER STORY Edit reservation details
+
+"As a user I want to be able to change specifics about my reservation so that I can reschedule or tweak the guest count to suit my needs."  
+
+The User can navigate to this page from the detailed Reservation view and clicking on the green button at the bottom of the card that says "Edit Reservation".  
+When clicked, the User is taken to a prepolutated form, which is a different form in the forms.py file for the sake of different labels, which contains all their current information associated with the item.  
+
+The User can change any of the details they would like to with no restrictions except for date matching.  
+Like with creating a new booking, this view compares the requested date with other entries from the same User, excluding itself. If any matches are found, the same error message from the create view will inform the User here.  
+
+If the User instead would like to _not_ commit their changes to the entry, there is a grey button supplied at the bottom of the card that will revert to the detail view and discard their changes.
+
+![updatepage](/DocAssets/update.png)
+
+<br>
+
+### USER STORY Cancel booking
+
+"As a user I want to be able to cancel a booking so that I can change the schedule of my plans / let the restaurant know I won't be showing up."
+
+Like with the Update view, there is a red button supplied at the bottom of the detail view card that says "Cancel Reservation".  
+Upon clicking this button, JavaScript will pop up a modal that asks the User for an extra input to protect against accidental cancellation of their booking.
+Using bootstrap modals in this way ensures good user experience by providing a non-intrusive confirmation box.
+
+![deletemodal](/DocAssets/delete-modal.png)
+
+<br>
+
+### Toast feedback message
+
+"Users should get informative visual feedback on CRUD operations."
+
+I've supplied the User lots of feedback with toast messages across all CRUD operations.  
+I've ensured these boxes are informative and relative to what the User is (attempting) to do.  
+In the case of form errors I've gone with the error toast directing the User to the form as the built in Crispy errors are a lot nicer and less obtrusive in displaying errors than it would be to add them all into a toast.
+
+#### Create Booking
+![createtoast](/DocAssets/book-toast.png)
+
+#### Update Booking
+![updatetoast](/DocAssets/update-toast.png)
+
+#### Cancel Booking
+![canceltoast](/DocAssets/cancel-toast.png)
+
+#### Error
+![errortoast](/DocAssets/error-toast.png)
 
 <br>
 
@@ -274,7 +453,11 @@ This project is currently undergoing the following validations and performance t
 ### Performance and Contrast Tests
 - __Performance__
   - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
-    - Currently being updated.
+    - Computer: All pages were tested for performance, averaging 97.88 total. Only the Home page dipped below 100 performance at 82, due to large content having to be loaded at once.
+    - Mobile: All pages were tested for performance, averaging 93.75 total. Again, the Home page dipped significantly from 97 to 72, due to large content having to be loaded.
+    - Across the board the website scored well on accessability, ranging from 90-100.
+    - Website SEO scored weaker at 82 across the board, main issue being missing meta information.
+
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
     - Currently being updated.
