@@ -565,3 +565,13 @@ These answers were often items in the Django docs or other tools and packages th
 
 In more specific code block cases, my questions centered around debugging and making sure I was on the right track for the sake of time.
 One such instance is writing a for loop for every form error from the view rather than the template, and displaying them in a single toast message. I couldn't get it to work within a single toast message and went back to iterating from the template.
+
+<br>
+
+#### A thank you
+I wanted to extend a heartfelt thanks to..  
+David, our group's facilitator, for his support to us throughout the bootcamp.  
+Kevin and Martin, our SME and Coding Coaches, for their wealth of knowledge and insight.  
+Daisy, my mentor, for helping me during the past 2 weeks in reviewing and honing in on my project.  
+The entire bootcamp group, for sharing their thoughts and projects during this whole course.  
+Finally all together for being great people and it's been fun getting to know everyone.  
