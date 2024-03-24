@@ -270,9 +270,15 @@ With the limited time for this iteration the focus so far has been to deliver a 
 
 - Adjust the cancel functionality so that User canceled reservations are added to a canceled item list for analytics and management purposes.
 - Cancelation prompt will include form for cancelation reason, provides information for the restaurant.
+
+- Account registration will use e-mail instead of a seperate username.
+- Account managing system for Users to adjust their details.
 - All operations around bookings and account management will send e-mails to User's associated e-mail. This will include all CRUD operations by both Staff and their own User account that affected their reservation items.
-- Account managing system for Users to adjust details.
 - Capacity model and table availability tracking
+
+- Menu database models to allow customizable menu items to be displayed.
+- Iterate the menu items with Django Template Language.
+- Staff account will get a custom interface where they can add, delete and change items.
 
 <br>
 
@@ -444,7 +450,11 @@ This project is currently undergoing the following validations and performance t
 ### Performance and Contrast Tests
 - __Performance__
   - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
-    - Currently being updated.
+    - Computer: All pages were tested for performance, averaging 97.88 total. Only the Home page dipped below 100 performance at 82, due to large content having to be loaded at once.
+    - Mobile: All pages were tested for performance, averaging 93.75 total. Again, the Home page dipped significantly from 97 to 72, due to large content having to be loaded.
+    - Across the board the website scored well on accessability, ranging from 90-100.
+    - Website SEO scored weaker at 82 across the board, main issue being missing meta information.
+
 - __Contrast__
   - [WCAG](https://chromewebstore.google.com/detail/plnahcmalebffmaghcpcmpaciebdhgdf)
     - Currently being updated.
